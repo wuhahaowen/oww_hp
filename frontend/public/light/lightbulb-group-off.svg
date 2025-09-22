@@ -1,0 +1,20 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<foreignObject x="-22.425" y="-23.95" width="64.825" height="63.3902"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(12px);clip-path:url(#bgblur_0_137_1236_clip_path);height:100%;width:100%"></div></foreignObject><g id="Vector" filter="url(#filter0_i_137_1236)" data-figma-bg-blur-radius="24">
+<path d="M12.9 2.64999C14.625 4.59999 16.35 6.52499 18.05 8.47499C18.15 8.57499 18.225 8.69999 18.3 8.82499C18.325 8.87499 18.375 8.92499 18.4 8.97499V11.375C18.25 11.8 17.975 11.95 17.525 11.95H15.5C15.4 11.95 15.35 12 15.3 12.075C14.3 14.1 12.65 15.25 10.35 15.425C7.95 15.6 5.7 14.25 4.675 12.075C4.625 11.975 4.575 11.95 4.45 11.95H2.35C1.875 11.95 1.575 11.675 1.575 11.175V10.575V9.29999C1.575 9.17499 1.6 9.02499 1.65 8.89999C1.7 8.77499 1.775 8.64999 1.85 8.57499C3.6 6.59999 5.35 4.62499 7.1 2.67499C7.15 2.59999 7.175 2.52499 7.2 2.44999V1.17499V0.799988C7.2 0.324988 7.475 0.0499878 7.95 0.0499878H12.05C12.525 0.0499878 12.8 0.349988 12.8 0.799988V2.42499C12.825 2.47499 12.85 2.57499 12.9 2.64999ZM6.2 11.95C7.15 13.325 8.45 14.075 10.1 14.05C11.7 14.025 12.9 13.3 13.825 11.95H6.2Z" fill="white" fill-opacity="0.3"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_i_137_1236" x="-22.425" y="-23.95" width="64.825" height="63.3902" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-5"/>
+<feGaussianBlur stdDeviation="9"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.65 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_137_1236"/>
+</filter>
+<clipPath id="bgblur_0_137_1236_clip_path" transform="translate(22.425 23.95)"><path d="M12.9 2.64999C14.625 4.59999 16.35 6.52499 18.05 8.47499C18.15 8.57499 18.225 8.69999 18.3 8.82499C18.325 8.87499 18.375 8.92499 18.4 8.97499V11.375C18.25 11.8 17.975 11.95 17.525 11.95H15.5C15.4 11.95 15.35 12 15.3 12.075C14.3 14.1 12.65 15.25 10.35 15.425C7.95 15.6 5.7 14.25 4.675 12.075C4.625 11.975 4.575 11.95 4.45 11.95H2.35C1.875 11.95 1.575 11.675 1.575 11.175V10.575V9.29999C1.575 9.17499 1.6 9.02499 1.65 8.89999C1.7 8.77499 1.775 8.64999 1.85 8.57499C3.6 6.59999 5.35 4.62499 7.1 2.67499C7.15 2.59999 7.175 2.52499 7.2 2.44999V1.17499V0.799988C7.2 0.324988 7.475 0.0499878 7.95 0.0499878H12.05C12.525 0.0499878 12.8 0.349988 12.8 0.799988V2.42499C12.825 2.47499 12.85 2.57499 12.9 2.64999ZM6.2 11.95C7.15 13.325 8.45 14.075 10.1 14.05C11.7 14.025 12.9 13.3 13.825 11.95H6.2Z"/>
+</clipPath></defs>
+</svg>

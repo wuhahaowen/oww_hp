@@ -1,0 +1,428 @@
+/*.lanhu-control-panel {*/
+/*  width: 100%;*/
+/*  min-height: 100vh;*/
+/*  background-color: rgba(36, 36, 36, 1);*/
+/*  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;*/
+/*}*/
+
+/*.panel-background {*/
+/*  width: 100%;*/
+/*  height: 100vh;*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  overflow-y: auto;*/
+/*}*/
+
+/*.panel-content {*/
+/*  width: 100%;*/
+/*  min-height: 100%;*/
+/*  padding: 0;*/
+/*}*/
+
+/*.main-layout {*/
+/*  display: flex;*/
+/*  gap: 24px;*/
+/*  padding: 29px 24px 24px;*/
+/*  min-height: calc(100vh - 50px);*/
+/*}*/
+
+/*!* 左侧面板 *!*/
+/*.left-panel {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 20px;*/
+/*  width: 300px;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+/*.home-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*.home-icon {*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*}*/
+
+/*.home-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.time-weather {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 12px;*/
+/*}*/
+
+/*.current-time {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 14px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.weather-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.weather-info {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.date-info {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.weather-detail-icon, .humidity-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.temperature, .humidity {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 14px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*.lighting-status {*/
+/*  margin-bottom: 24px;*/
+/*}*/
+
+/*.status-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 12px;*/
+/*}*/
+
+/*.status-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.lighting-icon {*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*}*/
+
+/*.status-info {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 12px;*/
+/*}*/
+
+/*.status-text {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 14px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.status-divider {*/
+/*  color: rgba(255, 255, 255, 0.6);*/
+/*}*/
+
+/*.bulb-icon {*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+/*}*/
+
+/*.common-controls {*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.controls-header {*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*.controls-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.control-items {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 12px;*/
+/*}*/
+
+/*.separator {*/
+/*  width: 100%;*/
+/*  height: 2px;*/
+/*  margin: 20px 0;*/
+/*}*/
+
+/*.navigation {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*.nav-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.control-panel-nav {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 8px;*/
+/*  padding: 8px 12px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.2s;*/
+/*}*/
+
+/*.control-panel-nav:hover {*/
+/*  background-color: rgba(255, 255, 255, 0.15);*/
+/*}*/
+
+/*.nav-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.nav-text {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 14px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*!* 右侧面板 *!*/
+/*.right-panel {*/
+/*  flex: 1;*/
+/*  min-height: 100%;*/
+/*}*/
+
+/*.right-content {*/
+/*  display: flex;*/
+/*  gap: 24px;*/
+/*}*/
+
+/*.daily-quote {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 20px;*/
+/*  width: 400px;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+/*.daily-quote h3 {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*  margin-bottom: 12px;*/
+/*}*/
+
+/*.daily-quote p {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 14px;*/
+/*  font-weight: 400;*/
+/*  line-height: 1.5;*/
+/*  margin-bottom: 8px;*/
+/*}*/
+
+/*.quote-source {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*  text-align: right;*/
+/*  display: block;*/
+/*}*/
+
+/*.function-modes {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 20px;*/
+/*  margin-top: 24px;*/
+/*}*/
+
+/*.function-modes h3 {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*.mode-grid {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(2, 1fr);*/
+/*  gap: 12px;*/
+/*}*/
+
+/*.mode-item {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 12px;*/
+/*  padding: 16px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.2s;*/
+/*}*/
+
+/*.mode-item:hover {*/
+/*  background-color: rgba(255, 255, 255, 0.15);*/
+/*}*/
+
+/*.mode-item img {*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+/*}*/
+
+/*.mode-item span {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.weather-panel {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 24px;*/
+/*  flex: 1;*/
+/*}*/
+
+/*.weather-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.weather-header img {*/
+/*  width: 24px;*/
+/*  height: 24px;*/
+/*}*/
+
+/*.weather-header span {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 18px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.weather-location {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 12px;*/
+/*}*/
+
+/*.weather-location span {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.weather-suggestion {*/
+/*  margin-bottom: 24px;*/
+/*}*/
+
+/*.weather-suggestion span:first-child {*/
+/*  display: block;*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 14px;*/
+/*  font-weight: 600;*/
+/*  margin-bottom: 8px;*/
+/*}*/
+
+/*.weather-suggestion span:last-child {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*  line-height: 1.4;*/
+/*}*/
+
+/*.weather-data {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 8px;*/
+/*}*/
+
+/*.weather-data span {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 24px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.weather-labels {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*.weather-labels span {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*!* 响应式设计 *!*/
+/*@media (max-width: 1200px) {*/
+/*  .main-layout {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*  */
+/*  .left-panel {*/
+/*    width: 100%;*/
+/*  }*/
+/*  */
+/*  .right-content {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*  */
+/*  .daily-quote {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 768px) {*/
+/*  .main-layout {*/
+/*    padding: 16px;*/
+/*    gap: 16px;*/
+/*  }*/
+/*  */
+/*  .left-panel {*/
+/*    padding: 16px;*/
+/*  }*/
+/*  */
+/*  .right-content {*/
+/*    gap: 16px;*/
+/*  }*/
+/*  */
+/*  .daily-quote, .function-modes, .weather-panel {*/
+/*    padding: 16px;*/
+/*  }*/
+/*  */
+/*  .mode-grid {*/
+/*    grid-template-columns: repeat(4, 1fr);*/
+/*    gap: 8px;*/
+/*  }*/
+/*  */
+/*  .mode-item {*/
+/*    padding: 12px 8px;*/
+/*  }*/
+/*  */
+/*  .weather-data span {*/
+/*    font-size: 18px;*/
+/*  }*/
+/*}*/

@@ -1,0 +1,116 @@
+.light-status-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.light-status-card .card-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.light-summary {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.control-button {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-button:hover {
+  background: var(--color-hover);
+  transform: translateY(-2px);
+}
+
+.control-button:active {
+  transform: translateY(0);
+}
+
+.control-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.control-button.disabled:hover {
+  background: none;
+  transform: none;
+}
+
+.light-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(100%/3 - 10px), 120px), 1fr));
+  gap: 15px;
+  padding: 16px;
+  justify-content: center;
+}
+
+.light-button {
+  aspect-ratio: 1;
+  max-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card-bg-transparent-lanhu);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.light-button:hover {
+  transform: translateY(-3px);
+}
+
+.light-button:active {
+  transform: translateY(-1px);
+}
+
+.light-button.switch-entity {
+  opacity: 0.9;
+  background: rgba(var(--color-primary-rgb), 0.1);
+}
+
+.light-name {
+  margin-top: 8px;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.light-name.long-text {
+  font-size: 0.95em;
+}
+
+.light-button:hover .light-name {
+  color: var(--color-primary);
+} 

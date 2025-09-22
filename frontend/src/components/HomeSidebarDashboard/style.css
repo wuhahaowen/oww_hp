@@ -1,0 +1,163 @@
+.Home_sidebar_dashboard {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 22px;
+  width: 16.12vw;
+  height: 3.06vw;
+  margin: 1.94vw 0 1.66vw 1.66vw;
+}
+
+.Home_sidebar_dashboard_overview_group {
+  background-image: linear-gradient(135deg, rgba(254, 190, 94, 1) 0, rgba(254, 125, 27, 1) 100%);
+  border-radius: 18px;
+  width: 7.78vw;
+  height: 2.5vw;
+  margin: 0.27vw 0 0 0.27vw;
+}
+
+.Home_sidebar_dashboard_overview_box {
+  width: 5.28vw;
+  height: 1.39vw;
+  margin: 0.55vw 0 0 1.25vw;
+}
+
+.Home_sidebar_dashboard_overview_icon {
+  width: 1.12vw;
+  height: 1.12vw;
+  margin-top: 0.14vw;
+}
+
+.Home_sidebar_dashboard_overview_text {
+  width: 3.89vw;
+  height: 1.39vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.97vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.39vw;
+}
+
+.Home_sidebar_dashboard_control_group {
+  border-radius: 18px;
+  height: 2.5vw;
+  width: 7.78vw;
+  margin: 0.27vw 0.27vw 0 0;
+}
+
+.Home_sidebar_dashboard_control_text {
+  width: 3.89vw;
+  height: 1.39vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.97vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.39vw;
+  margin: 0.55vw 0 0 1.94vw;
+}
+
+/*@media (max-width: 720px) {*/
+/*  .Home_sidebar_dashboard {*/
+/*    border-radius: 11px;*/
+/*    width: 116px;*/
+/*    height: 22px;*/
+/*    margin: 14px 0 12px 12px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_group {*/
+/*    border-radius: 9px;*/
+/*    width: 56px;*/
+/*    height: 18px;*/
+/*    margin: 2px 0 0 2px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_box {*/
+/*    width: 38px;*/
+/*    height: 10px;*/
+/*    margin: 4px 0 0 9px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_icon {*/
+/*    width: 8px;*/
+/*    height: 8px;*/
+/*    margin-top: 1px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_text {*/
+/*    width: 28px;*/
+/*    height: 10px;*/
+/*    font-size: 7px;*/
+/*    line-height: 10px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_control_group {*/
+/*    border-radius: 9px;*/
+/*    height: 18px;*/
+/*    width: 56px;*/
+/*    margin: 2px 2px 0 0;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_control_text {*/
+/*    width: 28px;*/
+/*    height: 10px;*/
+/*    font-size: 7px;*/
+/*    line-height: 10px;*/
+/*    margin: 4px 0 0 14px;*/
+/*  }*/
+
+
+/*}*/
+
+/*@media (min-width: 2880px) {*/
+/*  .Home_sidebar_dashboard {*/
+/*    border-radius: 44px;*/
+/*    width: 464px;*/
+/*    height: 88px;*/
+/*    margin: 56px 0 48px 48px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_group {*/
+/*    border-radius: 36px;*/
+/*    width: 224px;*/
+/*    height: 72px;*/
+/*    margin: 8px 0 0 8px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_box {*/
+/*    width: 152px;*/
+/*    height: 40px;*/
+/*    margin: 16px 0 0 36px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_icon {*/
+/*    width: 32px;*/
+/*    height: 32px;*/
+/*    margin-top: 4px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_overview_text {*/
+/*    width: 112px;*/
+/*    height: 40px;*/
+/*    font-size: 28px;*/
+/*    line-height: 40px;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_control_group {*/
+/*    border-radius: 36px;*/
+/*    height: 72px;*/
+/*    width: 224px;*/
+/*    margin: 8px 8px 0 0;*/
+/*  }*/
+
+/*  .Home_sidebar_dashboard_control_text {*/
+/*    width: 112px;*/
+/*    height: 40px;*/
+/*    font-size: 28px;*/
+/*    line-height: 40px;*/
+/*    margin: 16px 0 0 56px;*/
+/*  }*/
+/*}*/

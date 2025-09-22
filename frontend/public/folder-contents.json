@@ -1,0 +1,48 @@
+[
+  {
+    "path": "light",
+    "files": [
+      {
+        "name": "chandelier.svg"
+      },
+      {
+        "name": "lamp-outline.svg"
+      },
+      {
+        "name": "light-flood-down.svg"
+      },
+      {
+        "name": "light-recessed.svg"
+      },
+      {
+        "name": "track-light.svg"
+      },
+      {
+        "name": "wall-sconce-round.svg"
+      }
+    ]
+  },
+  {
+    "path": "light2",
+    "files": [
+      {
+        "name": "chandelier.svg"
+      },
+      {
+        "name": "lamp-outline.svg"
+      },
+      {
+        "name": "light-flood-down.svg"
+      },
+      {
+        "name": "light-recessed.svg"
+      },
+      {
+        "name": "track-light.svg"
+      },
+      {
+        "name": "wall-sconce-round.svg"
+      }
+    ]
+  }
+  ]

@@ -1,0 +1,172 @@
+.climate-control-group {
+  background-image: linear-gradient(135deg, rgba(37, 44, 57, 1) 0, rgba(59, 60, 67, 1) 100%);
+  border-radius: 12px;
+  width: 16.12vw;
+  height: 7.78vw;
+  border: 0.5px;
+  justify-content: center;
+  margin: 1.11vw 0 0 1.66vw;
+}
+
+.climate-control-info {
+  width: 2.5vw;
+  height: 5.56vw;
+  margin: 1.11vw 0 0 1.66vw;
+}
+
+.climate-control-title {
+  width: 2.5vw;
+  height: 1.95vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.25vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.95vw;
+}
+
+.climate-control-area {
+  width: 1.67vw;
+  height: 1.25vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.83vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.25vw;
+}
+.home-climate-switch{
+  width: 2.5vw;
+  height: 1.39vw;
+  margin-top: 0.98vw;
+}
+
+.climate-control-status {
+  width: 1.32vw;
+  height: 1.25vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.83vw;
+  font-family: MiSans-Medium;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.25vw;
+  margin: 1.45vw 0 0 0.55vw;
+}
+
+.climate-control-image {
+  width: 5.56vw;
+  height: 5.56vw;
+  margin: 1.11vw 1.66vw 0 2.84vw;
+}
+
+
+/*@media (max-width: 720px) {*/
+/*  .climate-control-group {*/
+/*    border-radius: 6px;*/
+/*    !*max-width: 100%;*!*/
+/*    width: 116px;*/
+/*    height: 56px;*/
+/*    border: 0px solid ;*/
+/*    margin: 8px 12px 0 12px;*/
+/*  }*/
+
+/*  .climate-control-info {*/
+/*    width: 18px;*/
+/*    height: 40px;*/
+/*    margin: 8px 0 0 12px;*/
+/*  }*/
+
+/*  .climate-control-title {*/
+/*    width: 18px;*/
+/*    height: 14px;*/
+/*    font-size: 9px;*/
+/*    line-height: 14px;*/
+/*  }*/
+
+/*  .climate-control-area {*/
+/*    width: 12px;*/
+/*    height: 9px;*/
+/*    font-size: 6px;*/
+/*    line-height: 9px;*/
+/*  }*/
+
+/*  .home-climate-switch{*/
+/*    width: 18px;*/
+/*    height: 10px;*/
+/*    margin-top: 7px;*/
+/*  }*/
+
+
+/*  .climate-control-status {*/
+/*    width: 9.5px;*/
+/*    height: 9px;*/
+/*    font-size: 6px;*/
+/*    line-height: 9px;*/
+/*    margin: 10.5px 0 0 4px;*/
+/*  }*/
+
+/*  .climate-control-image {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    margin: 8px 12px 0 20.5px;*/
+/*  }*/
+
+
+
+/*}*/
+
+/*@media (min-width: 2880px) {*/
+/*  .climate-control-group {*/
+/*    border-radius: 24px;*/
+/*    width: 464px;*/
+/*    height: 224px;*/
+/*    border: 2px;*/
+/*    margin: 32px 48px 0 48px;*/
+/*  }*/
+
+/*  .climate-control-info {*/
+/*    width: 72px;*/
+/*    height: 160px;*/
+/*    margin: 32px 0 0 48px;*/
+/*  }*/
+
+/*  .climate-control-title {*/
+/*    width: 72px;*/
+/*    height: 56px;*/
+/*    font-size: 36px;*/
+/*    line-height: 56px;*/
+/*  }*/
+
+/*  .climate-control-area {*/
+/*    width: 48px;*/
+/*    height: 36px;*/
+/*    font-size: 24px;*/
+/*    line-height: 36px;*/
+/*  }*/
+
+/*  .home-climate-switch {*/
+/*    width: 72px;*/
+/*    height: 40px;*/
+/*    margin-top: 28px;*/
+/*  }*/
+
+/*  .climate-control-status {*/
+/*    width: 38px;*/
+/*    height: 36px;*/
+/*    font-size: 24px;*/
+/*    line-height: 36px;*/
+/*    margin: 42px 0 0 16px;*/
+/*  }*/
+
+/*  .climate-control-image {*/
+/*    width: 160px;*/
+/*    height: 160px;*/
+/*    margin: 32px 48px 0 82px;*/
+/*  }*/
+/*}*/

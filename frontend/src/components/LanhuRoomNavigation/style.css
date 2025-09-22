@@ -1,0 +1,136 @@
+.lanhu-room-navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 32px;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.room-nav-title {
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overview-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.room-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.selected-room {
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.dropdown-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.dropdown-trigger.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(40, 40, 40, 0.95);
+  border-radius: 8px;
+  margin-top: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.room-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.room-tab {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.room-tab:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.room-tab.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .lanhu-room-navigation {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 8px;
+  }
+  
+  .room-tabs {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .room-tab {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

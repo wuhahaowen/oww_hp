@@ -1,0 +1,309 @@
+/* 优化后的语义化类名，添加 time-weather-sidebar-card 前缀避免冲突 */
+.time-weather-sidebar-card-box {
+  /*box-shadow: inset 0px 0px 1px 0px rgba(255, 255, 255, 0.5);*/
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  border-radius: 16px;
+  width: 19.45vw;
+  height: 55.56vw;
+  border: 1px ;
+  justify-content: center;
+}
+
+
+
+.time-weather-sidebar-card-group {
+  width: 9.17vw;
+  height: 2.23vw;
+  margin: 1.66vw 0 0 1.66vw;
+}
+
+.time-weather-sidebar-card-home-icon {
+  width: 1.67vw;
+  height: 1.67vw;
+  margin-top: 0.28vw;
+}
+
+.time-weather-sidebar-card-home-title {
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+  width: 6.95vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.38vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.23vw;
+}
+
+.time-weather-sidebar-card-time-group {
+  width: 16.12vw;
+  height: 2.78vw;
+  margin: 2.22vw 0 0 1.66vw;
+}
+
+.time-weather-sidebar-card-current-time {
+  width: 5.56vw;
+  height: 2.78vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 2.22vw;
+  font-family: DIN-Bold;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.78vw;
+}
+
+.time-weather-sidebar-card-weather-icon {
+  width: 2.23vw;
+  height: 2.23vw;
+  margin-top: 0.28vw;
+}
+
+.time-weather-sidebar-card-date-group {
+  width: 16.12vw;
+  height: 1.25vw;
+  margin-left: 1.67vw;
+}
+
+.time-weather-sidebar-card-date {
+  width: 6.88vw;
+  height: 1.25vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.83vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.25vw;
+}
+
+.time-weather-sidebar-card-temp-icon {
+  width: 0.84vw;
+  height: 0.84vw;
+  margin: 0.2vw 0 0 2.77vw;
+}
+
+.time-weather-sidebar-card-temperature {
+  width: 1.95vw;
+  height: 1.25vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.83vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1.25vw;
+  margin-left: 0.28vw;
+}
+
+.time-weather-sidebar-card-humidity-icon {
+  width: 0.84vw;
+  height: 0.84vw;
+  margin: 0.2vw 0 0 0.55vw;
+}
+
+.time-weather-sidebar-card-humidity {
+  width: 1.74vw;
+  height: 1.25vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.83vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1.25vw;
+  margin-left: 0.28vw;
+}
+
+/*@media (max-width: 1024px) {*/
+/*  .time-weather-sidebar-card-box {*/
+/*    width: 100%;*/
+/*    max-width: 280px;*/
+/*    margin: 0 auto;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 720px) {*/
+/*  .time-weather-sidebar-card-box {*/
+/*    width: 100%;*/
+/*    max-width: 140px;*/
+/*    margin: 0 auto;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-group {*/
+/*    width: 100%;*/
+/*    max-width: 66px;*/
+/*    margin: 12px 0 0 12px;;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-home-icon {*/
+/*    width: 12px;*/
+/*    height: 12px;*/
+/*    margin-top: 4px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-home-title {*/
+/*    width: 50px;*/
+/*    height: 16px;*/
+/*    font-size: 10px;*/
+/*    margin-top: 2px;*/
+/*    font-weight: 600;*/
+/*    line-height: 16px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-time-group {*/
+/*    width: 116px;*/
+/*    height: 20px;*/
+/*    margin: 18px 0 0 12px;*/
+
+/*  }*/
+
+/*  .time-weather-sidebar-card-current-time {*/
+/*    width: 40px;*/
+/*    height: 20px;*/
+/*    font-size: 18px;*/
+/*    line-height: 20px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-weather-icon {*/
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*    margin-top: 2px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-date-group {*/
+/*    width: 116px;*/
+/*    height: 9px;*/
+/*    margin-left: 12px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-date {*/
+/*    width: 49.5px;*/
+/*    height: 9px;*/
+/*    font-size: 6px;*/
+/*    line-height: 9px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-temp-icon {*/
+/*    width: 6px;*/
+/*    height: 6px;*/
+/*    margin: 1.5px 0 0 20px;*/
+/*  }*/
+/*  .time-weather-sidebar-card-temperature {*/
+/*    width: 14px;*/
+/*    height: 9px;*/
+/*    font-size: 6px;*/
+/*    line-height: 9px;*/
+/*    margin-left: 2px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-humidity-icon {*/
+/*    width: 6px;*/
+/*    height: 6px;*/
+/*    margin: 1.5px 0 0 4px;*/
+/*  }*/
+/*  .time-weather-sidebar-card-humidity {*/
+/*    width: 12.5px;*/
+/*    height: 9px;*/
+/*    font-size: 6px;*/
+/*    line-height: 9px;*/
+/*    margin-left: 2px;*/
+/*  }*/
+
+/*}*/
+
+/*@media (min-width: 2880px) {*/
+/*  .time-weather-sidebar-card-box {*/
+/*    border-radius: 32px;*/
+/*    width: 560px;*/
+/*    border: 2px;*/
+/*    justify-content: center;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-group {*/
+/*    width: 264px;*/
+/*    height: 64px;*/
+/*    margin: 48px 0 0 48px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-home-icon {*/
+/*    width: 48px;*/
+/*    height: 48px;*/
+/*    margin-top: 8px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-home-title {*/
+/*    width: 200px;*/
+/*    height: 64px;*/
+/*    font-size: 40px;*/
+/*    margin-top: 4px;*/
+/*    font-weight: 600;*/
+/*    line-height: 64px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-time-group {*/
+/*    width: 464px;*/
+/*    height: 80px;*/
+/*    margin: 64px 0 0 48px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-current-time {*/
+/*    width: 160px;*/
+/*    height: 80px;*/
+/*    font-size: 72px;*/
+/*    line-height: 80px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-weather-icon {*/
+/*    width: 64px;*/
+/*    height: 64px;*/
+/*    margin-top: 8px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-date-group {*/
+/*    width: 464px;*/
+/*    height: 36px;*/
+/*    margin-left: 48px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-date {*/
+/*    width: 198px;*/
+/*    height: 36px;*/
+/*    font-size: 24px;*/
+/*    line-height: 36px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-temp-icon {*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    margin: 6px 0 0 80px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-temperature {*/
+/*    width: 56px;*/
+/*    height: 36px;*/
+/*    font-size: 24px;*/
+/*    line-height: 36px;*/
+/*    margin-left: 8px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-humidity-icon {*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    margin: 6px 0 0 16px;*/
+/*  }*/
+
+/*  .time-weather-sidebar-card-humidity {*/
+/*    width: 50px;*/
+/*    height: 36px;*/
+/*    font-size: 24px;*/
+/*    line-height: 36px;*/
+/*    margin-left: 8px;*/
+/*  }*/
+/*}*/

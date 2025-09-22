@@ -1,0 +1,280 @@
+/* 优化后的语义化类名 */
+.home-light-status-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    height: 5.56vw;
+    width: 16.12vw;
+    justify-content: center;
+    margin: 1.11vw 0 0 1.66vw;
+}
+
+.home-light-header-section {
+    width: 3.62vw;
+    height: 1.67vw;
+    margin: 1.11vw 0 0 1.11vw;
+}
+
+.home-light-title {
+    width: 2.23vw;
+    height: 1.67vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 1.11vw;
+    font-family: MiSans-Semibold;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.67vw;
+}
+
+.home-light-icon {
+    width: 1.39vw;
+    height: 1.39vw;
+    margin-top: 0.14vw;
+}
+
+.home-light-stats-section {
+    width: 13.89vw;
+    height: 1.39vw;
+    margin: 0.27vw 0 1.11vw 1.11vw;
+}
+
+.home-light-stats-text {
+    width: 8.48vw;
+    height: 1.39vw;
+    overflow-wrap: break-word;
+    font-size: 0;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.39vw;
+}
+
+.home-current-lights {
+    width: 8.48vw;
+    height: 1.39vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.83vw;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.39vw;
+}
+
+.home-lights-separator {
+    width: 8.48vw;
+    height: 1.39vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.83vw;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.39vw;
+}
+
+.home-total-lights {
+    width: 8.48vw;
+    height: 1.39vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.83vw;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.39vw;
+}
+
+.home-lights-unit {
+    width: 8.48vw;
+    height: 1.39vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.83vw;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.home-light-control-icon {
+    width: 1.39vw;
+    height: 1.39vw;
+    margin-left: 2.09vw;
+}
+
+.home-light-control-icon.on-icon {
+    margin-left: 30px;
+}
+
+.home-light-control-icon.off-icon {
+    margin-left: 8px;
+}
+/* Responsive adjustments */
+/*@media (max-width: 720px) {*/
+/*    .home-light-status-container {*/
+/*        height: 40px;*/
+/*        width: 116px;*/
+/*        border-radius: 6px;*/
+/*        margin: 8px 12px 0 12px;*/
+/*    }*/
+
+/*    .home-light-header-section {*/
+/*        width: 26px;*/
+/*        height: 12px;*/
+/*        margin: 8px 0 0 8px;*/
+/*    }*/
+
+/*    .home-light-title {*/
+/*        width: 16px;*/
+/*        height: 12px;*/
+/*        font-size: 8px;*/
+/*        line-height: 12px;*/
+/*    }*/
+
+/*    .home-light-icon {*/
+/*        width: 10px;*/
+/*        height: 10px;*/
+/*        margin-top: 1px;*/
+/*    }*/
+
+/*    .home-light-stats-section {*/
+/*        width: 100px;*/
+/*        height: 10px;*/
+/*        margin: 2px 0 8px 8px;*/
+/*    }*/
+
+/*    .home-light-stats-text {*/
+/*        width: 61px;*/
+/*        height: 10px;*/
+/*        line-height: 10px;*/
+/*    }*/
+
+/*    .home-current-lights {*/
+/*        width: 61px;*/
+/*        height: 10px;*/
+/*        font-size: 6px;*/
+/*        line-height: 10px;*/
+/*    }*/
+
+/*    .home-lights-separator {*/
+/*        width: 61px;*/
+/*        height: 10px;*/
+/*        font-size: 6px;*/
+/*        line-height: 10px;*/
+/*    }*/
+
+/*    .home-total-lights {*/
+/*        width: 61px;*/
+/*        height: 10px;*/
+/*        font-size: 6px;*/
+/*        line-height: 10px;*/
+/*    }*/
+
+/*    .home-lights-unit {*/
+/*        width: 61px;*/
+/*        height: 10px;*/
+/*        font-size: 6px;*/
+/*        line-height: 10px;*/
+/*    }*/
+
+/*    .home-light-control-icon {*/
+/*        width: 10px;*/
+/*        height: 10px;*/
+/*    }*/
+
+/*    .home-light-control-icon.on-icon {*/
+/*        margin-left: 15px;*/
+/*    }*/
+
+/*    .home-light-control-icon.off-icon {*/
+/*        margin-left: 4px;*/
+/*    }*/
+
+/*}*/
+
+/*@media (min-width: 2880px) {*/
+/*    .home-light-status-container {*/
+/*        height: 160px;*/
+/*        width: 464px;*/
+/*        border-radius: 24px;*/
+/*        margin: 32px 48px 0 48px;*/
+/*    }*/
+
+/*    .home-light-header-section {*/
+/*        width: 104px;*/
+/*        height: 48px;*/
+/*        margin: 32px 0 0 32px;*/
+/*    }*/
+
+/*    .home-light-title {*/
+/*        width: 64px;*/
+/*        height: 48px;*/
+/*        font-size: 32px;*/
+/*        line-height: 48px;*/
+/*    }*/
+
+/*    .home-light-icon {*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*        margin-top: 4px;*/
+/*    }*/
+
+/*    .home-light-stats-section {*/
+/*        width: 400px;*/
+/*        height: 40px;*/
+/*        margin: 8px 0 32px 32px;*/
+/*    }*/
+
+/*    .home-light-stats-text {*/
+/*        width: 244px;*/
+/*        height: 40px;*/
+/*        line-height: 40px;*/
+/*    }*/
+
+/*    .home-current-lights {*/
+/*        width: 244px;*/
+/*        height: 40px;*/
+/*        font-size: 24px;*/
+/*        line-height: 40px;*/
+/*    }*/
+
+/*    .home-lights-separator {*/
+/*        width: 244px;*/
+/*        height: 40px;*/
+/*        font-size: 24px;*/
+/*        line-height: 40px;*/
+/*    }*/
+
+/*    .home-total-lights {*/
+/*        width: 244px;*/
+/*        height: 40px;*/
+/*        font-size: 24px;*/
+/*        line-height: 40px;*/
+/*    }*/
+
+/*    .home-lights-unit {*/
+/*        width: 244px;*/
+/*        height: 40px;*/
+/*        font-size: 24px;*/
+/*        line-height: 40px;*/
+/*    }*/
+
+/*    .home-light-control-icon {*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*    }*/
+
+/*    .home-light-control-icon.on-icon {*/
+/*        margin-left: 120px;*/
+/*    }*/
+
+/*    .home-light-control-icon.off-icon {*/
+/*        margin-left: 16px;*/
+/*    }*/
+/*}*/

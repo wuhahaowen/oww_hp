@@ -1,0 +1,73 @@
+:root {
+  /* Colors */
+  --color-primary: #FFB74D;
+  --color-primary-light: #FFD180;
+  --color-primary-dark: #FFA726;
+  --color-secondary: #FFE082;
+  --color-background: #FAFAFA;
+  --color-background-lanhu: linear-gradient( 135deg, #FEBE5E 0%, #FE7D1B 100%);
+  --color-card-bg-transparent: rgba(250, 250, 250, 0.5);
+  --color-card-bg-transparent-lanhu:rgba(255, 255, 255, 0.20) ;
+  --color-card-bg-transparent-btn-lanhu:rgba(255, 255, 255, 0.30) ;
+  --color-background-curtain-panel: #fff;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #263238;
+  --color-text-secondary: #546E7A;
+  --color-text-light: #78909C;
+  --color-border: #ECEFF1;
+  --color-shadow: rgba(255, 183, 77, 0.1);
+  --color-error: #FF4444;
+  --color-error-light: #FF6666;
+  --color-error-dark: #CC0000;
+  --color-success: #4CAF50;
+  --color-success-light: #81C784;
+  --color-success-dark: #388E3C;
+
+  /* Border Radius */
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+}
+
+[data-theme="dark"] {
+  /* 主色调 - 保持橙色但略微调整以适应深色背景 */
+  --color-primary: #FFA726; /* 橙色 */
+  --color-primary-light: #FFD180;
+  --color-primary-dark: #FFA726;
+  
+  /* 次要色调 */
+  --color-secondary: #FFE082;
+  
+  /* 背景色 - 使用更深的黑色以增加对比度 */
+  --color-background: #121212;
+  --color-background-lanhu: linear-gradient( 135deg, #FEBE5E 0%, #FE7D1B 100%);
+  --color-card-bg-transparent: rgba(18, 18, 18, 0.5);
+  --color-card-bg: #1E1E1E;
+  --color-background-curtain-panel: #666;
+  --card-buttons-bg: rgba(255, 255, 255, 0.50);
+  /* 文本颜色 - 提高对比度 */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E0E0E0;
+  --color-text-light: #BDBDBD;
+
+  
+  /* 边框和阴影 */
+  --color-border: #333333;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  
+  /* 状态颜色 - 调整以适应深色主题 */
+  --color-error: #FF5252;
+  --color-error-light: #FF7676;
+  --color-error-dark: #D32F2F;
+  
+  --color-success: #69F0AE;
+  --color-success-light: #B9F6CA;
+  --color-success-dark: #00C853;
+} 

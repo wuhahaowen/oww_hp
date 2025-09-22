@@ -1,0 +1,108 @@
+.bottom-buttons {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 8px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 99;
+    background-color: var(--color-background);
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+  
+  .bottom-buttons .version-info {
+    margin: 0;
+    padding: 4px 0;
+    border: none;
+    background: transparent;
+    max-width: none;
+    overflow: visible;
+    font-size: 12px;
+    color: var(--color-text-secondary) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bottom-buttons .version-info span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .bottom-buttons .ant-btn-link {
+    padding: 4px 8px;
+    height: auto;
+    font-size: 12px;
+    color: var(--color-text-secondary) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .bottom-buttons .ant-btn-link:hover {
+    color: var(--color-primary) !important;
+  }
+  
+  .bottom-buttons .version-info .upload-button {
+    margin-left: 4px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .bottom-buttons .version-info .upload-button:hover {
+    background: var(--color-background-secondary);
+  }
+  
+  .bottom-buttons .version-info .ant-btn-link[disabled] {
+    color: var(--color-text-disabled) !important;
+    cursor: not-allowed;
+  }
+
+  .bottom-buttons .version-info svg {
+    flex-shrink: 0;
+  }
+  
+  @media (max-width: 1232px) {
+    .bottom-buttons {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .bottom-buttons {
+      padding: 8px 16px;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+    
+    .bottom-buttons .version-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    
+    .bottom-buttons .version-info span {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .bottom-buttons span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }

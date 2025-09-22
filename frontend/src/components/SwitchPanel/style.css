@@ -1,0 +1,21 @@
+.switch-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.switch-button.off {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.switch-button.on {
+  background: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,408 @@
+.light-control-container {
+  background-color: rgba(40, 40, 40, 1);
+  border-radius: 16px;
+  position: relative;
+  width: 100%;
+  max-height: 63.34vw;
+  /* margin: 2.77vw 0 0 17.77vw; */
+}
+
+.light-control-header {
+  width: 34.45vw;
+  height: 3.34vw;
+  margin: 2.77vw 0 0 2.77vw;
+}
+
+.light-control-title {
+  width: 8.89vw;
+  height: 3.34vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 2.22vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 3.34vw;
+}
+
+.light-control-brightness-label {
+  width: 6.67vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.66vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.23vw;
+  margin: 1.66vw 0 0 3.33vw;
+}
+
+.light-control-brightness-wrapper {
+  width: 33.34vw;
+  height: 1.67vw;
+  margin: 1.38vw 0 0 3.33vw;
+}
+
+.light-control-brightness-icon-left {
+  width: 1.67vw;
+  height: 1.67vw;
+}
+
+.light-control-brightness-track {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    width: 27.78vw;
+    height: 1.39vw;
+    margin: 0.13vw 0 0 1.11vw;
+}
+
+.light-control-brightness-icon-right {
+  width: 1.67vw;
+  height: 1.67vw;
+  margin-left: 1.12vw;
+}
+
+.light-control-brightness-value {
+  width: 2.99vw;
+  height: 2.23vw;
+  margin: 0.27vw 0 0 16.66vw;
+}
+
+.light-control-brightness-number {
+  width: 2.02vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.66vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.67vw;
+}
+
+.light-control-brightness-percent {
+  width: 0.98vw;
+  height: 1.67vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.11vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.67vw;
+  margin-top: 0.56vw;
+}
+
+.light-control-temp-label {
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+  width: 6.67vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.66vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.23vw;
+  margin: 1.11vw 0 0 3.33vw;
+}
+
+.light-control-temp-wrapper {
+  width: 33.34vw;
+  height: 1.67vw;
+  margin: 1.38vw 0 0 3.33vw;
+}
+
+.light-control-temp-icon-left {
+  width: 1.67vw;
+  height: 1.67vw;
+}
+
+.light-control-temp-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  height: 1.39vw;
+  width: 27.78vw;
+  margin: 0.13vw 0 0 1.11vw;
+}
+
+.light-control-temp-track {
+  background-image: linear-gradient(90deg, rgba(252, 234, 96, 1) 0, rgba(214, 189, 0, 1) 100%);
+  border-radius: 6px;
+  height: 2.23vw;
+  margin-top: -0.41vw;
+  width: 12.23vw;
+}
+
+.light-control-temp-fill {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 1px;
+  width: 0.28vw;
+  height: 1.39vw;
+  margin: 0.41vw 0 0 11.38vw;
+}
+
+.light-control-temp-icon-right {
+  width: 1.67vw;
+  height: 1.67vw;
+  margin-left: 1.12vw;
+}
+
+
+.light-control-temp-value {
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+  width: 2.23vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.66vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.23vw;
+  margin: 0.27vw 0 0 16.11vw;
+}
+
+
+
+.light-control-effects-label {
+  width: 6.67vw;
+  height: 2.23vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.66vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.23vw;
+  margin: 1.11vw 0 0 3.33vw;
+}
+
+.light-control-effects-wrapper {
+  width: 33.34vw;
+  height: auto;
+  margin: 1.11vw 0 0 3.33vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.light-control-effect-item {
+  width: 5.84vw;
+  height: 5.56vw;
+  background: url(https://lanhu-oss-2537-2.lanhuapp.com/FigmaDDSSlicePNGf680b2d1ab0ab7c52692c46d1e4794b9.png) 100%
+  no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.light-control-effect-item:first-child {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.light-control-effect-content {
+  width: 3.89vw;
+  height: 3.34vw;
+  /*margin: 1.11vw 0 0 1.04vw;*/
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensure content inside is vertically centered */
+}
+
+.light-control-effect-icon {
+  width: 1.67vw;
+  height: 1.67vw;
+  /*margin-left: 1.12vw;*/
+}
+
+.light-control-effect-text {
+  width: 3.89vw;
+  height: 1.39vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.97vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.39vw;
+  margin-top: 0.28vw;
+}
+
+.light-control-effect-item:active {
+  background: var(--color-background-lanhu);
+}
+.light-control-effect-item:hover {
+  background: var(--color-background-lanhu);
+}
+
+
+.light-control-effect-item:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  /*margin-left: 1.05vw;*/
+}
+
+.light-control-effect-item:nth-child(2) .light-control-effect-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.light-control-effect-item:nth-child(3) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  /*margin-left: 1.05vw;*/
+}
+
+.light-control-effect-item:nth-child(3) .light-control-effect-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.light-control-effect-item:nth-child(4) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  /*margin-left: 1.05vw;*/
+}
+
+.light-control-effect-item:nth-child(4) .light-control-effect-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.light-control-effect-item:nth-child(5) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  /*margin-left: 1.05vw;*/
+}
+
+.light-control-effect-item:nth-child(5) .light-control-effect-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.light-control-divider {
+  height: 5.56vw;
+  background: url(https://lanhu-oss-2537-2.lanhuapp.com/FigmaDDSSlicePNGc47e941dbf48a7920afdd91b4574ea30.png) 100%
+  no-repeat;
+  background-size: 100% 100%;
+  width: 6.67vw;
+  margin: 1.66vw 0 1.66vw 16.66vw;
+}
+
+.light-control-divider-icon {
+  width: 3.34vw;
+  height: 3.34vw;
+  margin: 1.11vw 0 0 1.66vw;
+}
+
+.light-control-bottom {
+  background-image: linear-gradient(135deg, rgba(254, 190, 94, 1) 0, rgba(254, 125, 27, 1) 100%);
+  border-radius: 8px;
+  height: 2.23vw;
+  width: 20.56vw;
+  position: absolute;
+  left: 6.12vw;
+  top: 11.12vw;
+}
+
+.light-control-bottom-section {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 1px;
+  width: 0.28vw;
+  height: 1.39vw;
+  margin: 0.41vw 0 0 19.86vw;
+}
+
+/* Custom Slider Styles */
+.light-control-custom-slider {
+  position: relative;
+  width: 27.78vw;
+  height: 1.39vw;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.7vw;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  margin: 0.13vw 0 0 1.11vw;
+}
+
+.light-control-slider-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7vw;
+  overflow: hidden;
+}
+
+.light-control-slider-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--value-percent, 0%);
+  border-radius: 0.7vw;
+  transition: width 0.1s ease;
+}
+
+.brightness-fill {
+  background: linear-gradient(90deg, rgba(254, 190, 94, 1) 0%, rgba(254, 125, 27, 1) 100%);
+}
+
+.temp-fill {
+  background: linear-gradient(90deg, rgba(252, 234, 96, 1) 0%, rgba(214, 189, 0, 1) 100%);
+}
+
+.light-control-slider-handle {
+  position: absolute;
+  top: 50%;
+  left: var(--value-percent, 0%);
+  width: 1.67vw;
+  height: 1.67vw;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0.28vw 0.56vw rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  user-select: none;
+  z-index: 10;
+  transition: left 0.1s ease;
+}
+
+.light-control-custom-slider.dragging .light-control-slider-handle {
+  cursor: grabbing;
+  transition: none;
+  box-shadow: 0 0.42vw 0.84vw rgba(0, 0, 0, 0.3);
+}
+
+.light-control-custom-slider.dragging .light-control-slider-fill {
+  transition: none;
+}
+
+/* 禁用长按选中的通用样式 */
+.light-control-container,
+.light-control-custom-slider,
+.light-control-slider-handle,
+.light-control-effect-item,
+.light-control-effect-text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}

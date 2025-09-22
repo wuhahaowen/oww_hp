@@ -1,0 +1,451 @@
+/*.lanhu-house-overview {*/
+/*  width: 100%;*/
+/*  min-height: 100vh;*/
+/*  background-color: rgba(36, 36, 36, 1);*/
+/*  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;*/
+/*}*/
+
+/*.overview-background {*/
+/*  width: 100%;*/
+/*  height: 100vh;*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  overflow-y: auto;*/
+/*}*/
+
+/*.overview-content {*/
+/*  width: 100%;*/
+/*  min-height: 100%;*/
+/*  padding: 0;*/
+/*}*/
+
+/*.overview-layout {*/
+/*  display: flex;*/
+/*  gap: 24px;*/
+/*  padding: 29px 24px 24px;*/
+/*  min-height: calc(100vh - 50px);*/
+/*}*/
+
+/*!* 左侧信息面板 *!*/
+/*.left-info-panel {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 20px;*/
+/*  width: 280px;*/
+/*  flex-shrink: 0;*/
+/*  height: fit-content;*/
+/*}*/
+
+/*.home-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*.home-icon {*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*}*/
+
+/*.home-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.time-weather {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 12px;*/
+/*}*/
+
+/*.current-time {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 14px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.weather-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.weather-info {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  margin-bottom: 24px;*/
+/*}*/
+
+/*.date-info {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 12px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.weather-detail-icon, .humidity-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.temperature, .humidity {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 14px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*.back-button {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 8px;*/
+/*  padding: 12px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.2s;*/
+/*}*/
+
+/*.back-button:hover {*/
+/*  background-color: rgba(255, 255, 255, 0.15);*/
+/*}*/
+
+/*.back-button img {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.back-button span {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 14px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*!* 主要内容面板 *!*/
+/*.main-overview-panel {*/
+/*  flex: 1;*/
+/*  min-height: 100%;*/
+/*}*/
+
+/*!* 灯光控制面板 *!*/
+/*.lighting-control-panel {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 24px;*/
+/*  margin-bottom: 24px;*/
+/*}*/
+
+/*.lighting-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.lighting-info {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 4px;*/
+/*}*/
+
+/*.lighting-title {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 18px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.lighting-status {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 14px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.lighting-controls {*/
+/*  display: flex;*/
+/*  gap: 12px;*/
+/*}*/
+
+/*.control-button {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border: none;*/
+/*  border-radius: 8px;*/
+/*  padding: 8px 12px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.2s;*/
+/*}*/
+
+/*.control-button:hover {*/
+/*  background-color: rgba(255, 255, 255, 0.15);*/
+/*}*/
+
+/*.control-button.all-on:hover {*/
+/*  background-color: rgba(0, 255, 0, 0.2);*/
+/*}*/
+
+/*.control-button.all-off:hover {*/
+/*  background-color: rgba(255, 0, 0, 0.2);*/
+/*}*/
+
+/*.control-button img {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+
+/*.control-button span {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*!* 灯光设备网格 *!*/
+/*.lighting-grid {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));*/
+/*  gap: 16px;*/
+/*}*/
+
+/*.lighting-device {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 12px;*/
+/*  padding: 16px 12px;*/
+/*  cursor: pointer;*/
+/*  transition: all 0.2s;*/
+/*}*/
+
+/*.lighting-device:hover {*/
+/*  background-color: rgba(255, 255, 255, 0.15);*/
+/*  transform: translateY(-2px);*/
+/*}*/
+
+/*.lighting-device.device-on {*/
+/*  border: 1px solid rgba(0, 255, 0, 0.3);*/
+/*  background-color: rgba(0, 255, 0, 0.1);*/
+/*}*/
+
+/*.lighting-device.device-off {*/
+/*  border: 1px solid rgba(255, 255, 255, 0.1);*/
+/*}*/
+
+/*.device-icon {*/
+/*  width: 32px;*/
+/*  height: 32px;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.device-icon img {*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  object-fit: contain;*/
+/*}*/
+
+/*.device-name {*/
+/*  color: rgba(255, 255, 255, 0.9);*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  text-align: center;*/
+/*  line-height: 1.2;*/
+/*}*/
+
+/*.device-on .device-name {*/
+/*  color: rgba(0, 255, 0, 1);*/
+/*}*/
+
+/*!* 系统状态信息 *!*/
+/*.system-status {*/
+/*  display: flex;*/
+/*  gap: 24px;*/
+/*}*/
+
+/*.sensor-group {*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  backdrop-filter: blur(10px);*/
+/*  border-radius: 16px;*/
+/*  padding: 24px;*/
+/*  flex: 1;*/
+/*}*/
+
+/*.sensor-group h3 {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 16px;*/
+/*  font-weight: 600;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*.sensor-grid {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(2, 1fr);*/
+/*  gap: 16px;*/
+/*}*/
+
+/*.sensor-item {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 12px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 8px;*/
+/*  padding: 12px;*/
+/*}*/
+
+/*.sensor-info {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 4px;*/
+/*  flex: 1;*/
+/*}*/
+
+/*.sensor-name {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 12px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.sensor-value {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 11px;*/
+/*  font-weight: 400;*/
+/*  font-family: monospace;*/
+/*}*/
+
+/*.sensor-unit {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*.sensor-icon {*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+/*!* 人体传感器 *!*/
+/*.motion-sensor-grid {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(3, 1fr);*/
+/*  gap: 12px;*/
+/*}*/
+
+/*.motion-sensor-item {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 8px;*/
+/*  background-color: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 8px;*/
+/*  padding: 10px;*/
+/*  position: relative;*/
+/*}*/
+
+/*.motion-info {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 2px;*/
+/*  flex: 1;*/
+/*}*/
+
+/*.motion-name {*/
+/*  color: rgba(255, 255, 255, 1);*/
+/*  font-size: 11px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/*.motion-count {*/
+/*  color: rgba(255, 255, 255, 0.8);*/
+/*  font-size: 10px;*/
+/*  font-weight: 400;*/
+/*}*/
+
+/*.motion-unit {*/
+/*  color: rgba(255, 255, 255, 0.7);*/
+/*  font-size: 10px;*/
+/*  font-weight: 500;*/
+/*}*/
+
+/*.motion-icon {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+/*.motion-status {*/
+/*  width: 8px;*/
+/*  height: 8px;*/
+/*  border-radius: 50%;*/
+/*  position: absolute;*/
+/*  top: 6px;*/
+/*  right: 6px;*/
+/*}*/
+
+/*.motion-status.has-motion {*/
+/*  background-color: rgba(0, 255, 0, 1);*/
+/*  box-shadow: 0 0 4px rgba(0, 255, 0, 0.5);*/
+/*}*/
+
+/*.motion-status.no-motion {*/
+/*  background-color: rgba(255, 255, 255, 0.3);*/
+/*}*/
+
+/*!* 响应式设计 *!*/
+/*@media (max-width: 1200px) {*/
+/*  .overview-layout {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*  */
+/*  .left-info-panel {*/
+/*    width: 100%;*/
+/*  }*/
+/*  */
+/*  .system-status {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*  */
+/*  .lighting-grid {*/
+/*    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 768px) {*/
+/*  .overview-layout {*/
+/*    padding: 16px;*/
+/*    gap: 16px;*/
+/*  }*/
+/*  */
+/*  .left-info-panel, .lighting-control-panel, .sensor-group {*/
+/*    padding: 16px;*/
+/*  }*/
+/*  */
+/*  .lighting-header {*/
+/*    flex-direction: column;*/
+/*    align-items: flex-start;*/
+/*    gap: 12px;*/
+/*  }*/
+/*  */
+/*  .lighting-grid {*/
+/*    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));*/
+/*    gap: 12px;*/
+/*  }*/
+/*  */
+/*  .lighting-device {*/
+/*    padding: 12px 8px;*/
+/*  }*/
+/*  */
+/*  .sensor-grid {*/
+/*    grid-template-columns: 1fr;*/
+/*  }*/
+/*  */
+/*  .motion-sensor-grid {*/
+/*    grid-template-columns: repeat(2, 1fr);*/
+/*  }*/
+/*}*/

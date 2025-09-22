@@ -1,0 +1,66 @@
+.lanhu-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 14px;
+  padding: 7px 24px 0;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-time {
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 12px;
+}
+
+.status-date {
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 12px;
+  margin-left: 8px;
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.signal-bars {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.signal-bar {
+  background-color: rgba(255, 255, 255, 1);
+  height: 10px;
+}
+
+.signal-bar:first-child {
+  width: 17px;
+}
+
+.signal-bar:last-child {
+  width: 15px;
+}
+
+.battery-level {
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 14px;
+}
+
+.battery-icon {
+  width: 27px;
+  height: 12px;
+}

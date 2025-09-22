@@ -1,0 +1,35 @@
+
+.time-content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  font-size: 30rem !important;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.date {
+  font-size: 18rem !important;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.weekday {
+  font-size: 16rem !important;
+  color: var(--color-text-secondary);
+}
+
+.lunar-date {
+  font-size: 18rem;
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+} 

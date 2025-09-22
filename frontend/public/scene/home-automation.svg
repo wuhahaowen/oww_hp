@@ -1,0 +1,24 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon ">
+<foreignObject x="-22.3335" y="-23.1667" width="84.6666" height="84.6667"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(12px);clip-path:url(#bgblur_0_157_2186_clip_path);height:100%;width:100%"></div></foreignObject><g id="Vector" filter="url(#filter0_i_157_2186)" data-figma-bg-blur-radius="24">
+<path d="M30.5788 34.1748C33.1176 34.4234 36.8976 33.2201 36.4637 36.0737C36.1904 37.8974 31.5926 37.4065 28.1192 37.4065C23.6362 37.4065 18.6003 37.841 15.0163 36.8362C10.9433 35.7021 7.39024 33.186 4.9651 29.7183C2.53995 26.2506 1.39339 22.0469 1.72154 17.8261C1.95287 13.4772 3.75734 9.36127 6.79785 6.24732C9.83836 3.13338 13.9069 1.23437 18.2436 0.905059C22.5135 0.527325 26.7817 1.64927 30.3159 4.07843C33.8501 6.50759 36.43 10.0926 37.6131 14.2184C40.0914 23.0633 35.7857 29.6207 30.5892 34.1853L30.5788 34.1748Z" fill="white" fill-opacity="0.45"/>
+</g>
+<circle id="Ellipse 3" cx="20.0002" cy="9.99998" r="4.16667" fill="white"/>
+<circle id="Ellipse 4" cx="10.8333" cy="19.1667" r="4.16667" fill="white"/>
+<circle id="Ellipse 5" cx="29.1668" cy="19.1667" r="4.16667" fill="white"/>
+<circle id="Ellipse 6" cx="20.0002" cy="28.3333" r="4.16667" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_i_157_2186" x="-22.3335" y="-23.1667" width="84.6666" height="84.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-5"/>
+<feGaussianBlur stdDeviation="9"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.65 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_157_2186"/>
+</filter>
+<clipPath id="bgblur_0_157_2186_clip_path" transform="translate(22.3335 23.1667)"><path d="M30.5788 34.1748C33.1176 34.4234 36.8976 33.2201 36.4637 36.0737C36.1904 37.8974 31.5926 37.4065 28.1192 37.4065C23.6362 37.4065 18.6003 37.841 15.0163 36.8362C10.9433 35.7021 7.39024 33.186 4.9651 29.7183C2.53995 26.2506 1.39339 22.0469 1.72154 17.8261C1.95287 13.4772 3.75734 9.36127 6.79785 6.24732C9.83836 3.13338 13.9069 1.23437 18.2436 0.905059C22.5135 0.527325 26.7817 1.64927 30.3159 4.07843C33.8501 6.50759 36.43 10.0926 37.6131 14.2184C40.0914 23.0633 35.7857 29.6207 30.5892 34.1853L30.5788 34.1748Z"/>
+</clipPath></defs>
+</svg>

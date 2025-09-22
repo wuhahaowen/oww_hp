@@ -1,0 +1,712 @@
+.config-field {
+  margin-bottom: 16px;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 12px !important;
+}
+
+.config-field label {
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.config-field input:hover {
+  border-color: var(--color-primary);
+}
+
+.entity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.entity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+/* 灯光配置样式 */
+.lights-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.light-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.light-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.light-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+
+/* 摄像头配置样式 */
+.cameras-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.camera-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+/* 媒体播放器配置样式 */
+.media-players-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.media-player-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+
+/* 窗帘配置样式 */
+.curtains-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.curtain-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+
+/* 路由器配置样式 */
+.router-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.router-field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+/* NAS配置样式 */
+.nas-config,
+.pve-config {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nas-section,
+.pve-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 16px;
+}
+
+.nas-section h4 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nas-field,
+.volume-field,
+.drive-field,
+.pve-field,
+.vm-field,
+.m2ssd-field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.quotes-config,
+.volume-config,
+.drive-config,
+.vm-config,
+.m2ssd-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 16px;
+}
+
+.volume-config input,
+.drive-config input,
+.vm-config input,
+.m2ssd-config input {
+  margin-bottom: 12px;
+}
+
+/* 通用字段名称样式 */
+.field-name {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .router-field,
+  .nas-field,
+  .volume-field,
+  .drive-field,
+  .m2ssd-field,
+  .waterpuri-field,
+  .electricity-field,
+  .vm-field,
+  .pve-field,
+  .room-field {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    max-width: 100%;
+  }
+  
+  .field-name {
+    margin-bottom: 4px;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* 传感器配置项样式优化 */
+  .sensor-config-item {
+    flex-direction: column;
+    padding: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sensor-config-type {
+    width: 100%;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 灯光配置样式优化 */
+  .light-item {
+    padding: 12px;
+  }
+
+  .light-item-content {
+    gap: 8px;
+  }
+
+  /* 摄像头配置样式优化 */
+  .camera-item {
+    padding: 12px;
+  }
+
+  /* 媒体播放器配置样式优化 */
+  .media-player-item {
+    padding: 12px;
+  }
+
+  /* 窗帘配置样式优化 */
+  .curtain-item {
+    padding: 12px;
+  }
+
+  /* NAS配置样式优化 */
+  .nas-section {
+    padding: 12px;
+  }
+
+  .nas-section h4 {
+    font-size: 13px;
+  }
+
+  .volume-config,
+  .drive-config,
+  .vm-config,
+  .pve-config,
+  .m2ssd-config {
+    padding: 12px;
+  }
+
+  /* 脚本配置样式优化 */
+  .script-item {
+    padding: 12px;
+  }
+
+  /* 房间灯光概览配置样式优化 */
+  .light-overview-config {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .light-room-item {
+    padding: 12px;
+  }
+
+  .light-room-item button {
+    width: 100%;
+  }
+
+}
+
+/* 脚本配置样式 */
+.scripts-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.script-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+
+
+/* 配置项标题和输入框布局 */
+.config-field-row {
+  display: grid;
+  grid-template-columns: minmax(60px, 120px) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.config-field-row label {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* 净水器配置样式 */
+.waterpuri-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.waterpuri-field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.waterpuri-field .field-name {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 电量监控配置样式 */
+.electricity-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.electricity-field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.electricity-field .field-name {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.climate-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.climate-feature {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.feature-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 12px;
+}
+
+
+.feature-selects {
+  display: flex;
+  gap: 12px;
+}
+
+.feature-content button {
+  align-self: flex-end;
+  width: 100px;
+}
+
+/* 光照传感器配置样式 */
+.illuminance-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.illuminance-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+/* 房间灯光概览配置样式 */
+.light-overview-config {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+  background: var(--color-background);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.light-room-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  position: relative;
+}
+
+.room-field {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.room-field label {
+  margin: 0;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+
+/* 上传字段样式 */
+.upload-field {
+  position: relative;
+  width: 100%;
+}
+
+/* Universal Entities Config */
+.universal-entities-config {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.entity-group-config {
+  background: var(--color-background);
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+}
+
+.group-header {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+
+.entities-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.entity-config-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr auto;
+  gap: var(--spacing-sm);
+  align-items: center;
+  background: var(--color-card-bg);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-border);
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .entity-config-item {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .group-header {
+    flex-direction: column;
+  }
+}
+
+.person-item {
+  margin-bottom: 10px;
+}
+
+.person-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.person-item-row .delete-btn {
+  padding: 4px 8px;
+  background-color: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.person-item-row .delete-btn:hover {
+  opacity: 0.9;
+}
+
+.persons-config .add-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.persons-config .add-btn:hover {
+  opacity: 0.9;
+}
+
+/* 传感器组配置样式 */
+.sensors-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sensor-group-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.sensor-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.sensor-config-item {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
+
+.sensor-type-label {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .sensor-config-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .sensor-type-label {
+    margin-bottom: 4px;
+  }
+}
+
+/* WashingMachine Config styles */
+.washing-machine-config {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.washing-machine-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 16px;
+}
+
+.washing-machine-section h4 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.washing-machine-field,
+.program-field,
+.state-field,
+.sensor-field {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.program-config,
+.state-config,
+.sensor-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 16px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .washing-machine-field,
+  .program-field,
+  .state-field,
+  .sensor-field {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .washing-machine-section {
+    padding: 12px;
+  }
+  
+  .program-config,
+  .state-config,
+  .sensor-config {
+    padding: 12px;
+  }
+}

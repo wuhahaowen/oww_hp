@@ -1,0 +1,166 @@
+/* LightControlSidebarCard styles */
+   .home-light-control-card {
+       width: 16.12vw;
+       height: 7.78vw;
+       background: url(controllerBackground.png) 100% no-repeat;
+       background-size: 100% 100%;
+       justify-content: center;
+       margin: 0.69vw 0 0 1.66vw;
+   }
+
+.home-light-info-section {
+    width: 2.5vw;
+    height: 5.56vw;
+    margin: 1.11vw 0 0 1.66vw;
+}
+
+.home-control-light-title {
+    width: 2.5vw;
+    height: 1.95vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-size: 1.25vw;
+    font-family: MiSans-Semibold;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.95vw;
+}
+
+.home-light-room {
+    width: 1.67vw;
+    height: 1.25vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.83vw;
+    font-family: MiSans-Demibold;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.25vw;
+}
+
+.home-light-switch {
+    width: 2.5vw;
+    height: 1.39vw;
+    margin-top: 0.98vw;
+}
+
+.home-light-status-text {
+    width: 1.32vw;
+    height: 1.25vw;
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.83vw;
+    font-family: MiSans-Medium;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.25vw;
+    margin: 1.45vw 0 0 0.55vw;
+}
+
+.home-light-bulb-image {
+    width: 5.56vw;
+    height: 5.56vw;
+    margin: 1.11vw 1.66vw 0 2.84vw;
+}
+
+
+/* Responsive adjustments */
+/*@media (max-width: 720px) {*/
+/*    .home-light-control-card {*/
+/*        width: 116px;*/
+/*        height: 56px;*/
+/*        margin: 5px 0 0 12px;*/
+/*    }*/
+
+/*    .home-light-info-section {*/
+/*        width: 18px;*/
+/*        height: 40px;*/
+/*        margin: 8px 0 0 12px;*/
+/*    }*/
+
+/*    .home-control-light-title {*/
+/*        width: 18px;*/
+/*        height: 14px;*/
+/*        font-size: 9px;*/
+/*        line-height: 14px;*/
+/*    }*/
+
+/*    .home-light-room {*/
+/*        width: 12px;*/
+/*        height: 9px;*/
+/*        font-size: 6px;*/
+/*        line-height: 9px;*/
+/*    }*/
+
+/*    .home-light-switch {*/
+/*        width: 18px;*/
+/*        height: 10px;*/
+/*        margin-top: 7px;*/
+/*    }*/
+
+/*    .home-light-status-text {*/
+/*        width: 9.5px;*/
+/*        height: 9px;*/
+/*        font-size: 6px;*/
+/*        line-height: 9px;*/
+/*        margin: 15.5px 0 0 4px;*/
+/*    }*/
+
+/*    .home-light-bulb-image {*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*        margin: 8px 12px 0 20.5px;*/
+/*    }*/
+
+/*}*/
+
+/*@media (min-width: 2880px) {*/
+/*    .home-light-control-card {*/
+/*        width: 464px;*/
+/*        height: 224px;*/
+/*        margin: 20px 0 0 48px;*/
+/*    }*/
+
+/*    .home-light-info-section {*/
+/*        width: 72px;*/
+/*        height: 160px;*/
+/*        margin: 32px 0 0 48px;*/
+/*    }*/
+
+/*    .home-control-light-title {*/
+/*        width: 72px;*/
+/*        height: 56px;*/
+/*        font-size: 36px;*/
+/*        line-height: 56px;*/
+/*    }*/
+
+/*    .home-light-room {*/
+/*        width: 48px;*/
+/*        height: 36px;*/
+/*        font-size: 24px;*/
+/*        line-height: 36px;*/
+/*    }*/
+
+/*    .home-light-switch {*/
+/*        width: 72px;*/
+/*        height: 40px;*/
+/*        margin-top: 28px;*/
+/*    }*/
+
+/*    .home-light-status-text {*/
+/*        width: 38px;*/
+/*        height: 36px;*/
+/*        font-size: 24px;*/
+/*        line-height: 36px;*/
+/*        margin: 62px 0 0 16px;*/
+/*    }*/
+
+/*    .home-light-bulb-image {*/
+/*        width: 160px;*/
+/*        height: 160px;*/
+/*        margin: 32px 48px 0 82px;*/
+/*    }*/
+/*}*/

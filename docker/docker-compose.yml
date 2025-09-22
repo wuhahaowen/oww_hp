@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  hass-panel:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    network_mode: host
+    hostname: hass-panel
+    volumes:
+      - ../data/hass-panel-prod:/config/hass-panel
+    restart: unless-stopped 

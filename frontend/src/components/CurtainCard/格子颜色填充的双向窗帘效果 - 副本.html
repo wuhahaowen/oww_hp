@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>格子颜色填充的双向窗帘效果</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .curtain-wrapper {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-behind {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+        
+        .curtain-left, .curtain-right {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+        }
+        
+        .curtain-left {
+            left: 0;
+        }
+        
+        .curtain-right {
+            right: 0;
+        }
+        
+        .curtain-cell {
+            flex: 1;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            margin: 0 5px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease;
+        }
+        
+        .fill-animation {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            transition: width 0.8s ease-in-out;
+            width: 0;
+        }
+        
+        .curtain-right .fill-animation {
+            left: 0;
+        }
+        
+        .curtain-left .fill-animation {
+            right: 0;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-reset {
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        }
+        
+        .btn-close {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        
+        .info {
+            margin-top: 25px;
+            color: #4a5568;
+            font-size: 14px;
+            max-width: 600px;
+            margin: 25px auto 0;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .curtain-wrapper {
+                height: 280px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .curtain-wrapper {
+                height: 250px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .content-behind {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>格子颜色填充的双向窗帘效果</h1>
+        
+        <div class="curtain-wrapper">
+            <div class="content-behind">窗外美景</div>
+            <div class="curtain-left" id="curtainLeft">
+                <!-- 格子将由JavaScript动态生成 -->
+            </div>
+            <div class="curtain-right" id="curtainRight">
+                <!-- 格子将由JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" onclick="openCurtain()">打开窗帘</button>
+            <button class="btn btn-close" onclick="closeCurtain()">关闭窗帘</button>
+            <button class="btn btn-reset" onclick="resetCurtain()">重置窗帘</button>
+        </div>
+        
+        <div class="info">
+            点击"打开窗帘"按钮，窗帘格子会按照顺序填充颜色，但格子本身不会移动。<br>
+            右帘格子从左向右填充颜色，左帘格子从右向左填充颜色。<br>
+            点击"关闭窗帘"按钮，颜色会按照相反的顺序从格子中消失。<br>
+            "重置窗帘"按钮可以将窗帘恢复到初始状态。
+        </div>
+    </div>
+
+    <script>
+        // 初始化窗帘格子
+        function initCurtainCells() {
+            const curtainLeft = document.getElementById('curtainLeft');
+            const curtainRight = document.getElementById('curtainRight');
+            
+            // 清空现有格子
+            curtainLeft.innerHTML = '';
+            curtainRight.innerHTML = '';
+            
+            // 计算格子数量（根据容器宽度动态调整，至少3个）
+            const containerWidth = document.querySelector('.curtain-wrapper').offsetWidth;
+            const cellCount = Math.max(3, Math.floor(containerWidth / 100));
+            
+            // 创建格子
+            for (let i = 0; i < cellCount; i++) {
+                // 左帘格子
+                const leftCell = document.createElement('div');
+                leftCell.className = 'curtain-cell';
+                leftCell.innerHTML = '<div class="fill-animation"></div>';
+                curtainLeft.appendChild(leftCell);
+                
+                // 右帘格子
+                const rightCell = document.createElement('div');
+                rightCell.className = 'curtain-cell';
+                rightCell.innerHTML = '<div class="fill-animation"></div>';
+                curtainRight.appendChild(rightCell);
+            }
+        }
+        
+        // 打开窗帘
+        function openCurtain() {
+            // 获取所有填充动画元素
+            const leftFills = document.querySelectorAll('.curtain-left .fill-animation');
+            const rightFills = document.querySelectorAll('.curtain-right .fill-animation');
+            
+            // 右帘从左向右填充
+            rightFills.forEach((fill, index) => {
+                setTimeout(() => {
+                    fill.style.width = '100%';
+                }, index * 300); // 每个格子延迟300ms
+            });
+            
+            // 左帘从右向左填充（反向顺序）
+            for (let i = leftFills.length - 1; i >= 0; i--) {
+                setTimeout(() => {
+                    leftFills[i].style.width = '100%';
+                }, (leftFills.length - 1 - i) * 300); // 反向延迟
+            }
+        }
+        
+        // 关闭窗帘
+        function closeCurtain() {
+            // 获取所有填充动画元素
+            const leftFills = document.querySelectorAll('.curtain-left .fill-animation');
+            const rightFills = document.querySelectorAll('.curtain-right .fill-animation');
+            
+            // 右帘从右向左关闭（反向顺序）
+            for (let i = rightFills.length - 1; i >= 0; i--) {
+                setTimeout(() => {
+                    rightFills[i].style.width = '0';
+                }, (rightFills.length - 1 - i) * 300); // 反向延迟
+            }
+            
+            // 左帘从左向右关闭
+            leftFills.forEach((fill, index) => {
+                setTimeout(() => {
+                    fill.style.width = '0';
+                }, index * 300); // 每个格子延迟300ms
+            });
+        }
+        
+        // 重置窗帘
+        function resetCurtain() {
+            // 直接重置所有填充动画，不使用延迟
+            const fills = document.querySelectorAll('.fill-animation');
+            fills.forEach(fill => {
+                fill.style.width = '0';
+            });
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initCurtainCells();
+            
+            // 窗口大小变化时重新初始化格子
+            window.addEventListener('resize', function() {
+                initCurtainCells();
+            });
+        });
+    </script>
+</body>
+</html>

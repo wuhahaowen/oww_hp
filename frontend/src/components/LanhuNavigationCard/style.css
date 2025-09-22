@@ -1,0 +1,192 @@
+.lanhu-navigation-card {
+  background: var(--card-background);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.nav-header {
+  text-align: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-header h3 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.nav-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.nav-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--item-background);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-item:hover {
+  background: var(--item-hover-background);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--icon-background);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.nav-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: var(--icon-filter);
+}
+
+.nav-content {
+  flex: 1;
+}
+
+.nav-content h4 {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.nav-content p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.nav-arrow {
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover .nav-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--accent-color);
+}
+
+.nav-footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.nav-footer small {
+  color: var(--text-secondary);
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* 深色主题适配 */
+[data-theme="dark"] .lanhu-navigation-card {
+  --card-background: rgba(40, 44, 52, 0.9);
+  --item-background: rgba(255, 255, 255, 0.05);
+  --item-hover-background: rgba(255, 255, 255, 0.1);
+  --icon-background: rgba(255, 255, 255, 0.1);
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #1890ff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --icon-filter: brightness(1.2);
+}
+
+/* 浅色主题适配 */
+[data-theme="light"] .lanhu-navigation-card {
+  --card-background: rgba(255, 255, 255, 0.9);
+  --item-background: rgba(0, 0, 0, 0.02);
+  --item-hover-background: rgba(0, 0, 0, 0.05);
+  --icon-background: rgba(0, 0, 0, 0.05);
+  --text-primary: rgba(0, 0, 0, 0.85);
+  --text-secondary: rgba(0, 0, 0, 0.65);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #1890ff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --icon-filter: none;
+}
+
+/* 系统主题默认使用深色 */
+.lanhu-navigation-card {
+  --card-background: rgba(40, 44, 52, 0.9);
+  --item-background: rgba(255, 255, 255, 0.05);
+  --item-hover-background: rgba(255, 255, 255, 0.1);
+  --icon-background: rgba(255, 255, 255, 0.1);
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #1890ff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --icon-filter: brightness(1.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .lanhu-navigation-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .nav-item {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nav-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .nav-content h4 {
+    font-size: 14px;
+  }
+  
+  .nav-content p {
+    font-size: 12px;
+  }
+}

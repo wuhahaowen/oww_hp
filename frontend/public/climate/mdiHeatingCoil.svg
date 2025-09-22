@@ -1,0 +1,12 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon">
+<g id="Vector">
+<path d="M21 4H3C2.44772 4 2 4.44772 2 5V13C2 13.5523 2.44772 14 3 14H21C21.5523 14 22 13.5523 22 13V5C22 4.44772 21.5523 4 21 4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 10H6V14H18V10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path id="Vector_2" d="M16 7H18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M11 17V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M7 18V19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M16 21C17.098 21 18 20.1843 18 19.1373C18 18.8802 17.9861 18.6047 17.8341 18.1765C17.6821 17.7482 17.6515 17.693 17.4908 17.4285C17.4222 17.9682 17.0548 18.1931 16.9615 18.2603C16.9615 18.1904 16.7393 17.417 16.4024 16.9542C16.0716 16.5 15.6218 16.202 15.358 16C15.358 16.3837 15.2429 16.9542 15.0781 17.2449C14.9132 17.5356 14.8822 17.5462 14.6763 17.7625C14.4704 17.9789 14.3759 18.0457 14.2037 18.3081C14.0315 18.5706 14 18.9202 14 19.1773C14 20.2243 14.902 21 16 21Z" fill="white"/>
+</g>
+</svg>

@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-background);
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top);
+}
+
+.content {
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(50px + env(safe-area-inset-bottom));
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-card-bg);
+}
+
+.app-container {
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Flexbox 工具类 */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
