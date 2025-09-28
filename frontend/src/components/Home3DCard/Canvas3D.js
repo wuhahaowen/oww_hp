@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import React, { useRef, useEffect, useState, forwardRef } from 'react';
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import { Aether3d, THREE, OrbitControlsScript, EnvironmentMapScript, GLBLoaderScript, CSS2DLabelScript, FPSOptimizerScript } from './aether3d-engine.umd.js';
+import { Aether3d, THREE, OrbitControlsScript, EnvironmentMapScript, GLBLoaderScript, CSS2DLabelScript, FPSOptimizerScript } from './aether3d-engine.es.js';
 import { SmartHomeScene } from './SmartHomeScene.js';
 import { PunkahDeviceScript } from './PunkahDeviceScript.js';
 import { AirDeviceScript } from './AirDeviceScript.js';

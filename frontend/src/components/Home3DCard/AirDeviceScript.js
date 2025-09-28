@@ -8,7 +8,7 @@ import {
     loadTexture, 
     AnimationMaterial,
     CSS2DObject
-} from './aether3d-engine.umd.js';
+} from './aether3d-engine.es.js';
 import {SetPBRDefaultOrHighlightMat} from "./utils.js";
 
 /**

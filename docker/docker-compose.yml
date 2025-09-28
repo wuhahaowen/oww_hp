@@ -6,7 +6,10 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     network_mode: host
-    hostname: hass-panel
+    hostname: hass-panel3
     volumes:
       - ../data/hass-panel-prod:/config/hass-panel
-    restart: unless-stopped 
+    restart: unless-stopped
+    ports:
+      - "5124:5124"
+      - "5123:5123"

@@ -1,7 +1,7 @@
 import { 
     THREE, 
     ShaderGlowMaterial, 
-} from './aether3d-engine.umd.js';
+} from './aether3d-engine.es.js';
 
 /**
  * 设置PBR默认材质或高亮材质

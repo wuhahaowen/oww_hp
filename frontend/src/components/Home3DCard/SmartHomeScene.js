@@ -4,7 +4,7 @@ import {
     GLBLoaderScript, 
     RectAreaLightConfig, 
     RectAreaLightScript, 
-} from './aether3d-engine.umd.js';
+} from './aether3d-engine.es.js';
 
 /**
  * 智能家居设备配置接口

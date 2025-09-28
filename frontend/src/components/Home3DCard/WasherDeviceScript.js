@@ -4,7 +4,7 @@ import {
     GLBLoaderScript, 
     ShaderGlowMaterial,
     CSS2DObject
-} from './aether3d-engine.umd.js';
+} from './aether3d-engine.es.js';
 import {SetPBRDefaultOrHighlightMat} from "./utils.js";
 /**
  * 洗衣机设备配置接口

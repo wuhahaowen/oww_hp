@@ -31,7 +31,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
 
     
 # 安装 Python 依赖
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple \
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
     fastapi \
     uvicorn \
     requests \
