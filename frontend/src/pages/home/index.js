@@ -52,14 +52,26 @@ import PVECard from '../../components/PVECard';
 import DailyQuoteCard from '../../components/DailyQuoteCard';
 import WashingMachineCard from '../../components/WashingMachineCard';
 import TimeWeatherCard from '../../components/TimeWeatherCard';
+import Home3DCard from '../../components/Home3DCard';
 import {HomeSidebar, HeaderNavbar} from '../../components';
 import './style.css';
 import {useLanguage} from '../../i18n/LanguageContext';
 import {configApi, applyBackgroundToBody} from '../../utils/api';
 import {Route, useNavigate} from 'react-router-dom';
-import {useWeather} from '@hakit/core';
+import {useWeather, useHass} from '@hakit/core';
 import Lunar from "lunar-javascript";
 import {getAsset, assetGroups} from '../../imageIndex';
+import imageAssets from '../../imageIndex';
+import {
+    TimeWeatherSidebarCard,
+    LightStatusSidebarCard,
+    LightControlSidebarCard,
+    ClimateControlSidebarCard,
+    CurtainControlSidebarCard,
+    HomeSidebarDashboard,
+    ThreeDViewer
+} from '../../components/index';
+
 
 function Home({sidebarVisible, setSidebarVisible}) {
     const {theme, setSpecificTheme} = useTheme();
@@ -83,6 +95,23 @@ function Home({sidebarVisible, setSidebarVisible}) {
 
     // 添加主题菜单状态
     const [themeMenuVisible, setThemeMenuVisible] = useState(false);
+
+    // 在父组件中使用
+    const home3DRef = useRef(null);
+
+  //  alert(window.innerWidth+"---"+window.innerHeight);
+// 新增状态管理
+    const [is3DView, setIs3DView] = useState(true);
+
+    // 处理导航到全屋总览
+    const handleNavigateToOverview = () => {
+        setIs3DView(true);
+    };
+
+    // 处理导航到控制面板
+    const handleNavigateToControl = () => {
+        setIs3DView(false);
+    };
 
     // 获取主题图标
     const getThemeIcon = () => {
@@ -286,7 +315,7 @@ function Home({sidebarVisible, setSidebarVisible}) {
     // 监听窗口大小变化
     useEffect(() => {
         function handleResize() {
-            const newWidth = window.innerWidth*0.77;
+            const newWidth = window.innerWidth >= 3000 ? window.innerWidth * 0.77 : window.innerWidth *0.745;
             const newIsMobile = newWidth < 768;
             setWidth(newWidth);
             setIsMobile(newIsMobile);
@@ -822,88 +851,56 @@ function Home({sidebarVisible, setSidebarVisible}) {
 
 
     // 使用 useMemo 包装计算过程
-    const rightSideLights = useMemo(() => {
-        return cards.find(card => card.type === 'LightStatusCard')?.config?.lights || {};
-    }, [cards]); // 依赖项是 cards
+    //
+    // const rightSideLights = useMemo(() => {
+    //     return cards.filter(card => card.type === 'LightStatusCard') || [];
+    // }, [cards]);
+
+
     const [allLights, setAllLights] = useState([]);
-    useEffect(() => {
-        const all = Object.values(rightSideLights).map(light => ({
-            entity_id: light.entity_id,
-            name: light.name,
-            icon: light.icon,
-            area: light.area,
-        }));
-        setAllLights(all);
-    }, [rightSideLights]); // 现在 rightSideLights 的引用是稳定的，只有当 cards 变它才变
-
-
-    // 提取右侧空调卡片数据
-    const rightSideClimates = useMemo(() => {
-        return cards.find(card => card.type === 'ClimateCard')?.config || {};
-    }, [cards]); // 依赖项是 cards
     const [climateList, setClimateList] = useState([]);
-
-    useEffect(() => {
-        // 检查 rightSideClimates 是否存在且包含有效数据（例如有 entity_id）
-        if (rightSideClimates && rightSideClimates.entity_id) {
-            // 如果有效，直接使用这个对象来构造一个单元素的数组
-            const all = [{
-                entity_id: rightSideClimates.entity_id,
-                name: rightSideClimates.name,
-                features: rightSideClimates.features,
-            }];
-            setClimateList(all);
-        } else {
-            // 如果没有找到有效的 Climate 配置，就设置为空数组，避免显示 undefined 数据
-            setClimateList([]);
-        }
-    }, [rightSideClimates]);
-
-    // 提取右侧空调卡片数据
-
     const [curtainList, setCurtainList] = useState([]);
 
-    const curtainCards = useMemo(() => {
-        return cards.filter(card => card.type === 'CurtainCard') || [];
-    }, [cards]);
+
     useEffect(() => {
-        const allEntities = curtainCards.flatMap((card) => {
+
+      const rightSideLights =  cards.filter(card => card.type === 'LightStatusCard') || [];
+      const rightSideClimates = cards.filter(card => card.type === 'ClimateCard') || [];
+      const rightSideCurtains = cards.filter(card => card.type === 'CurtainCard') || [];
+        const allLights = rightSideLights.flatMap((card) => {
+            // 安全地获取当前卡片的窗帘配置，如果没有则默认为空数组，防止报错
+            const lights = card?.config?.lights || [];
+            // 将当前卡片的每个窗帘对象映射为包含所需属性的新对象
+            return  Object.values(lights).map((light) => ({
+                entity_id: light.entity_id,
+                icon: light.icon,
+                area: light.area,
+            }));
+        });
+        // 更新状态
+        setAllLights(allLights);
+
+        const allClimates = rightSideClimates.flatMap((card) => {
+            // 安全地获取当前卡片的窗帘配置，如果没有则默认为空数组，防止报错
+            // 将当前卡片的每个窗帘对象映射为包含所需属性的新对象
+            return  card.config||{};
+        });
+        // 更新状态
+        setClimateList(allClimates);
+
+        const allCurtains = rightSideCurtains.flatMap((card) => {
             // 安全地获取当前卡片的窗帘配置，如果没有则默认为空数组，防止报错
             const curtains = card.config?.curtains || [];
             // 将当前卡片的每个窗帘对象映射为包含所需属性的新对象
-            return curtains.map((curtain) => ({
+            return Object.values(curtains).map((curtain) => ({
                 entity_id: curtain.entity_id,
                 name: curtain.name,
                 room: curtain.room,
             }));
         });
 // 更新状态
-        setCurtainList(allEntities);
-    },[curtainCards])
-
-    const [active, setActive] = useState("全部");
-    const [actives, setActives] = useState("控制面板"); // 默认控制面板高亮
-
-    const handleClick = (params) => {
-        if (params === 'homeOverview') {
-            setActive("全屋总览");
-            navigate('/house-overview')
-        }
-
-    }
-
-    const rooms = [
-        "全部",
-        "客厅",
-        "厨房",
-        "卫生间",
-        "茶室",
-        "书房",
-        "棋牌室",
-        "阳台",
-        "洗衣室",
-        "主卧",
-    ];
+        setCurtainList(allCurtains);
+    },[cards])
 
     // 重写时间，天气模块
     // 时间
@@ -933,7 +930,60 @@ function Home({sidebarVisible, setSidebarVisible}) {
         entity_id: 'weather.forecast_wo_de_jia'  // ⚠️ 这里要替换成你在 Home Assistant 中的天气实体 ID
     };
 
+    // 添加灯光控制函数 - 使用不同的方法来控制灯光
+    const { callService } = useHass(); // 添加这一行来获取 callService 函数
+    
+    // 添加灯光控制函数
+    const toggleAllLights = useCallback(async (turnOn, lightConfigs) => {
+        try {
+            // 使用 useHass 提供的 callService 函数来控制所有灯光
+            const entityIds = lightConfigs.map(light => light.entityId);
+            const service = turnOn ? 'turn_on' : 'turn_off';
+            
+            console.log(`正在${turnOn ? '开启' : '关闭'}所有灯光...`);
+            console.log('操作的灯光实体ID列表:', entityIds);
+            console.log('执行的服务:', service);
+            
+            // 调用 Home Assistant 服务来控制所有灯光
+            await callService({
+                domain: 'light',
+                service: service,
+                target: { entity_id: entityIds }
+            });
+            
+            console.log(`${turnOn ? '开启' : '关闭'}所有灯光操作已完成`);
+            console.log('受影响的灯光数量:', entityIds.length);
+        } catch (error) {
+            console.error('控制所有灯光失败:', error);
+        }
+    }, [callService]); // 添加 callService 作为依赖
+    
+    // 添加窗帘控制函数
+    const controlAllCurtains = useCallback(async (action, curtainConfigs) => {
+        try {
+            // 使用 useHass 提供的 callService 函数来控制所有窗帘
+            const entityIds = curtainConfigs.map(curtain => curtain.entityId);
+            const serviceMap = {
+                'open': 'open_cover',
+                'close': 'close_cover',
+                'stop': 'stop_cover'
+            };
+            
+            const service = serviceMap[action];
+            if (!service) return;
+            
+            // 调用 Home Assistant 服务来控制所有窗帘
+            await callService({
+                domain: 'cover',
+                service: service,
+                target: { entity_id: entityIds }
+            });
+        } catch (error) {
+            console.error('控制所有窗帘失败:', error);
+        }
+    }, [callService]); // 添加 callService 作为依赖
 
+    // 修改传递给 HomeSidebar 的 props
     return (
         <div
             className={`page-container ${!sidebarVisible ? 'sidebar-hidden' : ''} ${isFullscreen ? 'fullscreen' : ''}`}
@@ -943,246 +993,304 @@ function Home({sidebarVisible, setSidebarVisible}) {
             {/* 添加contextHolder以确保模态对话框使用全局主题 */}
             {contextHolder}
 
+            <div className="home-3d-card-container"  style={{display: is3DView ? "flex" : "none", zIndex: 5}}>
+                <Home3DCard  ref={home3DRef}/>
+            </div>
+
             {/* 外层用 flex，左侧 sidebar，右侧 content */}
-            <div className="app-layout">
+            <div className="app-layout"
+                 style={{
+                     zIndex: is3DView ? 7 : 9998,
+                     position: "relative",
+                     display: "flex",
+                     justifyContent: "center",
+                     transition: "all 0.3s ease",
+                     pointerEvents: "none",
+                 }}
+            >
                 {/* 左侧侧边栏 */}
-                <HomeSidebar
-                    currentTime={currentTime}
-                    timeCardConfig={timeCardConfig}
-                    allLights={allLights}
-                    lightControlConfig={allLights}
-                    climateControlSidebarConfig={{
-                        climates: climateList,
-                        globalControl: true
-                    }}
-                    curtainControlSidebarConfig={{
-                        curtains: curtainList,
-                        globalControl: true
-                    }}
-                    weatherConfig={{
-                        entity_id: weatherCardConfig.entity_id || 'weather.forecast_wo_de_jia'
-                    }}
-                    onNavigateToOverview={() => handleClick('homeOverview')}
-                    onNavigateToControl={() => setActives("控制面板")}
-                    activeButton={actives}
-                />
+                <div className="home-sidebar flex-col" style={{pointerEvents: "auto"}}>
+                    {/* Time and Weather Section */}
+                    <TimeWeatherSidebarCard
+                        currentTime={currentTime}
+                        timeCardConfig={timeCardConfig}
+                        weatherConfig={{
+                            entity_id: weatherCardConfig.entity_id || 'weather.forecast_wo_de_jia'
+                        }}
+                    />
+
+                    {/* Light Status Section */}
+                    <LightStatusSidebarCard
+                        allLights={allLights}
+                    />
+
+                    <div className="home_switch_group flex-row justify-between">
+                        <span className="home_switch_text">常用开关</span>
+                        <img
+                            className="home_switch_icon"
+                            src={imageAssets.common.cykg}
+                        />
+                    </div>
+                    {/* Light Control Section */}
+                    <LightControlSidebarCard
+                        config={{
+                            lights: allLights,
+                            globalControl: true
+                        }}
+                        onToggleAllLights={toggleAllLights}
+                        // 传递灯光控制函数
+                    />
+
+                    {/* Climate Control Section */}
+                    <ClimateControlSidebarCard
+                        climateControlSidebarConfig={{
+                            curtains: climateList,
+                            globalControl: true
+                        }}
+                    />
+
+                    {/* Curtain Control Section */}
+                    <CurtainControlSidebarCard
+                        curtainControlSidebarConfig={{curtains: curtainList, globalControl: true}}
+                        onControlAllCurtains={controlAllCurtains}
+                    />
+
+                    {/* Bottom Navigation */}
+                    <HomeSidebarDashboard
+                        onNavigateToOverview={handleNavigateToOverview}
+                        onNavigateToControl={handleNavigateToControl}
+                    />
+
+                </div>
 
                 {/* 主内容区 */}
-                <div className="main-area">
-                    <HeaderNavbar width = {width}/>
-                    {/* <PullToRefresh
-        onRefresh={handleRefresh}
-        pullingText="下拉刷新"
-        canReleaseText="释放立即刷新"
-        refreshingText="刷新中..."
-        completeText="刷新完成"
-      > */}
-                    <div className="content">
-                        {loading ? (
-                            <div className="loading-state">
-                                <Spin size="large"/>
-                                <p>{t('loading')}</p>
-                            </div>
-                        ) : (
-                            <>
-                                <div className={`header ${isFullscreen ? 'hidden' : ''}`}>
-                                    <div className="theme-menu-container">
+                {!is3DView && (
+                    <div className="main-area" style={{
+                        pointerEvents: is3DView ?"none":"auto"
+                    }}>
+                        <HeaderNavbar width={width} style={{
+                            pointerEvents: "auto"
+                        }}/>
+                        <div className="content" style={{
+                            display: is3DView ? "none" : "block",
+                            transition: "all 0.3s ease",
+                            pointerEvents: is3DView ?"none":"auto"
+                        }}>
+                            {loading ? (
+                                <div className="loading-state">
+                                    <Spin size="large"/>
+                                    <p>{t('loading')}</p>
+                                </div>
+                            ) : (
+                                <>
+                                    <div className={`header ${isFullscreen ? 'hidden' : ''}`}>
+                                        <div className="theme-menu-container">
+                                            <button
+                                                className="theme-toggle"
+                                                onClick={() => setThemeMenuVisible(!themeMenuVisible)}
+                                                title={t('theme.' + theme)}
+                                            >
+                                                <Icon
+                                                    path={getThemeIcon()}
+                                                    size={14}
+                                                    color="var(--color-text-primary)"
+                                                />
+                                            </button>
+
+                                            {themeMenuVisible && (
+                                                <div className="theme-menu">
+                                                    <button
+                                                        className={`theme-option ${theme === 'light' ? 'active' : ''}`}
+                                                        onClick={() => {
+                                                            setSpecificTheme('light');
+                                                            setThemeMenuVisible(false);
+                                                        }}
+                                                    >
+                                                        <Icon path={mdiWhiteBalanceSunny} size={12}/>
+                                                        <span>{t('theme.light')}</span>
+                                                    </button>
+                                                    <button
+                                                        className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
+                                                        onClick={() => {
+                                                            setSpecificTheme('dark');
+                                                            setThemeMenuVisible(false);
+                                                        }}
+                                                    >
+                                                        <Icon path={mdiWeatherNight} size={12}/>
+                                                        <span>{t('theme.dark')}</span>
+                                                    </button>
+                                                    <button
+                                                        className={`theme-option ${theme === 'system' ? 'active' : ''}`}
+                                                        onClick={() => {
+                                                            setSpecificTheme('system');
+                                                            setThemeMenuVisible(false);
+                                                        }}
+                                                    >
+                                                        <Icon path={mdiMonitor} size={12}/>
+                                                        <span>{t('theme.system')}</span>
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+
                                         <button
-                                            className="theme-toggle"
-                                            onClick={() => setThemeMenuVisible(!themeMenuVisible)}
-                                            title={t('theme.' + theme)}
+                                            className="language-toggle"
+                                            onClick={toggleLanguage}
+                                            title={t('language.toggle')}
                                         >
                                             <Icon
-                                                path={getThemeIcon()}
+                                                path={mdiGoogleTranslate}
                                                 size={14}
                                                 color="var(--color-text-primary)"
                                             />
                                         </button>
 
-                                        {themeMenuVisible && (
-                                            <div className="theme-menu">
-                                                <button
-                                                    className={`theme-option ${theme === 'light' ? 'active' : ''}`}
-                                                    onClick={() => {
-                                                        setSpecificTheme('light');
-                                                        setThemeMenuVisible(false);
-                                                    }}
-                                                >
-                                                    <Icon path={mdiWhiteBalanceSunny} size={12}/>
-                                                    <span>{t('theme.light')}</span>
-                                                </button>
-                                                <button
-                                                    className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
-                                                    onClick={() => {
-                                                        setSpecificTheme('dark');
-                                                        setThemeMenuVisible(false);
-                                                    }}
-                                                >
-                                                    <Icon path={mdiWeatherNight} size={12}/>
-                                                    <span>{t('theme.dark')}</span>
-                                                </button>
-                                                <button
-                                                    className={`theme-option ${theme === 'system' ? 'active' : ''}`}
-                                                    onClick={() => {
-                                                        setSpecificTheme('system');
-                                                        setThemeMenuVisible(false);
-                                                    }}
-                                                >
-                                                    <Icon path={mdiMonitor} size={12}/>
-                                                    <span>{t('theme.system')}</span>
-                                                </button>
-                                            </div>
+                                        <button
+                                            className="config-toggle"
+                                            onClick={() => navigate('/config')}
+                                            title={t('nav.config')}
+                                        >
+                                            <Icon
+                                                path={mdiCog}
+                                                size={14}
+                                                color="var(--color-text-primary)"
+                                            />
+                                        </button>
+
+                                        {!isEditing && (
+                                            <button
+                                                className="edit-toggle"
+                                                onClick={() => setIsEditing(true)}
+                                                title={t('edit')}
+                                            >
+                                                <Icon
+                                                    path={mdiPencil}
+                                                    size={14}
+                                                    color="var(--color-text-primary)"
+                                                />
+                                            </button>
                                         )}
+                                        {isEditing && (
+                                            <button
+                                                className="reset-layout"
+                                                onClick={handleResetLayout}
+                                                title={t('reset')}
+                                            >
+                                                <Icon
+                                                    path={mdiRefresh}
+                                                    size={14}
+                                                    color="var(--color-text-primary)"
+                                                />
+                                            </button>
+                                        )}
+                                        {isEditing && !isMobile && (
+                                            <button
+                                                className={`pc-edit-toggle ${isEditing ? 'active' : ''}`}
+                                                onClick={() => {
+                                                    handleSaveLayout()
+                                                }}
+                                                title={t('done')}
+                                            >
+                                                <Icon
+                                                    path={mdiCheck}
+                                                    size={14}
+                                                    color="var(--color-text-primary)"
+                                                />
+                                            </button>
+                                        )}
+
+                                        <button
+                                            className="fullscreen-toggle"
+                                            onClick={toggleFullscreen}
+                                            title={t(`fullscreen.${isFullscreen ? 'exit' : 'enter'}`)}
+                                        >
+                                            <Icon
+                                                path={isFullscreen ? mdiFullscreenExit : mdiFullscreen}
+                                                size={14}
+                                                color="var(--color-text-primary)"
+                                            />
+                                        </button>
                                     </div>
 
-                                    <button
-                                        className="language-toggle"
-                                        onClick={toggleLanguage}
-                                        title={t('language.toggle')}
+                                    <Responsive
+                                        className={`layout ${isEditing ? 'editing' : ''}`}
+                                        layouts={currentLayouts}
+                                        breakpoints={{lg: 1200, md: 768, sm: 480}}
+                                        cols={columnCount}
+                                        rowHeight={1}
+                                        width={width}
+                                        margin={[0, 0]}
+                                        containerPadding={isMobile ? [16, 16] : [20, 20]}
+                                        isDraggable={isEditing}
+                                        isResizable={isEditing}
+                                        draggableHandle={isMobile ? ".card-header" : undefined}
+                                        onDragStart={() => setIsDragging(true)}
+                                        onDragStop={() => setIsDragging(false)}
+                                        resizeHandles={['se']}
+                                        useCSSTransforms={true}
+                                        compactType="vertical"
+                                        preventCollision={false}
+                                        onLayoutChange={handleLayoutChange}
+                                        resizeHandleWrapperClass="resize-handle-wrapper"
                                     >
-                                        <Icon
-                                            path={mdiGoogleTranslate}
-                                            size={14}
-                                            color="var(--color-text-primary)"
-                                        />
-                                    </button>
+                                        {cards
+                                            .filter(card => card.visible !== false)
+                                            .map(card => (
+                                                <div key={card.id}>
+                                                    {renderCard(card)}
+                                                </div>
+                                            ))}
+                                    </Responsive>
 
-                                    <button
-                                        className="config-toggle"
-                                        onClick={() => navigate('/config')}
-                                        title={t('nav.config')}
-                                    >
-                                        <Icon
-                                            path={mdiCog}
-                                            size={14}
-                                            color="var(--color-text-primary)"
-                                        />
-                                    </button>
-
-                                    {!isEditing && (
-                                        <button
-                                            className="edit-toggle"
-                                            onClick={() => setIsEditing(true)}
-                                            title={t('edit')}
-                                        >
-                                            <Icon
-                                                path={mdiPencil}
-                                                size={14}
-                                                color="var(--color-text-primary)"
-                                            />
-                                        </button>
-                                    )}
+                                    {/* 添加保存按钮 */}
                                     {isEditing && (
                                         <button
-                                            className="reset-layout"
-                                            onClick={handleResetLayout}
-                                            title={t('reset')}
+                                            className="save-button has-changes"
+                                            onClick={handleSaveLayout}
+                                            title={t('config.save')}
                                         >
-                                            <Icon
-                                                path={mdiRefresh}
-                                                size={14}
-                                                color="var(--color-text-primary)"
-                                            />
+                                            <Icon path={mdiCheck} size={28}/>
                                         </button>
                                     )}
-                                    {isEditing && !isMobile && (
+
+                                    {cards.filter(card => card.visible !== false).length === 0 && (
+                                        <div className="empty-state" onClick={() => navigate('/config')}>
+                                            <Icon path={mdiViewDashboard} size={42}
+                                                  color="var(--color-text-secondary)"/>
+                                            <h2>{t('empty.title')}</h2>
+                                            <p>{t('empty.desc')}</p>
+                                        </div>
+                                    )}
+
+                                    {isEditing && isMobile && (
                                         <button
-                                            className={`pc-edit-toggle ${isEditing ? 'active' : ''}`}
+                                            className="edit-toggle active"
                                             onClick={() => {
-                                                handleSaveLayout()
+                                                handleSaveLayout();
                                             }}
-                                            title={t('done')}
+                                            title="完成编辑"
                                         >
                                             <Icon
                                                 path={mdiCheck}
-                                                size={14}
-                                                color="var(--color-text-primary)"
+                                                size={17}
                                             />
                                         </button>
                                     )}
-
-                                    <button
-                                        className="fullscreen-toggle"
-                                        onClick={toggleFullscreen}
-                                        title={t(`fullscreen.${isFullscreen ? 'exit' : 'enter'}`)}
-                                    >
-                                        <Icon
-                                            path={isFullscreen ? mdiFullscreenExit : mdiFullscreen}
-                                            size={14}
-                                            color="var(--color-text-primary)"
-                                        />
-                                    </button>
-                                </div>
-
-                                <Responsive
-                                    className={`layout ${isEditing ? 'editing' : ''}`}
-                                    layouts={currentLayouts}
-                                    breakpoints={{lg: 1200, md: 768, sm: 480}}
-                                    cols={columnCount}
-                                    rowHeight={1}
-                                    width={width}
-                                    margin={[0, 0]}
-                                    containerPadding={isMobile ? [16, 16] : [20, 20]}
-                                    isDraggable={isEditing}
-                                    isResizable={isEditing}
-                                    draggableHandle={isMobile ? ".card-header" : undefined}
-                                    onDragStart={() => setIsDragging(true)}
-                                    onDragStop={() => setIsDragging(false)}
-                                    resizeHandles={['se']}
-                                    useCSSTransforms={true}
-                                    compactType="vertical"
-                                    preventCollision={false}
-                                    onLayoutChange={handleLayoutChange}
-                                    resizeHandleWrapperClass="resize-handle-wrapper"
-                                >
-                                    {cards
-                                        .filter(card => card.visible !== false)
-                                        .map(card => (
-                                            <div key={card.id}>
-                                                {renderCard(card)}
-                                            </div>
-                                        ))}
-                                </Responsive>
-
-                                {/* 添加保存按钮 */}
-                                {isEditing && (
-                                    <button
-                                        className="save-button has-changes"
-                                        onClick={handleSaveLayout}
-                                        title={t('config.save')}
-                                    >
-                                        <Icon path={mdiCheck} size={28}/>
-                                    </button>
-                                )}
-
-                                {cards.filter(card => card.visible !== false).length === 0 && (
-                                    <div className="empty-state" onClick={() => navigate('/config')}>
-                                        <Icon path={mdiViewDashboard} size={42} color="var(--color-text-secondary)"/>
-                                        <h2>{t('empty.title')}</h2>
-                                        <p>{t('empty.desc')}</p>
-                                    </div>
-                                )}
-
-                                {isEditing && isMobile && (
-                                    <button
-                                        className="edit-toggle active"
-                                        onClick={() => {
-                                            handleSaveLayout();
-                                        }}
-                                        title="完成编辑"
-                                    >
-                                        <Icon
-                                            path={mdiCheck}
-                                            size={17}
-                                        />
-                                    </button>
-                                )}
-                            </>
-                        )}
+                                </>
+                            )}
+                        </div>
+                        {/* </PullToRefresh> */}
                     </div>
-                    {/* </PullToRefresh> */}
-                </div>
+                )}
+                {is3DView && (
+                    <div className="main-area" style={{height: "6vw"}}>
+                        <HeaderNavbar width={width}/>
+                    </div>
+                )}
+
             </div>
+            {/* 在这里添加3D场景 */}
+
         </div>
     );
 }

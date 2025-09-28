@@ -4,9 +4,11 @@
   /*background-color: rgba(255, 255, 255, 0.2);*/
   border-radius: 16px;
   width: 19.45vw;
-  height: 55.56vw;
+  /*height: 55.56vw;*/
   border: 1px ;
   justify-content: center;
+
+
 }
 
 
@@ -15,6 +17,7 @@
   width: 9.17vw;
   height: 2.23vw;
   margin: 1.66vw 0 0 1.66vw;
+
 }
 
 .time-weather-sidebar-card-home-icon {
@@ -40,7 +43,9 @@
 .time-weather-sidebar-card-time-group {
   width: 16.12vw;
   height: 2.78vw;
-  margin: 2.22vw 0 0 1.66vw;
+  /*margin: 2.22vw 0 0 1.66vw;*/
+  margin: 0.5vw 0 0 1.66vw;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .time-weather-sidebar-card-current-time {

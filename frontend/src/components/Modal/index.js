@@ -26,7 +26,7 @@ function Modal({ visible, onClose, title, children, width }) {
       <div className={`custom-modal-content ${theme}`} onClick={e => e.stopPropagation()} style={width ? { width } : undefined}>
         {title && <div className="custom-modal-title">{title}</div>}
         <button className="custom-modal-close" onClick={onClose}>
-          <Icon path={mdiClose} size={14} color="#ffffff" />
+          <Icon path={mdiClose} size="2.33vw" color="#ffffff" /> {/* 67px/2880*100% = 2.33vw */}
         </button>
         {children}
       </div>

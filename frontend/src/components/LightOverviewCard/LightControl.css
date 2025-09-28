@@ -1,78 +1,72 @@
 .light-control-container {
-  background-color: rgba(40, 40, 40, 1);
-  border-radius: 16px;
+  background-color: transparent; /* 背景透明 */
+  /*border-radius: 0.56vw; !* 16px -> 自适应 *!*/
   position: relative;
   width: 100%;
-  max-height: 63.34vw;
+  max-width: 40vw; /* 最大宽度限制 */
+  min-width: 20.83vw; /* 最小宽度限制 */
+  padding: 0.97vw; /* 自适应内边距 */
+  box-sizing: border-box;
   /* margin: 2.77vw 0 0 17.77vw; */
 }
 
 .light-control-header {
-  width: 34.45vw;
-  height: 3.34vw;
-  margin: 2.77vw 0 0 2.77vw;
+  width: 100%; /* 自适应宽度 */
+  display: none; /* 隐藏标题 */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.97vw; /* 自适应间距 */
 }
 
 .light-control-title {
-  width: 8.89vw;
-  height: 3.34vw;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 2.22vw;
+  font-size: 1.39vw; /* 40px -> 自适应字体 */
   font-family: MiSans-Semibold;
   font-weight: 600;
   text-align: left;
   white-space: nowrap;
-  line-height: 3.34vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  margin: 0;
 }
 
 .light-control-brightness-label {
-  width: 6.67vw;
-  height: 2.23vw;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 1.66vw;
+  font-size: 0.97vw; /* 自适应字体 */
   font-family: MiSans-Semibold;
   font-weight: 600;
   text-align: left;
-  white-space: nowrap;
-  line-height: 2.23vw;
-  margin: 1.66vw 0 0 3.33vw;
+  margin: 0 0 0.69vw 0;
 }
 
 .light-control-brightness-wrapper {
-  width: 33.34vw;
-  height: 1.67vw;
-  margin: 1.38vw 0 0 3.33vw;
+  width: 100%; /* 自适应宽度 */
+  display: flex;
+  align-items: center;
+  gap: 0.97vw; /* 自适应间距 */
+  margin-bottom: 0.69vw;
 }
 
-.light-control-brightness-icon-left {
-  width: 1.67vw;
-  height: 1.67vw;
-}
-
-.light-control-brightness-track {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    width: 27.78vw;
-    height: 1.39vw;
-    margin: 0.13vw 0 0 1.11vw;
-}
-
+.light-control-brightness-icon-left,
 .light-control-brightness-icon-right {
-  width: 1.67vw;
-  height: 1.67vw;
-  margin-left: 1.12vw;
+  width: 1.39vw; /* 自适应图标尺寸 */
+  height: 1.39vw;
+  flex-shrink: 0;
 }
 
 .light-control-brightness-value {
-  width: 2.99vw;
+  width: 3vw;
   height: 2.23vw;
-  margin: 0.27vw 0 0 16.66vw;
+  margin-bottom: 0.27vw;
+  transition: margin-left 0.1s ease; /* 添加平滑过渡动画 */
+  display: flex;
+  align-items: baseline; /* 基线对齐，确保数字和%号对齐 */
+  justify-content: flex-start;
 }
 
 .light-control-brightness-number {
-  width: 2.02vw;
+  width: auto; /* 自适应宽度 */
   height: 2.23vw;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
@@ -82,10 +76,11 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.67vw;
+  margin-right: 0.14vw; /* 数字和%号之间的间距 */
 }
 
 .light-control-brightness-percent {
-  width: 0.98vw;
+  width: auto; /* 自适应宽度 */
   height: 1.67vw;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.7);
@@ -95,79 +90,69 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.67vw;
-  margin-top: 0.56vw;
+  margin-top: 0; /* 移除上边距，使用baseline对齐 */
 }
 
 .light-control-temp-label {
-  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
-  width: 6.67vw;
-  height: 2.23vw;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 1.66vw;
-  font-family: MiSans-Demibold;
-  font-weight: normal;
+  font-size: 0.97vw; /* 自适应字体 */
+  font-family: MiSans-Semibold;
+  font-weight: 600;
   text-align: left;
-  white-space: nowrap;
-  line-height: 2.23vw;
-  margin: 1.11vw 0 0 3.33vw;
+  margin: 0 0 0.69vw 0;
 }
 
 .light-control-temp-wrapper {
-  width: 33.34vw;
-  height: 1.67vw;
-  margin: 1.38vw 0 0 3.33vw;
+  width: 100%; /* 自适应宽度 */
+  display: flex;
+  align-items: center;
+  gap: 0.97vw; /* 自适应间距 */
+  margin-bottom: 0.69vw;
 }
 
-.light-control-temp-icon-left {
-  width: 1.67vw;
-  height: 1.67vw;
-}
-
-.light-control-temp-container {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  height: 1.39vw;
-  width: 27.78vw;
-  margin: 0.13vw 0 0 1.11vw;
-}
-
-.light-control-temp-track {
-  background-image: linear-gradient(90deg, rgba(252, 234, 96, 1) 0, rgba(214, 189, 0, 1) 100%);
-  border-radius: 6px;
-  height: 2.23vw;
-  margin-top: -0.41vw;
-  width: 12.23vw;
-}
-
-.light-control-temp-fill {
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 1px;
-  width: 0.28vw;
-  height: 1.39vw;
-  margin: 0.41vw 0 0 11.38vw;
-}
-
+.light-control-temp-icon-left,
 .light-control-temp-icon-right {
-  width: 1.67vw;
-  height: 1.67vw;
-  margin-left: 1.12vw;
+  width: 1.39vw; /* 自适应图标尺寸 */
+  height: 1.39vw;
+  flex-shrink: 0;
 }
-
 
 .light-control-temp-value {
-  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
-  width: 2.23vw;
+  width: 3vw;
+  height: 2.23vw;
+  margin-bottom: 0.27vw;
+  transition: margin-left 0.1s ease; /* 添加平滑过渡动画 */
+  display: flex;
+  align-items: baseline; /* 基线对齐，确保数字和%号对齐 */
+  justify-content: flex-start;
+}
+
+.light-control-temp-number {
+  width: auto; /* 自适应宽度 */
   height: 2.23vw;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
   font-size: 1.66vw;
+  font-family: MiSans-Semibold;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.67vw;
+  margin-right: 0.14vw; /* 数字和%号之间的间距 */
+}
+
+.light-control-temp-percent {
+  width: auto; /* 自适应宽度 */
+  height: 1.67vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.11vw;
   font-family: MiSans-Demibold;
   font-weight: normal;
   text-align: left;
   white-space: nowrap;
-  line-height: 2.23vw;
-  margin: 0.27vw 0 0 16.11vw;
+  line-height: 1.67vw;
+  margin-top: 0; /* 移除上边距，使用baseline对齐 */
 }
 
 
@@ -390,6 +375,145 @@
 
 .light-control-custom-slider.dragging .light-control-slider-fill {
   transition: none;
+}
+
+/* 自定义滚动条样式 */
+.light-control-scrollbar {
+  flex: 1;
+  height: 1.15vw; /* 33px/2880*100% = 1.15vw */
+  margin: 0 1.11vw;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border-radius: 0.575vw;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+/* WebKit 浏览器滚动条轨道 */
+.light-control-scrollbar::-webkit-slider-track {
+  height: 1.15vw;
+  border-radius: 0.575vw;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* WebKit 浏览器滚动条拖拽手柄 - 隐藏 */
+.light-control-scrollbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Firefox 浏览器滚动条轨道 */
+.light-control-scrollbar::-moz-range-track {
+  height: 1.15vw;
+  border-radius: 0.575vw;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Firefox 浏览器滚动条拖拽手柄 - 隐藏 */
+.light-control-scrollbar::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 滚动条容器 - 用于显示轨道和填充 */
+.scrollbar-container {
+  position: relative;
+  flex: 1;
+  height: 1.15vw;
+  margin: 0 1.11vw;
+  display: flex;
+  align-items: center;
+}
+
+/* 轨道背景 */
+.scrollbar-track {
+  position: absolute;
+  width: 100%;
+  height: 1.15vw;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.575vw;
+  z-index: 0;
+}
+
+/* 填充进度 */
+.scrollbar-fill {
+  position: absolute;
+  height: 1.15vw;
+  border-radius: 0.575vw;
+  z-index: 1;
+  transition: width 0.1s ease;
+  overflow: hidden; /* 确保手柄不会超出填充区域 */
+}
+
+/* 自定义圆形手柄 */
+.scrollbar-handle {
+  position: absolute;
+  width: 1.39vw; /* 40px/2880*100% = 1.39vw */
+  height: 1.39vw;
+  background: linear-gradient(135deg, #FEBE5E 0%, #FE7D1B 100%);
+  border-radius: 50%; /* 圆形 */
+  z-index: 3;
+  pointer-events: none;
+  transition: left 0.1s ease;
+  box-shadow: 0 0.14vw 0.28vw rgba(0, 0, 0, 0.2);
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+}
+
+/* 亮度填充样式 */
+.brightness-fill {
+  background: linear-gradient(135deg, #FEBE5E 0%, #FE7D1B 100%);
+}
+
+/* 色温填充样式 */
+.temp-fill {
+  background: linear-gradient(135deg, rgba(252, 234, 96, 1) 0%, rgba(214, 189, 0, 1) 100%);
+}
+
+/* 隐藏原生滚动条的轨道，只显示手柄 */
+.scrollbar-container .light-control-scrollbar {
+  position: absolute;
+  width: 100%;
+  height: 1.15vw;
+  background: transparent;
+  z-index: 2;
+}
+
+.scrollbar-container .light-control-scrollbar::-webkit-slider-track {
+  background: transparent;
+}
+
+.scrollbar-container .light-control-scrollbar::-moz-range-track {
+  background: transparent;
+}
+
+/* 禁用状态样式 */
+.light-control-scrollbar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.light-control-scrollbar:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+.light-control-scrollbar:disabled::-moz-range-thumb {
+  cursor: not-allowed;
 }
 
 /* 禁用长按选中的通用样式 */

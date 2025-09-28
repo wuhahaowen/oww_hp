@@ -21,67 +21,68 @@ const loadImage = (path) => {
 const imageAssets = {
     // 控制面板通用图标
     common: {
-        xiaLa:loadImage('/kongzhimianban/xiaLa.png'),
-        cykg:loadImage('/kongzhimianban/cykg.png'),
-        battery: loadImage('/kongzhimianban/FigmaDDSSlicePNG480d10dc6899ff1dadd00b5520a0f9da.png'),
-        weather: loadImage('/kongzhimianban/FigmaDDSSlicePNG96d5f11adfaa916ac1dba9a287079af5.png'),
-        separator: loadImage('/kongzhimianban/FigmaDDSSlicePNG047b070b351c7c552aa41a527129c68c.png'),
-        background: loadImage('/kongzhimianban/FigmaDDSSlicePNGc3be0104e0f487b5b638225605b4bfef.png'),
+        xiaLa:loadImage('/kongzhimianban/xiaLa.svg'),
+        cykg:loadImage('/kongzhimianban/cykg.svg'),
+        battery: loadImage('/light/ceiling-light.svg'),
+        weather: loadImage('/kongzhimianban/xx.png'),
+        separator: loadImage('/kongzhimianban/xx.png'),
+        background: loadImage('/kongzhimianban/back.jpg'),
         // 开关状态图标
         switchOn: loadImage('/kongzhimianban/switchOn.png'),
         switchOff: loadImage('/kongzhimianban/switchOff.png'),
-        header: loadImage('/kongzhimianban/header@2.png'),
+        header: loadImage('/kongzhimianban/header.svg'),
         controllerBackground: loadImage('/kongzhimianban/controllerBackground.png'),
+        home:loadImage('./kongzhimianban/home.svg')
     },
     lightMode: {
-        CloseMode: loadImage('./lightMode/CloseMode.png'),
-        DefaultMode: loadImage('./lightMode/DefaultMode.png'),
-        GuestMode: loadImage('./lightMode/GuestMode.png'),
-        NightMode: loadImage('./lightMode/NightMode.png'),
-        TVMode: loadImage('./lightMode/TVMode.png'),
-        PCMode: loadImage('./lightMode/PCMode.png'),
+        CloseMode: loadImage('./lightMode/CloseMode.svg'),
+        DefaultMode: loadImage('./lightMode/DefaultMode.svg'),
+        GuestMode: loadImage('./lightMode/GuestMode.svg'),
+        NightMode: loadImage('./lightMode/NightMode.svg'),
+        TVMode: loadImage('./lightMode/TVMode.svg'),
+        PCMode: loadImage('./lightMode/PCMode.svg'),
     },
 
 
     // 灯光控制相关
     lighting: {
 
-        lightHigh: loadImage('./kongzhimianban/lightHigh.png'),
-        lightLow: loadImage('./kongzhimianban/lightLow.png'),
-        shakedownHigh: loadImage('./kongzhimianban/shakedownHigh.png'),
-        shakedownLow: loadImage('./kongzhimianban/shakedownLow.png'),
-        icon: loadImage('./kongzhimianban/FigmaDDSSlicePNG29f392c85d12da001aadf0b3cc75a3fd.png'),
-        bulb: loadImage('./kongzhimianban/FigmaDDSSlicePNG76aae6377e21f93c31a199c0fcf261c9.png'),
-        control: loadImage('./kongzhimianban/FigmaDDSSlicePNG00998bbc1f74ce25aaa5b3c3917aff3c.png'),
-        allOn: loadImage('./kongzhimianban/allOn.png'),
-        allOff: loadImage('./kongzhimianban/allOff.png'),
+        lightHigh: loadImage('./kongzhimianban/lightHigh.svg'),
+        lightLow: loadImage('./kongzhimianban/lightLow.svg'),
+        shakedownHigh: loadImage('./kongzhimianban/lightHigh.svg'),
+        shakedownLow: loadImage('./kongzhimianban/shakedownLow.svg'),
+        icon: loadImage('./kongzhimianban/xx.png'),
+        bulb: loadImage('./kongzhimianban/xx.png'),
+        control: loadImage('./kongzhimianban/xx.png'),
+        allOn: loadImage('./kongzhimianban/allOn.svg'),
+        allOff: loadImage('./kongzhimianban/allOff.svg'),
         // 各种灯光设备图标
-        officeCeiling: loadImage('./kongzhimianban/FigmaDDSSlicePNGe6247428ea593a8fae70c5d167ff14a9.png'),
-        sampleCeiling: loadImage('./kongzhimianban/FigmaDDSSlicePNG8f28da2c83d1ace388bad89560f02fa7.png'),
-        corridorLight: loadImage('./kongzhimianban/FigmaDDSSlicePNGde60e0992956572b5a43421fbeb6211d.png'),
-        livingRoomLight: loadImage('./kongzhimianban/FigmaDDSSlicePNG10bb2eb2201b63acc8c61d83838b9020.png'),
+        officeCeiling: loadImage('./kongzhimianban/xx.png'),
+        sampleCeiling: loadImage('./kongzhimianban/xx.png'),
+        corridorLight: loadImage('./kongzhimianban/xx.png'),
+        livingRoomLight: loadImage('./kongzhimianban/xx.png'),
     },
 
     // 空调控制相关
     climate: {
-        icon: loadImage('./kongzhimianban/climateIcon.png'),
-        temperature: loadImage('./kongzhimianban/FigmaDDSSlicePNGf53ce440cc3bdcc3f2084da701a24b7a.png'),
-        humidity: loadImage('./kongzhimianban/FigmaDDSSlicePNG0470bc6e2867c9ff80f8f4da52183b4e.png'),
-        cooling: loadImage('./kongzhimianban/FigmaDDSSlicePNGf15aec2060a22b49752aaaa7cd869252.png'),
-        swing: loadImage('./kongzhimianban/climateSwing.png'),
-        fan: loadImage('./kongzhimianban/FigmaDDSSlicePNG03e3b08988cdad31c308238455b880c6.png'),
+        icon: loadImage('./kongzhimianban/climateIcon.svg'),
+        temperature: loadImage('./kongzhimianban/xx.png'),
+        humidity: loadImage('./kongzhimianban/xx.png'),
+        cooling: loadImage('./kongzhimianban/xx.png'),
+        swing: loadImage('./kongzhimianban/climateSwing.svg'),
+        fan: loadImage('./kongzhimianban/xx.png'),
         // 温度调节
-        tempUp: loadImage('./kongzhimianban/FigmaDDSSlicePNGaaffa9f698c1fa4a7249f2b26bba73e9.png'),
-        tempDown: loadImage('./kongzhimianban/FigmaDDSSlicePNGc19968e636abc2266e6b40fdf6ac35b4.png'),
+        tempUp: loadImage('./kongzhimianban/xx.png'),
+        tempDown: loadImage('./kongzhimianban/xx.png'),
     },
 
     // 窗帘控制相关
     curtain: {
-        icon: loadImage('./kongzhimianban/curtain-control.png'),
-        up: loadImage('./kongzhimianban/FigmaDDSSlicePNGbef9065d9b40f3aa8945709a46ffdcd4.png'),
-        stop: loadImage('./kongzhimianban/FigmaDDSSlicePNGe8b4091a44a3b9369c31d841b44df3d0.png'),
-        down: loadImage('./kongzhimianban/FigmaDDSSlicePNGa6be58dc2ef5cb4acf92dc0d7feb159e.png'),
-        pause: loadImage('./kongzhimianban/FigmaDDSSlicePNG7b28a01ca69445311315fde6c1ca8644.png'),
+        icon: loadImage('./kongzhimianban/curtain-control.svg'),
+        up: loadImage('./kongzhimianban/xx.png'),
+        stop: loadImage('./kongzhimianban/xx.png'),
+        down: loadImage('./kongzhimianban/xx.png'),
+        pause: loadImage('./kongzhimianban/xx.png'),
     },
 
     // 天气相关图标
@@ -96,25 +97,25 @@ const imageAssets = {
 
     // 功能模式图标
     modes: {
-        home: loadImage('./kongzhimianban/FigmaDDSSlicePNG6cbebb392500eed27c4c053a2a10bd13.png'),
-        away: loadImage('./kongzhimianban/FigmaDDSSlicePNG615c58d039053e31dd8794cef82585cb.png'),
-        movie: loadImage('./kongzhimianban/FigmaDDSSlicePNG1235dc95e1f01abdab875390428742f3.png'),
-        sleep: loadImage('./kongzhimianban/FigmaDDSSlicePNG352522bb76309931c7e17c0a5f851c35.png'),
+        home: loadImage('./kongzhimianban/xx.png'),
+        away: loadImage('./kongzhimianban/xx.png'),
+        movie: loadImage('./kongzhimianban/xx.png'),
+        sleep: loadImage('./kongzhimianban/xx.png'),
     },
 
     // 传感器图标
     sensors: {
-        light: loadImage('./kongzhimianban/FigmaDDSSlicePNG6957bc6deedcf53a73da27927a062d47.png'),
-        motion: loadImage('./kongzhimianban/FigmaDDSSlicePNG3679b8084354c86c3f1c4d9ce0d69ec7.png'),
-        temperature: loadImage('./kongzhimianban/temperature.png'),
-        humidity: loadImage('./kongzhimianban/humidity.png'),
+        light: loadImage('./kongzhimianban/xx.png'),
+        motion: loadImage('./kongzhimianban/xx.png'),
+        temperature: loadImage('./kongzhimianban/temperature.svg'),
+        humidity: loadImage('./kongzhimianban/humidity.svg'),
     },
 
     // 全屋总览相关
     overview: {
-        icon: loadImage('./quanwuzonglanbangongqu/FigmaDDSSlicePNGfea71540295d4cdc3a2e84a1ab17831b.png'),
-        dropdown: loadImage('./quanwuzonglanbangongqu/FigmaDDSSlicePNG8d69f92a3baa3ee1f610d26287a48372.png'),
-        controlPanel: loadImage('./kongzhimianban/FigmaDDSSlicePNGe1d1e45060aa165deaa7acb93bb093c6.png'),
+        icon: loadImage('./quanwuzonglanbangongqu/xx.png'),
+        dropdown: loadImage('./quanwuzonglanbangongqu/xx.png'),
+        controlPanel: loadImage('./kongzhimianban/xx.png'),
     }
 };
 
@@ -133,6 +134,8 @@ export const assetGroups = {
     common: {
         xiaLa: getAsset('common', 'xiaLa'),
         cykg: getAsset('common', 'cykg'),
+        home:getAsset('common','home'),
+        background:getAsset('common','background')
     },
     statusBar: {
         battery: getAsset('common', 'battery'),

@@ -5,64 +5,115 @@
 
 .climate-content {
   padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 整体内容居中对齐 */
 }
 
 .climate-status {
   margin-bottom: var(--spacing-lg);
+  width: 100%; /* 确保占满容器宽度 */
+  display: flex;
+  justify-content: center; /* 水平居中 */
 }
 
 .climate-readings {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 居中对齐 */
   gap: var(--spacing-lg);
+  width: 100%; /* 确保占满容器宽度 */
+  margin: 0.83vw 0 0 1.11vw;
 }
 
 .reading {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  /*height: 3.5vw; !* 图标高度: 54px / 2880px = 1.875vw *!*/
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
   text-align: center;
   padding: var(--spacing-md);
   background: var(--color-card-bg-transparent-lanhu);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-small);
+  border-radius: 1.04vw;
+  margin: 0 0 0 0; /* 添加右边距: 10px / 2880px = 0.35vw */
 }
 
 .reading-label {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* 左对齐 */
   gap: var(--spacing-xs);
   color: var(--color-text-secondary);
-  font-size: 0.9em;
+  font-size: 33px; /* 设置为33px */
+  font-weight: bold; /* 加粗 */
+}
+
+.reading-label .iconify {
+  width: 2.5vw; /* 图标宽度: 54px / 2880px = 1.875vw */
+  height: 2.5vw; /* 图标高度: 54px / 2880px = 1.875vw */
+  margin-right: 0.35vw; /* 添加右边距: 10px / 2880px = 0.35vw */
 }
 
 .reading-value {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
+  flex-direction: column; /* 改为垂直布局 */
+  align-items: flex-start; /* 左对齐 */
+  justify-content: center; /* 垂直居中 */
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+
+.reading-value > span {
+  color: rgba(255, 255, 255, 0.70); /* 设置字体颜色 */
+  font-size: 1.0vw; /* 还原原有字体大小 */
 }
 
 .reading-value .value {
-  font-size: 1.6em;
-  font-weight: 500;
+  font-size: 33px; /* 设置为33px */
+  font-weight: bold; /* 加粗 */
   color: var(--color-text-primary);
+  white-space: nowrap;
 }
 
 .reading-value .unit {
-  font-size: 0.9em;
+  font-size: 33px; /* 设置为33px */
+  font-weight: bold; /* 加粗 */
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* 添加reading-value-unit样式，确保值和单位在同一行显示并加粗 */
+.reading-value-unit {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.reading-value-unit .value {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-text-primary);
+}
+
+.reading-value-unit .unit {
+  font-size: 20px;
+  font-weight: bold;
   color: var(--color-text-secondary);
 }
 
 .climate-circle {
-  width: 65%;
+  width: 55%;
   aspect-ratio: 1 / 1;
-  margin: var(--spacing-xl) auto;
+  /*margin: var(--spacing-xl) auto;*/
   border-radius: 50%;
-  background: var(--color-card-bg-transparent-lanhu);
-  border: 2px solid rgba(255, 255, 255, 0.20);
+  /* background: var(--color-card-bg-transparent-lanhu); */
+  background: transparent 0%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5); /* 添加一层5px宽的描边 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +138,7 @@
   padding: 0 8px;
   display: flex;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 1.04vw;
   height: 15%;
   width: 15%;
   /*height: 2.34vw;*/
@@ -108,8 +159,8 @@
 .target-temp {
   display: flex;
   align-items: baseline;
+  justify-content: center; /* 水平居中 */
   gap: 4px;
-  margin-left: 12px;
   margin-bottom: var(--spacing-xl);
   opacity: 1;
   transition: opacity 0.3s;
@@ -121,16 +172,29 @@
 }
 
 .temp-value {
-  font-size: 4em;
+  /*width: 5.98vw;*/
+  height: 4.17vw;
+  font-size: 2.77vw;/* 设置为67px */
   font-weight: 500;
   color: var(--color-text-primary);
-  line-height: 1;
+  line-height: 4.17vw;
+  /*margin-left: 1.95vw;*/
+  text-align: center;
+  white-space: nowrap;
 }
 
 .temp-unit {
-  font-size: 1.4em;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.5em;
+  width: 1.88vw;
+  height: 2.5vw;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.66vw;
+  font-family: MiSans-Demibold;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 2.5vw;
+  margin: 1.25vw 0 0 0.2vw;
 }
 
 .temp-controls {
@@ -189,9 +253,11 @@
 
 .climate-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 水平居中 */
   gap: var(--spacing-md);
-  margin-top: var(--spacing-xl);
+  margin-top: 20px; /* 设置上间距为20px */
+  margin-bottom: 20px; /* 设置下间距为20px */
+  width: 100%; /* 确保占满容器宽度 */
 }
 
 .mode-button {
@@ -202,11 +268,20 @@
   gap: var(--spacing-xs);
   padding: var(--spacing-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-small);
+  border-radius: 1.04vw;
   background: var(--color-card-bg-transparent-lanhu);
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.3s;
+  font-size: 0.7vw; /* 减小字体大小 */
+}
+
+.mode-button svg {
+  width: 2.23vw !important;;
+  height: 2.23vw !important;;
+  /*width: 54px !important;*/
+  /*height: 54px !important;*/
+  flex-shrink: 0;
 }
 
 .mode-button:disabled {
@@ -236,19 +311,19 @@
   }
 
   .temp-value {
-    font-size: 3.2em;
+    font-size: 1.146vw; /* 33px / 2880px = 1.146vw */
   }
 
   .temp-unit {
-    font-size: 1.2em;
+    font-size: 1.146vw; /* 33px / 2880px = 1.146vw */
   }
 
 }
 
-.mode-value {
-  font-size: 0.8em;
-  color: var(--color-text-secondary);
-  margin-top: 4px;
+.mode-button span {
+  margin: 0; /* 防止浏览器默认样式导致的间距不一致 */
+  text-align: center;
+  font-size:0.97vw;
 }
 
 .fan-mode-popup {
@@ -297,13 +372,13 @@
   padding: 8px;
   cursor: pointer;
   color: var(--color-text-primary);
-  border-radius: 50%;
+  border-radius: 1.04vw;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  width: 36px;
-  height: 36px;
+  width: 60px; /* 将宽度调整为60px */
+  height: 60px; /* 将高度调整为60px */
 }
 
 .power-button:hover {
@@ -343,9 +418,10 @@
 
 .climate-functions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 水平居中 */
   gap: var(--spacing-sm);
   margin-top: var(--spacing-lg);
+  width: 100%; /* 确保占满容器宽度 */
 }
 
 .function-button {
@@ -356,12 +432,12 @@
   gap: 4px;
   padding: var(--spacing-sm);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-small);
+  border-radius: 1.04vw;
   background: var(--color-card-bg-transparent-lanhu);
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 0.8em;
+  font-size: 17px; /* 设置字体大小为17px */
   position: relative;
   overflow: hidden;
 }
@@ -398,8 +474,11 @@
 }
 
 .function-button svg {
-  width: 18px;
-  height: 18px;
+  width: 1.67vw !important;
+  height: 1.67vw !important;
+  margin: 0.83vw 0 0 0.83vw;
+  /*width: 40px !important; !* 调整为40px *!*/
+  /*height: 40px !important; !* 调整为40px *!*/
   transition: all 0.3s;
 }
 
@@ -414,13 +493,13 @@
   
   .function-button {
     padding: 6px;
-    font-size: 0.75em;
+    font-size: 17px; /* 设置字体大小为17px */
     min-width: auto;
   }
   
   .function-button svg {
-    width: 16px;
-    height: 16px;
+    width: 40px !important; /* 调整为40px */
+    height: 40px !important; /* 调整为40px */
   }
   
   .function-button.active::after {

@@ -3,8 +3,8 @@ import { mdiLightbulbGroup } from '@mdi/js';
 import { Icon } from '@iconify/react';
 import { useTheme } from '../../theme/ThemeContext';
 import { useLanguage } from '../../i18n/LanguageContext';
-import { useEntity } from '@hakit/core';
 import './style.css';
+import {useEntity} from "@hakit/core";
 
 function SidebarLightStats({ lightsConfig }) {
   const { theme } = useTheme();
@@ -27,7 +27,7 @@ function SidebarLightStats({ lightsConfig }) {
   const entity7 = useEntity(entityIds[7] || 'light.dummy_7', { returnNullIfNotFound: true });
   const entity8 = useEntity(entityIds[8] || 'light.dummy_8', { returnNullIfNotFound: true });
   const entity9 = useEntity(entityIds[9] || 'light.dummy_9', { returnNullIfNotFound: true });
-  
+
   // Map entities back to their IDs
   const entities = {};
   const entityArray = [entity0, entity1, entity2, entity3, entity4, entity5, entity6, entity7, entity8, entity9];

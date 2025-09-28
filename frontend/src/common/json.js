@@ -83,16 +83,16 @@ export const iconConfig = [
         "path": "scene",
         "files": [
             {
-                "name": "bed-empty.svg"
+                "name": "bed-empty.png"
             },
             {
-                "name": "home.svg"
+                "name": "home.png"
             },
             {
-                "name": "home-automation.svg"
+                "name": "home-automation.png"
             },
             {
-                "name": "home-outline.svg"
+                "name": "home-outline.png"
             }
         ]
     },

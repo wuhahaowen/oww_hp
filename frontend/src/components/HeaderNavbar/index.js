@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import './style.css';
 import imageAssets from '../../imageIndex';
-const Index = ({width}) => {
+const HeaderNavbar = ({width}) => {
 
     const rooms = [
         "全部",
@@ -63,32 +63,33 @@ const Index = ({width}) => {
                 })}
 
             </div>
-            {isVisible && (
-                <div className="header-navbar-floor-box flex-col ">
-                    <div className="header-navbar-floor-active flex-col">
-                        <span className="header-navbar-floor-text">全屋总揽</span>
-                    </div>
-                    <div className="header-navbar-floor flex-col">
-                        <span className="header-navbar-floor-number">B1</span>
-                    </div>
-                    <div className="header-navbar-floor flex-col">
-                        <span className="header-navbar-floor-number">L1</span>
-                    </div>
-                    <div className="header-navbar-floor flex-col">
-                        <span className="header-navbar-floor-number">L2</span>
-                    </div>
-                    <div className="header-navbar-floor flex-col">
-                        <span className="header-navbar-floor-number">L3</span>
-                    </div>
-                    <div className="header-navbar-floor flex-col">
-                        <span className="header-navbar-floor-number">L4</span>
-                    </div>
-                </div>
-            )}
+            {/*{isVisible && (*/}
+            {/*    <div className="header-navbar-floor-box flex-col">*/}
+            {/*        <div className="header-navbar-floor-active flex-col">*/}
+            {/*            <span className="header-navbar-floor-text">全屋总揽</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="header-navbar-floor flex-col">*/}
+            {/*            <span className="header-navbar-floor-number">B1</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="header-navbar-floor flex-col">*/}
+            {/*            <span className="header-navbar-floor-number">L1</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="header-navbar-floor flex-col">*/}
+            {/*            <span className="header-navbar-floor-number">L2</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="header-navbar-floor flex-col">*/}
+            {/*            <span className="header-navbar-floor-number">L3</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="header-navbar-floor flex-col">*/}
+            {/*            <span className="header-navbar-floor-number">L4</span>*/}
+            {/*        </div>*/}
+            {/*        /!* 添加底部模糊渐变效果 *!/*/}
+            {/*        <div className="header-navbar-gradient-overlay"></div>*/}
+            {/*    </div>*/}
+            {/*)}*/}
 
         </div>
-    )
-        ;
+    );
 };
 
-export default Index;
+export default HeaderNavbar;

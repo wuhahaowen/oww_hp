@@ -47,18 +47,20 @@ function ScriptPanel({ config }) {
       className="script-panel"
       titleVisible={titleVisible}
     >
-      <div className="script-buttons">
-        {config.scripts.map((script) => (
-          <button
-            key={script.entity_id}
-            color= "#FFB74D"
-            className="script-button"
-            onClick={() => handleScriptClick(script.entity_id, script.name)}
-          >
-            <Icon icon={renderIcon('scene',script.icon)} width={48} className="script-icon"/>
-            <span className="script-name">{script.name}</span>
-          </button>
-        ))}
+      <div className="script-panel-container">
+        <div className="script-buttons">
+          {config.scripts.map((script) => (
+            <button
+              key={script.entity_id}
+              color= "#FFB74D"
+              className="script-button"
+              onClick={() => handleScriptClick(script.entity_id, script.name)}
+            >
+              <Icon icon={renderIcon('scene',script.icon)} width={48} className="script-icon"/>
+              <span className="script-name">{script.name}</span>
+            </button>
+          ))}
+        </div>
       </div>
     </BaseCard>
   );

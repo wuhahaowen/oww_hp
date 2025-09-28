@@ -11,6 +11,7 @@
   --color-card-bg-transparent-btn-lanhu:rgba(255, 255, 255, 0.30) ;
   --color-background-curtain-panel: #fff;
   --color-card-bg: #ffffff;
+  --luhun-back-color: rgba(73, 73, 74, 1);
   --color-text-primary: #263238;
   --color-text-secondary: #546E7A;
   --color-text-light: #78909C;
@@ -46,7 +47,8 @@
   --color-secondary: #FFE082;
   
   /* 背景色 - 使用更深的黑色以增加对比度 */
-  --color-background: #121212;
+   --color-background: #121212;
+  /*--color-background: #4b7fb8;*/
   --color-background-lanhu: linear-gradient( 135deg, #FEBE5E 0%, #FE7D1B 100%);
   --color-card-bg-transparent: rgba(18, 18, 18, 0.5);
   --color-card-bg: #1E1E1E;

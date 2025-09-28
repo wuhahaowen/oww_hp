@@ -34,6 +34,10 @@ function CurtainItem({entity_id, name}) {
 
     const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
+    const position = curtain?.attributes?.current_position || 0;
+    const currentPosition = 50 - (position / 2);
+
+
     // 初始化窗帘格子
     const initCurtainCells = useCallback(() => {
         if (!curtainLeftRef.current || !curtainRightRef.current || !containerRef.current) return;
@@ -266,10 +270,18 @@ function CurtainItem({entity_id, name}) {
 
     // 初始化格子和自适应高度
     useEffect(() => {
+
         if (containerRef.current) {
             initCurtainCells();
         }
     }, [containerSize.width, initCurtainCells]);
+    //初始化窗帘格子颜色
+    useEffect(() => {
+
+
+        initCurtainCells();
+    }, []);
+
 
 
 

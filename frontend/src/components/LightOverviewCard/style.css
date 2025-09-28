@@ -164,7 +164,7 @@
 .slider-handle {
   position: absolute;
   left: 50%;
-  bottom: calc(var(--value-percent, 50%) - 8px);
+  bottom: calc(var(--value-percent, 50%) - 28px);
   width: 32px;
   height: 5px;
   background: white;
@@ -177,6 +177,7 @@
   pointer-events: all;
   z-index: 10;
   touch-action: none;
+  margin-left: -20px;
 }
 
 /* 添加伪元素扩大点击区域 */

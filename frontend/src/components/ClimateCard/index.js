@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import BaseCard from '../BaseCard';
 import Icon from '@mdi/react';
 import { Icon as Icon2 } from '@iconify/react';
-
+import climateMode from "./ClimateMode";
 // import { useHass } from '@hakit/core';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { 
@@ -30,6 +30,9 @@ import './style.css';
 import { useEntity } from '@hakit/core';
 import { notification } from 'antd';
 import {renderIcon} from "../../common/SvgIndex";
+import Modal from "../Modal";
+import ClimateMode from "./ClimateMode";
+import LightControl from "../LightOverviewCard/LightControl";
 
 
 // 图标映射
@@ -58,13 +61,12 @@ function ClimateCard({
   const [showSwingModes, setShowSwingModes] = useState(false);
   const [showHvacModes, setShowHvacModes] = useState(false);
   const debugMode = localStorage.getItem('debugMode') === 'true';
-
+  const [showChildMode, setShowChildMode] = useState(false);
   const changeClimateIcon = (mode) => {
-
-   const  icon  = renderIcon('climate',mode);
-    return  icon;
+    return renderIcon('climate',mode);
   };
-
+  const clickTimeout = useRef(null);
+  const pressTimer = useRef(null);
   // 处理空调实体未找到的情况
   if (!climate) {
     if (debugMode) {
@@ -205,6 +207,29 @@ function ClimateCard({
     return mode === 'cool' || mode === 'heat';
   };
 
+  const handlePressStart = (climate) => {
+    // 只有 light 类型的实体才支持长按
+    if (!climate) return;
+    pressTimer.current = setTimeout(() => {
+      setShowChildMode(true);
+    }, 1000); // 500ms 长按触发
+  };
+
+  const handlePressEnd = () => {
+    if (pressTimer.current) {
+      clearTimeout(pressTimer.current);
+    }
+  };
+
+  const handleTouchStart = (climate, e) => {
+    // 只有 light 类型的实体才阻止默认事件和支持长按
+    if (!climate) return;
+
+    // e.preventDefault();
+    handlePressStart(climate);
+  };
+
+
   return (
     <BaseCard
       title={config.name || t('cardTitles.climate')}
@@ -220,27 +245,37 @@ function ClimateCard({
         </button>
       }
     >
-      <div className="climate-content">
+      <div className="climate-content"
+           onMouseDown={() => handlePressStart}
+           onMouseUp={handlePressEnd}
+           onMouseLeave={handlePressEnd}
+           onTouchStart={(e) => handleTouchStart(climate,e)}
+           onTouchEnd={handlePressEnd}
+      >
         <div className="climate-status">
           <div className="climate-readings">
             <div className="reading">
+              <div className="reading-value">
+                <span>{t('climate.currentTemp')}</span>
+                <div className="reading-value-unit">
+                  <span className="value">{currentShowTemp || '--'}</span>
+                  <span className="unit">°C</span>
+                </div>
+              </div>
               <div className="reading-label">
                 <Icon2 icon={changeClimateIcon('mdiThermometer')} size={48}  />
-                <span>{t('climate.currentTemp')}</span>
-              </div>
-              <div className="reading-value">
-                <span className="value">{currentShowTemp || '--'}</span>
-                <span className="unit">°C</span>
               </div>
             </div>
             <div className="reading">
-              <div className="reading-label">
-                <Icon2 icon={changeClimateIcon('mdiWaterPercent')} size={12} />
-                <span>{t('climate.currentHumidity')}</span>
-              </div>
               <div className="reading-value">
-                <span className="value">{currentShowHumidity || '--'}</span>
-                <span className="unit">%</span>
+                <span>{t('climate.currentHumidity')}</span>
+                 <div className="reading-value-unit">
+                    <span className="value">{currentShowHumidity || '--'}</span>
+                    <span className="unit">%</span>
+                 </div>
+              </div>
+              <div className="reading-label">
+                <Icon2 icon={changeClimateIcon('mdiWaterPercent')} size={48} />
               </div>
             </div>
           </div>
@@ -269,31 +304,20 @@ function ClimateCard({
 
 
         <div className="climate-controls">
-          <button
-              className="mode-button"
-              onClick={() => setShowHvacModes(true)}
-          >
-            <Icon2 icon={getHvacModeIcon(climate?.state)} size={14}/>
-            <span>{t('climate.operationMode')}</span>
+          <button className="mode-button" onClick={() => setShowHvacModes(true)}>
+            <Icon2 icon={getHvacModeIcon(climate?.state)} size={54} style={{marginTop: '0.69vw'}}/>
             <span className="mode-value">{getHvacModeLabel(climate?.state)}</span>
+            <span style={{marginBottom: '0.69vw'}}>{t('climate.operationMode')}</span>
           </button>
-          <button
-              className="mode-button"
-              onClick={() => setShowFanModes(true)}
-              disabled={!isOn}
-          >
-            <Icon2 icon={changeClimateIcon('mdiPowerOff')} size={14}/>
-            <span>{t('climate.fanMode')}</span>
+          <button className="mode-button" onClick={() => setShowFanModes(true)} disabled={!isOn}>
+            <Icon2 icon={changeClimateIcon('mdiPowerOff')} size={54} style={{marginTop: '0.69vw'}}/>
             <span className="mode-value">{fanMode}</span>
+            <span style={{marginBottom: '0.69vw'}}>{t('climate.fanMode')}</span>
           </button>
-          <button
-              className="mode-button"
-              onClick={() => setShowSwingModes(true)}
-              disabled={!isOn}
-          >
-            <Icon2 icon={changeClimateIcon('mdiFanOnly')} size={14}/>
-            <span>{t('climate.swingMode')}</span>
+          <button className="mode-button" onClick={() => setShowSwingModes(true)} disabled={!isOn}>
+            <Icon2 icon={changeClimateIcon('mdiFanOnly')} size={54} style={{marginTop: '0.69vw'}}/>
             <span className="mode-value">{getSwingModeLabel(swingMode)}</span>
+            <span style={{marginBottom: '0.69vw'}}>{t('climate.swingMode')}</span>
           </button>
         </div>
 
@@ -312,8 +336,8 @@ function ClimateCard({
                 onClick={() => feature.entity?.service?.toggle()}
                 disabled={isDisabled}
               >
-                <Icon2 icon={changeClimateIcon(feature.icon)} size={14} />
-                <span>{feature.name}</span>
+                <Icon2 icon={changeClimateIcon(feature.icon)} size={40} />
+                {/*<span>{feature.name}</span>*/}
               </button>
             );
           })}
@@ -409,6 +433,29 @@ function ClimateCard({
           </List>
         </div>
       </Popup>
+
+      {/* 灯光详细控制弹窗 */}
+      <Modal
+          visible={showChildMode}
+          onClose={() => setShowChildMode(false)}
+          title={config?.name}
+          // width="auto" /* 自适应宽度 */
+          style={{ maxWidth: '90vw', minWidth: '30vw' ,width:"80vw",height:'90vw' }} /* 设置最大最小宽度限制 */
+      >
+        {/* 仅对实际灯光设备显示控制面板 */}
+
+            <ClimateMode
+                visible={showChildMode}
+                climateEntity={climate}
+                climateName={config?.name}
+                onClose={() => setShowChildMode(false)}
+            />
+
+            {/*<LightControl lightEntity = {climate} />*/}
+
+      </Modal>
+
+
     </BaseCard>
   );
 }

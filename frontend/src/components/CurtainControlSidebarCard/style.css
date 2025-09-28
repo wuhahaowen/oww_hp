@@ -1,169 +1,142 @@
-.curtain-control-group {
-  background-image: linear-gradient(135deg, rgba(37, 44, 57, 1) 0, rgba(59, 60, 67, 1) 100%);
-  border-radius: 12px;
-  width: 16.12vw;
-  height: 7.78vw;
-  border: 0.5px;
-  justify-content: center;
-  margin: 1.11vw 0 0 1.66vw;
+/* CurtainControlSidebarCard styles */
+.home-curtain-control-card {
+    width: 16.12vw; /* 与LightControlSidebarCard宽度保持一致 */
+    height: 7.78vw; /* 与LightControlSidebarCard高度保持一致 */
+    background-image: linear-gradient(135deg, rgba(37, 44, 57, 1) 0, rgba(59, 60, 67, 1) 100%);
+    background-size: 100% 100%;
+    justify-content: space-between; /* 使左右内容分布到两端 */
+    align-items: center; /* 垂直居中对齐 */
+    border-radius: 1.04vw; /* 相对于屏幕宽度的1.04% (20px/1920px*100%) */
+    margin: 1.41vw auto 0 auto; /* 控件间距1.41vw (27px/1920px*100%)，居中对齐 */
+    backdrop-filter: blur(0.52vw); /* 相对于屏幕宽度的0.52% (10px/1920px*100%) */
+    -webkit-backdrop-filter: blur(0.52vw);
+    display: flex; /* 确保使用flex布局 */
+    border: none; /* 移除描边 */
+    box-sizing: border-box; /* 确保padding包含在尺寸内 */
 }
 
-.curtain-control-info {
-  width: 2.5vw;
-  height: 5.56vw;
-  margin: 1.11vw 0 0 1.66vw;
+.home-curtain-info-section {
+    width: 7.81vw; /* 相对于屏幕宽度的7.81% (150px/1920px*100%) */
+    height: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    margin: 0 0 0 2.08vw; /* 左侧2.08vw边距 (40px/1920px*100%)，垂直居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 内容分布到两端 */
+    align-items: flex-start; /* 左对齐 */
+    position: relative; /* 为绝对定位做准备 */
 }
 
-.curtain-control-title {
-  width: 2.5vw;
-  height: 1.95vw;
-  overflow-wrap: break-word;
-  color: rgba(255, 255, 255, 1);
-  font-size: 1.25vw;
-  font-family: MiSans-Semibold;
-  font-weight: 600;
-  text-align: left;
-  white-space: nowrap;
-  line-height: 1.95vw;
+/* 标题容器样式 */
+.home-curtain-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.52vw; /* 设置标题和状态文本之间的间距0.52vw (10px/1920px*100%) */
+    margin: 0; /* 移除所有边距，使其与父div没有间距 */
+    justify-content: flex-start; /* 左对齐 */
 }
 
-.curtain-control-area {
-  width: 1.67vw;
-  height: 1.25vw;
-  overflow-wrap: break-word;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.83vw;
-  font-family: MiSans-Demibold;
-  font-weight: normal;
-  text-align: left;
-  white-space: nowrap;
-  line-height: 1.25vw;
+.home-control-curtain-title {
+    width: auto; /* 自动宽度 */
+    height: 1.88vw; /* 相对于屏幕宽度的1.88% (36px/1920px*100%) */
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+    font-family: MiSans-Semibold, MiSans;
+    font-weight: 600;
+    font-size: 2vmin; /* 使用vmin单位实现更平衡的自适应效果 */
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.88vw; /* 行高与高度一致 */
+    margin: 0.68vw 0 0 0; /* 确保没有额外的边距 */
 }
 
-.curtain-control-switch {
-  width: 2.5vw;
-  height: 1.39vw;
-  margin-top: 0.98vw;
+.home-curtain-room {
+    width: auto; /* 自动宽度 */
+    height: 1.56vw; /* 相对于屏幕宽度的1.56% (30px/1920px*100%) */
+    overflow-wrap: break-word;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: MiSans, MiSans;
+    font-weight: 500;
+    font-size: 0.832vw; /* 将字体大小缩小20%，从1.04vw调整为0.832vw */
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.56vw; /* 行高与高度一致 */
+    margin: 0 0 1.1vw 0; /* 确保没有额外的边距 */
 }
 
-.curtain-control-status {
-  width: 1.67vw;
-  height: 1.25vw;
-  overflow-wrap: break-word;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.83vw;
-  font-family: MiSans-Medium;
-  font-weight: 500;
-  text-align: left;
-  white-space: nowrap;
-  line-height: 1.25vw;
-  margin: 1.45vw 0 0 0.55vw;
-}
-
-.curtain-control-image-wrapper {
-  height: 5.56vw;
-  width: 5.56vw;
-  margin: 1.11vw 1.66vw 0 2.5vw;
-}
-
-/*@media (max-width: 720px) {*/
-/*  .curtain-control-group {*/
-/*    border-radius: 6px;*/
-/*    width: 116px;*/
-/*    height: 56px;*/
-/*    border: 0.25px;*/
-/*    margin: 8px 0 0 12px;*/
-/*  }*/
-
-/*  .curtain-control-info {*/
-/*    width: 18px;*/
-/*    height: 40px;*/
-/*    margin: 8px 0 0 12px;*/
-/*  }*/
-
-/*  .curtain-control-title {*/
-/*    width: 18px;*/
-/*    height: 14px;*/
-/*    font-size: 9px;*/
-/*    line-height: 14px;*/
-/*  }*/
-
-/*  .curtain-control-area {*/
-/*    width: 12px;*/
-/*    height: 9px;*/
-/*    font-size: 6px;*/
-/*    line-height: 9px;*/
-/*  }*/
-
-/*  .curtain-control-switch {*/
-/*    width: 18px;*/
-/*    height: 10px;*/
-/*    margin-top: 7px;*/
-/*  }*/
-
-/*  .curtain-control-status {*/
-/*    width: 12px;*/
-/*    height: 9px;*/
-/*    font-size: 6px;*/
-/*    line-height: 9px;*/
-/*    margin: 10.5px 0 0 4px;*/
-/*  }*/
-
-/*  .curtain-control-image-wrapper {*/
-/*    height: 40px;*/
-/*    width: 40px;*/
-/*    margin: 8px 12px 0 18px;*/
-/*  }*/
-
-
+/*.home-curtain-switch{*/
+/*  margin:0 0  1vw 0.7vw; !* 确保没有额外的边距 *!*/
+/*  transform: scale(2) !important;*/
 /*}*/
 
-/*@media (min-width: 2880px) {*/
-/*  .curtain-control-group {*/
-/*    border-radius: 24px;*/
-/*    width: 464px;*/
-/*    height: 224px;*/
-/*    border: 1px;*/
-/*    margin: 32px 0 0 48px;*/
-/*  }*/
 
-/*  .curtain-control-info {*/
-/*    width: 72px;*/
-/*    height: 160px;*/
-/*    margin: 32px 0 0 48px;*/
-/*  }*/
 
-/*  .curtain-control-title {*/
-/*    width: 72px;*/
-/*    height: 56px;*/
-/*    font-size: 36px;*/
-/*    line-height: 56px;*/
-/*  }*/
+/*.curtain-flex-container{*/
+/*    display: inline-block; !* 防止缩放影响布局 *!*/
+/*    transform-origin: left top; !* 设置缩放基准点为左上角 *!*/
+/*    transition: transform 0.3s ease; !* 可选：添加平滑过渡效果 *!*/
 
-/*  .curtain-control-area {*/
-/*    width: 48px;*/
-/*    height: 36px;*/
-/*    font-size: 24px;*/
-/*    line-height: 36px;*/
-/*  }*/
-
-/*  .curtain-control-switch {*/
-/*    width: 72px;*/
-/*    height: 40px;*/
-/*    margin-top: 28px;*/
-/*  }*/
-
-/*  .curtain-control-status {*/
-/*    width: 48px;*/
-/*    height: 36px;*/
-/*    font-size: 24px;*/
-/*    line-height: 36px;*/
-/*    margin: 42px 0 0 16px;*/
-/*  }*/
-
-/*  .curtain-control-image-wrapper {*/
-/*    height: 160px;*/
-/*    width: 160px;*/
-/*    margin: 32px 48px 0 72px;*/
-/*  }*/
 /*}*/
+/*.home-curtain-switch {*/
+/*    width: 40px; !* 基准宽度 *!*/
+/*    height: 20px;    !* 基准高度 *!*/
+/*    margin-bottom: 30px ;*/
+/*}*/
+
+
+
+
+
+.home-curtain-status-text {
+    width: auto; /* 改为自动宽度 */
+    height: 1.56vw; /* 相对于屏幕宽度的1.56% (30px/1920px*100%) */
+    overflow-wrap: break-word;
+    color: rgba(254, 190, 94, 0.7);
+    font-family: MiSans, MiSans;
+    font-weight: 500;
+    font-size: 1.04vw; /* 相对于屏幕宽度的1.04% (20px/1920px*100%) */
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1.56vw; /* 行高与高度一致 */
+    margin: 1.2vw 0 0 0; /* 确保没有额外的边距 */
+}
+
+/* 图片容器样式 */
+.home-curtain-image-section {
+    width: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    height: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    margin: 0 2.08vw 0 auto; /* 右侧2.08vw边距 (40px/1920px*100%)，左侧自动推到右侧 */
+    display: flex;
+    justify-content: flex-end; /* 右对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+.home-curtain-image {
+    width: 100%; /* 占满容器宽度 */
+    height: 100%; /* 占满容器高度 */
+    display: block;
+    object-fit: contain; /* 保持图片比例 */
+}
+
+.curtain-animation-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.curtain-animation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 注释掉不存在的图片引用，避免运行时错误 */
+    /* background: url('../../assets/images/curtain_open_animation.png') no-repeat center; */
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.curtain-opening {
+    opacity: 1;
+}

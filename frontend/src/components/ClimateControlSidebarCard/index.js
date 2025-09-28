@@ -1,22 +1,28 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo,useRef,useEffect } from 'react';
 import { useEntity } from '@hakit/core';
 import './style.css';
 import  {notification, Switch,ConfigProvider } from "antd";
 import imageAssets, {getAsset} from "../../imageIndex";
 
 
+// 空调控制侧边栏卡片组件
 function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [], globalControl: true } }) {
-  const [selectedMode, setSelectedMode] = useState('auto');
-  const debugMode = process.env.NODE_ENV === 'development';
-  const [climateImg, setClimateImg] = useState("");
-  const [climateStatus, setClimateStatus] = useState("");
+  // 状态变量定义
+  const [selectedMode, setSelectedMode] = useState('auto'); // 选中的模式
+  const debugMode = process.env.NODE_ENV === 'development'; // 调试模式
+  const [climateImg, setClimateImg] = useState(""); // 空调图片状态
+  const [climateStatus, setClimateStatus] = useState(""); // 空调状态
+  const switchRef = useRef(null);
+  const [switchSize, setSwitchSize] = useState("small");
 
+  // 主题配置
   const theme ={
     token:{
       handleSize: 58
     }
   }
-  // Extract climate entities
+  
+  // 提取空调实体配置
   const climateEntities = useMemo(() => {
     const { climates = [] } = climateControlSidebarConfig;
     return climates.map((climate, index) => ({
@@ -27,20 +33,19 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
     }));
   }, [climateControlSidebarConfig]);
 
-  // Extract entity IDs for Hook calls
+  // 提取实体ID用于Hook调用
   const entityIds = useMemo(() => {
     return climateEntities.map(climate => climate.entity_id);
   }, [climateEntities]);
 
-  // Use entities at component top level - create dynamic hook calls
+  // 在组件顶层使用实体 - 创建动态hook调用
   const entities = {};
 
-  // We need to call useEntity for each entity ID at the top level
-  // Since the number of entities is dynamic, we'll use a different approach
-  const maxEntities = 20; // Reasonable limit for hooks
+  // 由于实体数量是动态的，我们需要采用不同的方法
+  const maxEntities = 20; // hook的合理限制
   const limitedEntityIds = entityIds.slice(0, maxEntities);
 
-  // Call hooks for each entity at top level - always call the same number of hooks
+  // 在顶层为每个实体调用hook - 始终调用相同数量的hook
   const entity0 = useEntity(entityIds[0] || 'climate.dummy_0', { returnNullIfNotFound: true });
   const entity1 = useEntity(entityIds[1] || 'climate.dummy_1', { returnNullIfNotFound: true });
   const entity2 = useEntity(entityIds[2] || 'climate.dummy_2', { returnNullIfNotFound: true });
@@ -52,7 +57,7 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
   const entity8 = useEntity(entityIds[8] || 'climate.dummy_8', { returnNullIfNotFound: true });
   const entity9 = useEntity(entityIds[9] || 'climate.dummy_9', { returnNullIfNotFound: true });
 
-  // Map entities back to their IDs
+  // 将实体映射回它们的ID
   const entityArray = [entity0, entity1, entity2, entity3, entity4, entity5, entity6, entity7, entity8, entity9];
   entityIds.forEach((entityId, index) => {
     if (index < maxEntities && entityArray[index] && entityId) {
@@ -60,7 +65,7 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
     }
   });
 
-  // Process climate data
+  // 处理空调数据
   const activeClimateDevices = useMemo(() => {
     return climateEntities
       .filter(climate => entities[climate.entity_id])
@@ -69,29 +74,14 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
         entity: entities[climate.entity_id]
       }));
   }, [climateEntities, entityIds]);
-  //   try {
-  //     // eslint-disable-next-line react-hooks/rules-of-hooks
-  //     const entity = useEntity(climate.entity_id);
-  //
-  //     acc[key] = {
-  //       ...climate,
-  //       entity,
-  //       key: climate.entity_id || `climate_${key}`,
-  //     };
-  //     return acc;
-  //   } catch (error) {
-  //     return acc;
-  //   }
-  // }, {});
 
-
-
-  // Calculate statistics
-  const totalClimateDevices = climateEntities.length;
+  // 计算统计信息
+  const totalClimateDevices = climateEntities.length; // 空调设备总数
   const onClimateDevices = Object.entries(climateEntities).filter(climate =>
     climate.entity?.state !== 'off'
-  ).length;
+  ).length; // 开启的空调设备数
 
+  // 计算平均目标温度
   const avgTargetTemp = useMemo(() => {
     const temps = Object.entries(climateEntities)
       .filter(climate => climate.entity?.attributes?.temperature)
@@ -101,11 +91,12 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
     return temps.reduce((sum, temp) => sum + temp, 0) / temps.length;
   }, [climateEntities]);
 
-
-  // Toggle all climate devices
+  // 切换所有空调设备
   const toggleAllClimate = async () => {
+    // 根据当前状态确定操作类型
     const action = onClimateDevices === totalClimateDevices ? 'turn_off' : 'turn_on';
 
+    // 为每个实体创建操作Promise
     const promises = Object.entries(climateEntities).map(async (climate) => {
       try {
         await climate.entity.service.callService('climate', action, {
@@ -113,24 +104,26 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
         });
       } catch (error) {
         if (debugMode) {
-          console.warn(`Failed to ${action} climate ${climate.name}:`, error);
+          console.warn(`切换空调失败 ${climate.name}:`, error);
         }
       }
     });
 
     try {
+      // 等待所有操作完成
       await Promise.all(promises);
     } catch (error) {
       if (debugMode) {
-        console.warn(`Failed to ${action} climate devices:`, error);
+        console.warn(`切换空调设备失败:`, error);
       }
     }
   };
 
-  // Change mode for all devices
+  // 更改所有设备的模式
   const handleModeChange = async (mode) => {
-    setSelectedMode(mode);
+    setSelectedMode(mode); // 更新选中的模式
 
+    // 为每个开启的设备创建模式设置Promise
     const promises = Object.entries(climateEntities)
       .filter(climate => climate.entity?.state !== 'off')
       .map(async (climate) => {
@@ -141,24 +134,27 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
           });
         } catch (error) {
           if (debugMode) {
-            console.warn(`Failed to set mode for climate ${climate.name}:`, error);
+            console.warn(`设置空调模式失败 ${climate.name}:`, error);
           }
         }
       });
 
     try {
+      // 等待所有操作完成
       await Promise.all(promises);
     } catch (error) {
       if (debugMode) {
-        console.warn('Failed to set climate mode:', error);
+        console.warn('设置空调模式失败:', error);
       }
     }
   };
 
-  // Adjust temperature
+  // 调整温度
   const handleTempAdjust = async (delta) => {
+    // 计算新温度，限制在16-32度之间
     const newTemp = Math.max(16, Math.min(32, avgTargetTemp + delta));
 
+    // 为每个开启的设备创建温度设置Promise
     const promises = Object.entries(climateEntities)
       .filter(climate => climate.entity?.state !== 'off')
       .map(async (climate) => {
@@ -169,49 +165,85 @@ function ClimateControlSidebarCard({ climateControlSidebarConfig = { climates: [
           });
         } catch (error) {
           if (debugMode) {
-            console.warn(`Failed to set temperature for climate ${climate.name}:`, error);
+            console.warn(`设置空调温度失败 ${climate.name}:`, error);
           }
         }
       });
 
     try {
+      // 等待所有操作完成
       await Promise.all(promises);
     } catch (error) {
       if (debugMode) {
-        console.warn('Failed to set climate temperature:', error);
+        console.warn('设置空调温度失败:', error);
       }
     }
   };
 
-
+  // 开关状态改变处理函数
   const onChange = (checked) => {
+    alert(window.innerWidth+"---"+window.innerHeight);
     if(checked){
+      // 开启所有空调
       toggleAllClimate().then(r=>{
         setClimateImg(getAsset('lighting', 'allOn'))
         setClimateStatus("ON")
       })
     }else{
+      // 关闭所有空调
       toggleAllClimate().then(r=>{
         setClimateImg(getAsset('lighting', 'allOff'))
         setClimateStatus("OFF")
       })
     }
-
   };
 
+  useEffect(() => {
+    function handleResize() {
+      // 获取当前窗口的宽度
+      const width = window.innerWidth;
+      // 根据窗口宽度设置图片的宽度
+      if (width < 1440) {
+        // 移动设备
+        setSwitchSize("small");
+      } else {
+        // PC设备
+        setSwitchSize("default");
+      }
+    }
+    handleResize();
+
+    //监听页面大小
+    window.addEventListener('resize', handleResize)
+  })
+
+
   return (
-      // className="home-climate-switch"
-      <div className="climate-control-group flex-row">
-        <div className="climate-control-info flex-col">
-          <span className="climate-control-title">空调</span>
-          <span className="climate-control-area">全屋</span>
-            <Switch className="home-climate-switch" size ="small"  onChange={onChange} />
-        </div>
-        <span className="climate-control-status">{climateStatus?climateStatus:"OFF"}</span>
-        <img
-            className="climate-control-image"
-            src={imageAssets.climate.icon}
-        />
+      // 空调控制卡片容器
+      <div className="home-climate-control-card flex-row">
+          {/* 空调信息区域 */}
+          <div className="home-climate-info-section">
+              {/* 标题和状态容器 */}
+              <div className="home-climate-title-container flex-row">
+                  <span className="home-control-climate-title">空调</span>
+                  <span className="home-climate-status-text">{climateStatus?climateStatus:"OFF"}</span>
+              </div>
+              {/* 房间信息 */}
+              <span className="home-climate-room">全屋</span>
+              {/*<div className="flex-container" ></div>*/}
+                {/* 空调开关控件 */}
+                <Switch  ref={switchRef}  size={switchSize} style={{width: '3.56vw',height: '5.56vw',margin:"0 1.66vw 2.84vw 0"}} checked={climateStatus === "ON"} onChange={onChange} />
+
+            
+          </div>
+          {/* 空调图片区域 */}
+          <div className="home-climate-image-section">
+              <img
+                  className="home-climate-image"
+                  src={imageAssets.climate.icon}
+                  alt="空调控制"
+              />
+          </div>
       </div>
   );
 }

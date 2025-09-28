@@ -1,0 +1,700 @@
+/* === 全局样式重置 === */
+/*body * {*/
+/*  box-sizing: border-box;*/
+/*  flex-shrink: 0;*/
+/*}*/
+
+body {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, PingFang SC-Light, Microsoft YaHei;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  outline: none;
+  background-color: transparent;
+}
+
+button:active {
+  opacity: 0.6;
+}
+
+/* === 布局工具类 === */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.justify-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.justify-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.align-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* === 主容器样式 === */
+.device-3d-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%; /* 防止超出父容器 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 禁止主容器滚动 */
+  /* 确保主容器可以正常显示滚动内容 */
+  min-height: 0;
+}
+
+/* 基础布局类 */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 主容器 */
+.section_11 {
+  gap: 16px;
+  height: 100%; /* 填满父容器 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 禁止滚动 */
+}
+
+/* 顶部标题区域 */
+.box_7 {
+  align-items: center;
+  margin-bottom: 12px;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+.light3d-title {
+  margin-top: 20px;
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.light3d-control-close {
+  margin-right: 20px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.light3d-control-close:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+.thumbnail_8 {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 统计信息 */
+.text-light-info{
+  margin-top: -20px;
+  margin-left: 30px;
+}
+
+.text_36 {
+  font-size: 14px;
+  opacity: 0.8;
+  color: white;
+}
+
+/* 分隔线样式 */
+.divider-line {
+  width: 85%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px auto;
+  flex-shrink: 0;
+}
+
+/* === Light3D组件专用样式 === */
+
+/* 主容器样式 */
+.light3d-main-container {
+  gap: 16px;
+  height: 100%; /* 填满父容器 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 禁止滚动 */
+}
+
+/* 顶部标题区域 */
+.light3d-header-container {
+  align-items: center;
+  margin-bottom: 12px;
+  flex-shrink: 0; /* 防止被压缩 */
+}
+
+/* 统计信息样式 */
+.light3d-stats-info {
+  margin-top: -20px;
+  margin-left: 30px;
+  font-size: 14px;
+  opacity: 0.8;
+  color: white;
+}
+
+/* Light3D专用分隔线样式 */
+.light3d-divider-line {
+  width: 85%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px auto;
+  flex-shrink: 0;
+}
+
+/* === Light3D网格容器样式 === */
+.light3d-grid-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8%;
+  padding-left: 4%;
+  margin-bottom: 18px;
+  /* CSS Grid 网格布局 */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 两列网格 */
+  gap: 12px; /* 网格间距 */
+  align-content: start; /* 从顶部开始排列 */
+
+  /* 柔和滚动效果 */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  /* 滚动性能优化 */
+  transform: translateZ(0); /* 开启硬件加速 */
+  will-change: scroll-position;
+
+  /* 惯性滚动效果 - 让滚动更加自然 */
+  scroll-padding: 20px;
+
+  /* 自定义滚动条样式 - 符合用户偏好使用原生滚动条 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* WebKit 浏览器滚动条样式 */
+.light3d-grid-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.light3d-grid-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.light3d-grid-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.light3d-grid-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* === Light3D灯光按钮样式 === */
+.light3d-item-button {
+  background: linear-gradient(135deg, rgba(37, 44, 57, 1), rgba(59, 60, 67, 1));
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 120px;
+  gap: 8px;
+  outline: none;
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.light3d-item-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.light3d-item-button:active {
+  opacity: 0.6;
+  transform: translateY(0);
+}
+
+/* Light3D左对齐样式类 */
+.light3d-item-left-align {
+  align-items: flex-start !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+  padding: 16px 12px !important;
+  min-height: 100px !important;
+  overflow: hidden !important;
+}
+
+/* Light3D按钮内的文字样式 */
+.light3d-item-name {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 14px !important;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+.light3d-status-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: 2px !important;
+  margin: 0 !important;
+}
+
+.light3d-status-text {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 11px !important;
+  font-weight: 600;
+  margin: 0 !important;
+  text-align: left !important;
+  color: #4CAF50;
+}
+
+.light3d-time-text {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 11px !important;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 !important;
+}
+
+.light3d-status-switch {
+  margin-top: auto;
+}
+
+/* WebKit 浏览器滚动条样式 */
+.light-grid-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.light-grid-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.light-grid-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.light-grid-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 灯光组样式 */
+.light-group {
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.light-group:last-child {
+  margin-bottom: 0;
+}
+
+/* 灯光项目容器 */
+.box_8, .box_9, .box_10, .box_13, .box_16 {
+  gap: 12px;
+  /* 移除margin-bottom，由.light-group统一管理 */
+}
+
+/* === 灯光控制按钮样式 === */
+.light-control-button {
+  background: linear-gradient(135deg, rgba(37, 44, 57, 1), rgba(59, 60, 67, 1));
+  /* border: 1px solid transparent; */
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 120px;
+  gap: 8px; /* 元素之间的间距 */
+  outline: none;
+  /* color: white; */
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+
+  /* 网格布局中的适配 */
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中 */
+  justify-content: space-between; /* 垂直分布 */
+}
+
+.light-control-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.light-control-button:active {
+  opacity: 0.6;
+  transform: translateY(0);
+}
+
+/* 左对齐样式类 */
+.light-button-left-align {
+  align-items: flex-start !important; /* 左对齐 */
+  gap: 12px !important; /* 减少间距到12px，更紧凑 */
+  justify-content: flex-start !important; /* 从顶部开始排列 */
+  padding: 16px 12px !important; /* 减少内边距，更紧凑 */
+  min-height: 100px !important; /* 减少最小高度 */
+  overflow: hidden !important; /* 防止内容超出 */
+}
+
+/* 左对齐按钮内的文字左对齐 */
+.light-button-left-align .light-name,
+.light-button-left-align .text_37 {
+  text-align: left !important;
+  align-self: flex-start !important;
+  font-size: 14px !important; /* 减小字体大小 */
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  white-space: nowrap !important; /* 防止换行 */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; /* 超出显示省略号 */
+  max-width: 100% !important;
+}
+
+.light-button-left-align .text-wrapper_4 {
+  justify-content: flex-start !important;
+  align-self: flex-start !important;
+  margin: 0 !important; /* 移除额外边距 */
+  gap: 2px !important; /* 减小间距 */
+}
+
+.light-button-left-align .light-status {
+  text-align: left !important;
+  font-size: 11px !important; /* 减小字体 */
+  margin: 0 !important;
+}
+
+.light-button-left-align .light-time {
+  font-size: 11px !important; /* 减小字体 */
+  margin: 0 !important;
+}
+
+/* === 统一字体样式 === */
+/* 灯光文字内容容器 */
+.light-text-content {
+  gap: 4px;
+  text-align: center; /* 垂直布局中所有文字居中对齐 */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 灯光名称样式 - 对应text_37 */
+.light-name, .text_37 {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+  text-align: center;
+}
+
+/* 状态包装器 - 对应text-wrapper_4 */
+.text-wrapper_4 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+/* 灯光状态样式 */
+.light-status {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ON状态颜色 */
+.light-status-on {
+  color: #ff8a05;
+}
+
+/* OFF状态颜色 */
+.light-status-off {
+  color: #f44336;
+}
+
+/* 灯光时间样式 */
+.light-time {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+  margin: 0;
+}
+
+/* 灯光图标样式 - 对应image_10 */
+/*.light-icon, .image_10 {*/
+/*  width: 40px;*/
+/*  height: 20px;*/
+/*  object-fit: contain;*/
+/*  flex-shrink: 0;*/
+/*  margin-top: auto; !* 图标位于底部 *!*/
+/*}*/
+
+/* 原有的灯光名称样式 - 保持兼容性 */
+/* 原有的灯光名称样式 - 保持兼容性 */
+.text_37, .text_40, .text_43, .text_46, .text_49, .text_51, .text_53, .text_55, .text_57, .text_59 {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+/* 灯光状态样式 */
+.light-status {
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* ON状态颜色 */
+.light-status:contains('ON'),
+.text_38, .text_41, .text_44, .text_47 {
+  color: #f19d01;
+}
+
+/* OFF状态颜色 */
+.light-status:contains('OFF'),
+.text_50, .text_52, .text_54, .text_56, .text_58, .text_60 {
+  color: #f44336;
+}
+
+/* 灯光时间样式 */
+.light-time {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 灯光图标样式 */
+/*.light-icon {*/
+/*  width: 40px;*/
+/*  height: 40px;*/
+/*  object-fit: contain;*/
+/*  margin-top: auto;*/
+/*}*/
+
+/* 单个灯光项目 */
+.section_12, .section_13, .block_3, .block_4, .box_11, .box_12, .box_14, .box_15, .block_5, .block_6 {
+  /* 这些类名保持兼容性，但现在应用在button元素上 */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 120px;
+  justify-content: space-between;
+}
+
+.section_12:hover, .section_13:hover, .block_3:hover, .block_4:hover,
+.box_11:hover, .box_12:hover, .box_14:hover, .box_15:hover,
+.block_5:hover, .block_6:hover,
+.light-control-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 灯光名称 */
+.text_37, .text_40, .text_43, .text_46, .text_49, .text_51, .text_53, .text_55, .text_57, .text_59 {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 4px;
+}
+
+/* 状态信息包装器 */
+.text-wrapper_4, .text-wrapper_5, .text-wrapper_6, .text-wrapper_7 {
+  margin-bottom: 8px;
+}
+
+/* ON状态文字 - 统一字体 */
+.text_38, .text_41, .text_44, .text_47 {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 12px;
+  font-weight: 600;
+  color: #af844c;
+  margin-right: 4px;
+  line-height: 1;
+}
+
+/* 时间文字 - 统一字体 */
+.text_39, .text_42, .text_45, .text_48 {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+}
+
+/* OFF状态文字 - 统一字体 */
+.text_50, .text_52, .text_54, .text_56, .text_58, .text_60 {
+  font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, 'PingFang SC-Light', 'Microsoft YaHei';
+  font-size: 12px;
+  font-weight: 600;
+  color: #f44336;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+/* 灯光状态图标 */
+.image_10, .image_11, .image_12, .image_13, .image_14, .image_15,
+.image_16, .image_17, .image_18, .image_19 {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-top: auto;
+}
+
+/* 响应式设计 */
+@media (min-width: 480px) {
+  .section_12, .section_13, .block_3, .block_4, .box_11, .box_12,
+  .box_14, .box_15, .block_5, .block_6 {
+    min-height: 140px;
+  }
+
+  .image_10, .image_11, .image_12, .image_13, .image_14, .image_15,
+  .image_16, .image_17, .image_18, .image_19 {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .device-3d-card {
+    padding: 24px;
+  }
+
+  .section_11 {
+    gap: 20px;
+  }
+
+  .box_8, .box_9, .box_10, .box_13, .box_16 {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .section_12, .section_13, .block_3, .block_4, .box_11, .box_12,
+  .box_14, .box_15, .block_5, .block_6 {
+    padding: 20px;
+    min-height: 160px;
+  }
+
+  .text_37, .text_40, .text_43, .text_46, .text_49, .text_51,
+  .text_53, .text_55, .text_57, .text_59 {
+    font-size: 18px;
+  }
+
+  .image_10, .image_11, .image_12, .image_13, .image_14, .image_15,
+  .image_16, .image_17, .image_18, .image_19 {
+    width: 56px;
+    height: 56px;
+  }
+}

@@ -106,7 +106,7 @@
 }
 
 .electricity-yearly-info {
-  display: initial;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   gap: var(--spacing-lg);

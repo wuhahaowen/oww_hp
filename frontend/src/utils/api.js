@@ -1,4 +1,5 @@
 import axios from 'axios';
+import imageAssets from "../imageIndex";
 
 // 创建不需要认证的axios实例
 const publicAxiosInstance = axios.create({
@@ -50,7 +51,6 @@ axiosInstance.interceptors.response.use(
 // 应用背景设置到body
 export const applyBackgroundToBody = (globalConfig) => {
   if (!globalConfig) return;
-
   // 检测当前主题模式 - 只检查应用内部的主题标记，不考虑系统偏好
   const isDarkMode = document.documentElement.classList.contains('dark') || 
                      document.documentElement.getAttribute('data-theme') === 'dark';
@@ -72,15 +72,25 @@ export const applyBackgroundToBody = (globalConfig) => {
 
   // 设置背景图片
   if (backgroundImage) {
-    document.body.style.backgroundImage = `url(${backgroundImage})`;
+    // document.body.style.backgroundImage = `url(${backgroundImage})`;
+    document.body.style.backgroundImage = `url(${imageAssets.common.background})`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundAttachment = 'fixed';
+    // 添加高斯模糊效果
+    document.body.style.backdropFilter = 'blur(20px)';
+    // 兼容WebKit浏览器
+    document.body.style.webkitBackdropFilter = 'blur(20px)';
   } else {
-    document.body.style.backgroundImage = 'none';
+   // document.body.style.backgroundImage = 'none';
+    document.body.style.backgroundImage = `url(${imageAssets.common.background})`;
     document.body.style.backgroundSize = '';
     document.body.style.backgroundPosition = '';
     document.body.style.backgroundAttachment = '';
+    // 添加高斯模糊效果
+    document.body.style.backdropFilter = 'blur(20px)';
+    // 兼容WebKit浏览器
+    document.body.style.webkitBackdropFilter = 'blur(20px)';
   }
   
   // 添加主题变化监听器

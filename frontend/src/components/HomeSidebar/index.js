@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useLanguage} from '../../i18n/LanguageContext';
 import {useTheme} from '../../theme/ThemeContext';
@@ -12,7 +12,6 @@ import {
     HomeSidebarDashboard
 } from '../index';
 
-
 import './style.css';
 
 function HomeSidebar({
@@ -25,22 +24,36 @@ function HomeSidebar({
                          weatherConfig = {entity_id: 'weather.home'},
                          onNavigateToOverview,
                          onNavigateToControl,
-                         activeButton = ""
+                         activeButton = "",
+                         onToggleAllLights, // 灯光控制函数
+                         onControlAllCurtains // 窗帘控制函数
                      }) {
+    // 构造传递给 LightControlSidebarCard 的配置对象，使其与 LightStatusCard 的配置结构一致
+    const lightControlCardConfig = {
+        lights: allLights.reduce((acc, light, index) => {
+            // 确保 light 对象存在且有 entity_id
+            if (light && light.entity_id) {
+                acc[`light_${index}`] = light;
+            }
+            return acc;
+        }, {})
+    };
+
     return (
-        <aside className="home-sidebar flex-col">
-            {/* Time and Weather Section */}
+        <div className="home-sidebar flex-col">
+            {/* 时间和天气部分 - 显示当前时间和天气信息 */}
             <TimeWeatherSidebarCard
                 currentTime={currentTime}
                 timeCardConfig={timeCardConfig}
                 weatherConfig={weatherConfig}
             />
 
-            {/* Light Status Section */}
+            {/* 灯光状态部分 - 显示家中灯光的总体状态 */}
             <LightStatusSidebarCard
                 allLights={allLights}
             />
 
+            {/* 常用开关标题区域 - 居中对齐与其他控件保持一致 */}
             <div className="home_switch_group flex-row justify-between">
                 <span className="home_switch_text">常用开关</span>
                 <img
@@ -49,26 +62,27 @@ function HomeSidebar({
                 />
             </div>
 
-            {/* Light Control Section */}
+            {/* 灯光控制部分 - 提供全局灯光控制功能，居中对齐 */}
             <LightControlSidebarCard
-                lightControlConfig={lightControlConfig}
+                config={lightControlCardConfig}
+                onToggleAllLights={onToggleAllLights} // 传递灯光控制函数
             />
 
-
-            {/* Climate Control Section */}
+            {/* 空调控制部分 - 提供全局空调控制功能，样式与灯光控制保持一致，居中对齐 */}
             <ClimateControlSidebarCard
                 climateControlSidebarConfig={climateControlSidebarConfig}
             />
 
-            {/* Curtain Control Section */}
+            {/* 窗帘控制部分 - 提供全局窗帘控制功能，样式与灯光控制保持一致，居中对齐 */}
             <CurtainControlSidebarCard
                 curtainControlSidebarConfig={curtainControlSidebarConfig}
+                onControlAllCurtains={onControlAllCurtains} // 传递窗帘控制函数
             />
 
-            {/* Bottom Navigation */}
+            {/* 底部导航区域 - 提供页面导航功能 */}
             <HomeSidebarDashboard />
 
-        </aside>
+        </div>
     );
 }
 

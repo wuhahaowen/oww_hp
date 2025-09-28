@@ -1,166 +1,167 @@
 /* LightControlSidebarCard styles */
-   .home-light-control-card {
-       width: 16.12vw;
-       height: 7.78vw;
-       background: url(controllerBackground.png) 100% no-repeat;
-       background-size: 100% 100%;
-       justify-content: center;
-       margin: 0.69vw 0 0 1.66vw;
-   }
+.home-light-control-card {
+    width: 16.12vw; /* 与LightStatusSidebarCard宽度保持一致 */
+    height: 7.78vw; /* 与HomeSidebar中其他控制卡片高度保持一致 */
+    background-image: linear-gradient(135deg, rgba(37, 44, 57, 1) 0, rgba(59, 60, 67, 1) 100%);
+    background-size: 100% 100%;
+    justify-content: space-between; /* 使左右内容分布到两端 */
+    align-items: center; /* 垂直居中对齐 */
+    border-radius: 1.04vw; /* 相对于屏幕宽度的1.04% (20px/1920px*100%) */
+    margin: 1.41vw auto 0 auto; /* 控件间距1.41vw (27px/1920px*100%)，居中对齐 */
+    backdrop-filter: blur(0.52vw); /* 相对于屏幕宽度的0.52% (10px/1920px*100%) */
+    -webkit-backdrop-filter: blur(0.52vw);
+    display: flex; /* 确保使用flex布局 */
+    border: none; /* 移除描边 */
+    box-sizing: border-box; /* 确保padding包含在尺寸内 */
+}
 
 .home-light-info-section {
-    width: 2.5vw;
-    height: 5.56vw;
-    margin: 1.11vw 0 0 1.66vw;
+    width: 7.81vw; /* 相对于屏幕宽度的7.81% (150px/1920px*100%) */
+    height: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    margin: 0 0 0 2.08vw; /* 左侧2.08vw边距 (40px/1920px*100%)，垂直居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 内容分布到两端 */
+    align-items: flex-start; /* 左对齐 */
+    position: relative; /* 为绝对定位做准备 */
+}
+
+/* 标题容器样式 */
+.home-light-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.52vw; /* 设置标题和状态文本之间的间距0.52vw (10px/1920px*100%) */
+    margin: 0; /* 移除所有边距，使其与父div没有间距 */
+    justify-content: flex-start; /* 左对齐 */
 }
 
 .home-control-light-title {
-    width: 2.5vw;
-    height: 1.95vw;
+    width: auto; /* 自动宽度 */
+    height: 1.88vw; /* 相对于屏幕宽度的1.88% (36px/1920px*100%) */
     overflow-wrap: break-word;
     color: rgba(255, 255, 255, 1);
-    font-size: 1.25vw;
-    font-family: MiSans-Semibold;
+    font-family: MiSans-Semibold, MiSans;
     font-weight: 600;
+    font-size: 2vmin; /* 使用vmin单位实现更平衡的自适应效果 */
     text-align: left;
     white-space: nowrap;
-    line-height: 1.95vw;
+    line-height: 1.88vw; /* 行高与高度一致 */
+    margin: 0.68vw 0 0 0; /* 确保没有额外的边距 */
 }
 
 .home-light-room {
-    width: 1.67vw;
-    height: 1.25vw;
+    width: auto; /* 自动宽度 */
+    height: 1.56vw; /* 相对于屏幕宽度的1.56% (30px/1920px*100%) */
     overflow-wrap: break-word;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.83vw;
-    font-family: MiSans-Demibold;
-    font-weight: normal;
+    font-family: MiSans, MiSans;
+    font-weight: 500;
+    font-size: 0.832vw; /* 将字体大小缩小20%，从1.04vw调整为0.832vw */
     text-align: left;
     white-space: nowrap;
-    line-height: 1.25vw;
+    line-height: 1.56vw; /* 行高与高度一致 */
+    margin: 0 0 1.1vw 0; /* 确保没有额外的边距 */
 }
 
-.home-light-switch {
-    width: 2.5vw;
-    height: 1.39vw;
-    margin-top: 0.98vw;
+.flex-container {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: left; /* 水平居中 */
+  width: 100%; /* 容器宽度 */
+  /*height: 2.6vw; !* 容器高度，根据需要调整 (50px/1920px*100%) *!*/
 }
+
+
+/* 更新后的 style.css 文件 */
+/*.home-light-switch {*/
+/*}*/
+
+
+
+/* 响应式版本的 style.css 文件 */
+/* 修改后的 style.css 文件 */
+/* 修改后的 style.css 文件 */
+/* 修改后的 style.css 文件 */
+/*.home-light-switch {*/
+/*    width: 80px;*/
+/*    height: 40px;*/
+/*    border-radius: 20px;*/
+/*    transition: all 0.3s ease;*/
+/*    margin-bottom: 16px;*/
+/*}*/
+
+/*.home-light-switch .ant-switch-handle {*/
+/*    width: 56px;*/
+/*    height: 56px; !* 将高度设置为与宽度相同的值，确保始终是正方形 *!*/
+/*    top: -8px;*/
+/*    left: -8px;*/
+/*    border-radius: 50%; !* 确保圆角半径为正方形的一半，形成完美的圆形 *!*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.home-light-switch .ant-switch-checked {*/
+/*    background-color: #f59e0b;*/
+/*}*/
+
+/*.home-light-switch .ant-switch-unchecked {*/
+/*    background-color: #d1d5da;*/
+/*}*/
+
+
+
+/* 更新后的 style.css 文件 */
+.home-light-switch {
+    width: 3.56vw;
+    height: 5.56vw;
+    margin: 0 1.66vw 2.84vw 0;
+}
+
+/*.home-light-switch .ant-switch-handle {*/
+/*    !*width: 1.389vw;*!*/
+/*    !*height: 1.389vw;*!*/
+/*    top: -0.208vw;*/
+/*    left: -0.208vw;*/
+/*    border-radius: 50%;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+.home-light-switch .ant-switch-checked {
+    background-color: #f59e0b;
+}
+
+.home-light-switch .ant-switch-unchecked {
+    background-color: #d1d5da;
+}
+
 
 .home-light-status-text {
-    width: 1.32vw;
-    height: 1.25vw;
+    width: auto; /* 改为自动宽度 */
+    height: 1.56vw; /* 相对于屏幕宽度的1.56% (30px/1920px*100%) */
     overflow-wrap: break-word;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.83vw;
-    font-family: MiSans-Medium;
+    color: rgba(254, 190, 94, 0.7);
+    font-family: MiSans, MiSans;
     font-weight: 500;
+    font-size: 1.04vw; /* 相对于屏幕宽度的1.04% (20px/1920px*100%) */
     text-align: left;
     white-space: nowrap;
-    line-height: 1.25vw;
-    margin: 1.45vw 0 0 0.55vw;
+    line-height: 1.56vw; /* 行高与高度一致 */
+    margin: 1.2vw 0 0 0; /* 确保没有额外的边距 */
+}
+
+/* 图片容器样式 */
+.home-light-image-section {
+    width: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    height: 7.29vw; /* 相对于屏幕宽度的7.29% (140px/1920px*100%) */
+    margin: 0 2.08vw 0 auto; /* 右侧2.08vw边距 (40px/1920px*100%)，左侧自动推到右侧 */
+    display: flex;
+    justify-content: flex-end; /* 右对齐 */
+    align-items: center; /* 垂直居中 */
 }
 
 .home-light-bulb-image {
-    width: 5.56vw;
-    height: 5.56vw;
-    margin: 1.11vw 1.66vw 0 2.84vw;
+    width: 100%; /* 占满容器宽度 */
+    height: 100%; /* 占满容器高度 */
+    display: block;
+    object-fit: contain; /* 保持图片比例 */
 }
-
-
-/* Responsive adjustments */
-/*@media (max-width: 720px) {*/
-/*    .home-light-control-card {*/
-/*        width: 116px;*/
-/*        height: 56px;*/
-/*        margin: 5px 0 0 12px;*/
-/*    }*/
-
-/*    .home-light-info-section {*/
-/*        width: 18px;*/
-/*        height: 40px;*/
-/*        margin: 8px 0 0 12px;*/
-/*    }*/
-
-/*    .home-control-light-title {*/
-/*        width: 18px;*/
-/*        height: 14px;*/
-/*        font-size: 9px;*/
-/*        line-height: 14px;*/
-/*    }*/
-
-/*    .home-light-room {*/
-/*        width: 12px;*/
-/*        height: 9px;*/
-/*        font-size: 6px;*/
-/*        line-height: 9px;*/
-/*    }*/
-
-/*    .home-light-switch {*/
-/*        width: 18px;*/
-/*        height: 10px;*/
-/*        margin-top: 7px;*/
-/*    }*/
-
-/*    .home-light-status-text {*/
-/*        width: 9.5px;*/
-/*        height: 9px;*/
-/*        font-size: 6px;*/
-/*        line-height: 9px;*/
-/*        margin: 15.5px 0 0 4px;*/
-/*    }*/
-
-/*    .home-light-bulb-image {*/
-/*        width: 40px;*/
-/*        height: 40px;*/
-/*        margin: 8px 12px 0 20.5px;*/
-/*    }*/
-
-/*}*/
-
-/*@media (min-width: 2880px) {*/
-/*    .home-light-control-card {*/
-/*        width: 464px;*/
-/*        height: 224px;*/
-/*        margin: 20px 0 0 48px;*/
-/*    }*/
-
-/*    .home-light-info-section {*/
-/*        width: 72px;*/
-/*        height: 160px;*/
-/*        margin: 32px 0 0 48px;*/
-/*    }*/
-
-/*    .home-control-light-title {*/
-/*        width: 72px;*/
-/*        height: 56px;*/
-/*        font-size: 36px;*/
-/*        line-height: 56px;*/
-/*    }*/
-
-/*    .home-light-room {*/
-/*        width: 48px;*/
-/*        height: 36px;*/
-/*        font-size: 24px;*/
-/*        line-height: 36px;*/
-/*    }*/
-
-/*    .home-light-switch {*/
-/*        width: 72px;*/
-/*        height: 40px;*/
-/*        margin-top: 28px;*/
-/*    }*/
-
-/*    .home-light-status-text {*/
-/*        width: 38px;*/
-/*        height: 36px;*/
-/*        font-size: 24px;*/
-/*        line-height: 36px;*/
-/*        margin: 62px 0 0 16px;*/
-/*    }*/
-
-/*    .home-light-bulb-image {*/
-/*        width: 160px;*/
-/*        height: 160px;*/
-/*        margin: 32px 48px 0 82px;*/
-/*    }*/
-/*}*/

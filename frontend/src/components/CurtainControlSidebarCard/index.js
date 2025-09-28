@@ -1,178 +1,152 @@
-import React, {useMemo, useState} from 'react';
-import {useEntities, useEntity} from '@hakit/core';
+import React, {useState, useCallback, useMemo, useEffect} from 'react';
 import './style.css';
 import {Switch} from "antd";
-import imageAssets, {getAsset} from "../../imageIndex";
+import imageAssets from "../../imageIndex";
 
-function CurtainControlSidebarCard({ curtainControlSidebarConfig = { curtains: [], globalControl: true } }) {
-  // const [showControl, setShowControl] = useState(false);
-  // const [selectedLight, setSelectedLight] = useState(null);
-  const debugMode = process.env.NODE_ENV === 'development';
-  // const [curtainsImg, setCurtainsImg] = useState("");
-  // const [curtainsStatus, setCurtainsStatus] = useState("");
+// 窗帘控制侧边栏卡片组件
+function CurtainControlSidebarCard({ curtainControlSidebarConfig = { curtains: [], globalControl: true }, onControlAllCurtains }) {
+  // 状态变量定义
+  const [curtainsStatus, setCurtainsStatus] = useState("OFF"); // 窗帘状态
+  const [isAllCurtainsOpen, setIsAllCurtainsOpen] = useState(false); // 窗帘开关状态
+  const debugMode = localStorage.getItem('debugMode') === 'true'; // 调试模式
+  const [switchSize, setSwitchSize] = useState("small");
+  // 初始化默认值
+  let isValidConfig = true;
 
-  // 提取窗帘实体
+  // 确保 curtainControlSidebarConfig 是一个对象
   if (!curtainControlSidebarConfig || typeof curtainControlSidebarConfig !== 'object') {
+    console.warn('CurtainControlSidebarCard: curtainControlSidebarConfig is not an object or is null', curtainControlSidebarConfig);
+    isValidConfig = false;
+  }
+  
+  // 检查 curtains 是否存在且为对象
+  if (isValidConfig && (!curtainControlSidebarConfig.curtains || typeof curtainControlSidebarConfig.curtains !== 'object')) {
+    console.warn('CurtainControlSidebarCard: curtainControlSidebarConfig.curtains is not an object or is null', curtainControlSidebarConfig.curtains);
+    isValidConfig = false;
+  }
+  
+  // 使用 useMemo 计算 curtainConfigs
+  const { curtainConfigs, hasCurtains } = useMemo(() => {
+    if (!isValidConfig) {
+      return { curtainConfigs: [], hasCurtains: false };
+    }
+    
+    const curtainKeys = Object.keys(curtainControlSidebarConfig.curtains);
+    if (curtainKeys.length === 0) {
+      console.warn('CurtainControlSidebarCard: curtainControlSidebarConfig.curtains is empty');
+    }
+    
+    // 收集所有entity_id
+    const curtainConfigs = Object.entries(curtainControlSidebarConfig.curtains)
+        .filter(([key, curtainConfig]) => curtainConfig && curtainConfig.entity_id)
+        .map(([key, curtainConfig]) => ({key, entityId: curtainConfig.entity_id, config: curtainConfig}));
+
+    const hasCurtains = curtainConfigs.length > 0;
+    
+    return { curtainConfigs, hasCurtains };
+  }, [curtainControlSidebarConfig, isValidConfig]);
+  
+  // 控制所有窗帘的开关
+  const controlAllCurtains = useCallback(async (open) => {
+    if (!isValidConfig) return;
+    
+    try {
+      const newStatus = open ? "ON" : "OFF";
+      const newImage = open ? imageAssets.curtain.open : imageAssets.curtain.closed;
+
+      // 更新UI状态
+      setCurtainsStatus(newStatus);
+      setIsAllCurtainsOpen(open);
+
+      console.log(`正在${open ? '打开' : '关闭'}所有窗帘...`);
+      console.log('窗帘配置列表:', curtainConfigs);
+      console.log('窗帘数量:', curtainConfigs.length);
+
+      // 调用从props传入的控制函数
+      if (onControlAllCurtains) {
+        await onControlAllCurtains(open ? "open" : "close", curtainConfigs);
+        console.log(`${open ? '打开' : '关闭'}所有窗帘操作已完成`);
+        console.log('操作的窗帘数量:', curtainConfigs.length);
+        
+        // 添加确认信息
+        if (!open) {
+          console.log('✓ 已确认关闭所有窗帘');
+        } else {
+          console.log('✓ 已确认打开所有窗帘');
+        }
+      } else {
+        console.warn('窗帘控制功能受限 - 未提供onControlAllCurtains函数');
+      }
+    } catch (error) {
+      if (debugMode) {
+        console.error('开关所有窗帘时出错:', error);
+      }
+    }
+  }, [onControlAllCurtains, curtainConfigs, debugMode, isValidConfig]);
+
+  // 开关状态改变处理函数
+  const onChange = (checked) => {
+    console.log('窗帘开关状态改变:', checked ? '打开' : '关闭');
+    console.log('当前开关状态:', checked);
+    controlAllCurtains(checked);
+  };
+
+  useEffect(() => {
+    function handleResize() {
+      // 获取当前窗口的宽度
+      const width = window.innerWidth;
+      // 根据窗口宽度设置图片的宽度
+      if (width < 1440) {
+        // 移动设备
+        setSwitchSize("small");
+      } else {
+        // PC设备
+        setSwitchSize("default");
+      }
+    }
+    handleResize();
+
+    //监听页面大小
+    window.addEventListener('resize', handleResize)
+  })
+
+
+  // 如果配置无效，返回null
+  if (!isValidConfig) {
     return null;
   }
-  const curtainEntities = Object.entries(curtainControlSidebarConfig.curtains).reduce((acc, [key, lightConfig]) => {
-    try {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const entity = useEntity(lightConfig.entity_id);
-      acc[key] = {
-        ...lightConfig,
-        entity,
-        isLight: lightConfig.entity_id.startsWith('cover.')
-      };
-
-      return acc;
-    } catch (error) {
-      // if (debugMode) {
-      //     notification.error({
-      //         message: t('lightStatus.loadError'),
-      //         description: t('lightStatus.loadErrorDesc') + (lightConfig.name || lightConfig.entity_id) + ' - ' + error.message,
-      //         placement: 'topRight',
-      //         duration: 3,
-      //         key: 'LightStatusCard',
-      //     });
-      // }
-      return acc;
-    }
-  }, {});
-
-
-  // const curtainEntities = useMemo(() => {
-  //   const { curtains = [] } = curtainControlSidebarConfig;
-  //   return curtains.map((curtain, index) => ({
-  //     key: curtain.entity_id || `curtain_${index}`,
-  //     entity_id: curtain.entity_id || `cover.${index}`,
-  //     name: curtain.name || `窗帘 ${index + 1}`,
-  //     area: curtain.area || 'Unknown'
-  //   }));
-  // }, [curtainControlSidebarConfig]);
-  //
-  // // // 提取实体ID用于Hook调用
-  // const entityIds = useMemo(() => {
-  //   return curtainEntities.map(curtain => curtain.entity_id).filter(b);
-  // }, [curtainEntities]);
-  // //
-  // // // 使用useEntities一次性获取所有实体，避免在循环中调用useEntity
-  //  const entities = useEntities(entityIds, { returnNullIfNotFound: true });
-  //
-  // // 处理窗帘数据
-  // const activeCurtainDevices = useMemo(() => {
-  //   return curtainEntities
-  //       .map((curtain, index) => {
-  //         const entity = entities[index];
-  //         if (!entity) return null;
-  //         return {
-  //           ...curtain,
-  //           entity: entity
-  //         };
-  //       })
-  //       .filter(curtain => curtain !== null);
-  // }, [curtainEntities, entities]);
-
-  // // 计算统计数据
-  // const totalCurtains = activeCurtainDevices.length;
-  // const openCurtains = activeCurtainDevices.filter(curtain =>
-  //     curtain.entity?.state === 'open'
-  // ).length;
-  // const closedCurtains = activeCurtainDevices.filter(curtain =>
-  //     curtain.entity?.state === 'closed'
-  // ).length;
-
-  // const avgPosition = useMemo(() => {
-  //   const positions = activeCurtainDevices
-  //       .filter(curtain => curtain.entity?.attributes?.current_position !== undefined)
-  //       .map(curtain => curtain.entity.attributes.current_position);
-  //
-  //   if (positions.length === 0) return 0;
-  //   return positions.reduce((sum, pos) => sum + pos, 0) / positions.length;
-  // }, [activeCurtainDevices]);
-
-  // 控制所有窗帘
-  const controlAllCurtains = async (action) => {
-    const serviceMap = {
-      'open': 'open_cover',
-      'close': 'close_cover',
-      'stop': 'stop_cover'
-    };
-
-    const service = serviceMap[action];
-    if (!service) return;
-
-    const promises = Object.entries(curtainEntities).map(async (curtain) => {
-      try {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        // const  newCurtain =useEntity(curtain.entity_id);
-        await  curtain.entity.service.callService('cover', service, {
-          entity_id: curtain.entity_id
-        });
-      } catch (error) {
-        if (debugMode) {
-          console.warn(`控制窗帘失败 ${action} ${curtain.name}:`, error);
-        }
-      }
-    });
-
-    try {
-      await Promise.all(promises);
-    } catch (error) {
-      if (debugMode) {
-        console.warn(`控制所有窗帘失败 ${action}:`, error);
-      }
-    }
-  };
-
-  const onChange = (checked) => {
-    if(checked){
-      //  setCurtainsImg(getAsset('curtain', 'icon'));
-      //  setCurtainsStatus("ON");
-      controlAllCurtains("open");
-    }else{
-      //setCurtainsImg(getAsset('curtain', 'icon'));
-      //  setCurtainsStatus("OFF");
-      controlAllCurtains("close");
-    }
-  };
-
-  // 控制单个窗帘
-  const controlIndividualCurtain = async (curtain, action) => {
-    const serviceMap = {
-      'open': 'open_cover',
-      'close': 'close_cover',
-      'stop': 'stop_cover'
-    };
-
-    const service = serviceMap[action];
-    if (!service) return;
-
-    try {
-      await curtain.entity.service.callService('cover', service, {
-        entity_id: curtain.entity_id
-      });
-    } catch (error) {
-      if (debugMode) {
-        console.warn(`控制窗帘失败 ${action} ${curtain.name}:`, error);
-      }
-    }
-  };
 
   return (
-      <div className="curtain-control-group flex-row">
-        <div className="curtain-control-info flex-col">
-          <span className="curtain-control-title">窗帘</span>
-          <span className="curtain-control-area">全屋</span>
-          <Switch className="curtain-control-switch"  size ="small"  onChange={onChange} />
-        </div>
-        <span className="curtain-control-status">{"OFF"}</span>
-        <div className="curtain-control-image-wrapper flex-col">
-          <img
-              className="curtain-control-image"
-              src={imageAssets.curtain.icon}
-          />
-        </div>
+      // 窗帘控制卡片容器
+      <div className="home-curtain-control-card flex-row">
+          {/* 窗帘信息区域 */}
+          <div className="home-curtain-info-section">
+              {/* 标题和状态容器 */}
+              <div className="home-curtain-title-container flex-row">
+                  <span className="home-control-curtain-title">窗帘</span>
+                  <span className="home-curtain-status-text">{curtainsStatus}</span>
+              </div>
+              {/* 房间信息 */}
+              <span className="home-curtain-room">全屋</span>
+              {/* 窗帘开关控件 */}
+             {/*<div className="curtain-flex-container"> </div>*/}
+                <Switch  size={switchSize} style={{width: '3.56vw',height: '5.56vw',margin:"0 1.66vw 2.84vw 0"}} checked={isAllCurtainsOpen} onChange={onChange} disabled={!hasCurtains} />
+
+          </div>
+          {/* 窗帘图片区域 */}
+          <div className="home-curtain-image-section">
+              <div className="curtain-animation-container">
+                  <img
+                      className={`home-curtain-image ${isAllCurtainsOpen ? 'curtain-open' : 'curtain-closed'}`}
+                      src={imageAssets.curtain.icon}
+                      alt="窗帘控制"
+                  />
+                  {/* 窗帘开启时的动画效果 */}
+                  {isAllCurtainsOpen && (
+                      <div className="curtain-animation-overlay curtain-opening"></div>
+                  )}
+              </div>
+          </div>
       </div>
   );
 }

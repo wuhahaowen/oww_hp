@@ -3,11 +3,11 @@
   border-radius: 22px;
   width: 16.12vw;
   height: 3.06vw;
-  margin: 1.94vw 0 1.66vw 1.66vw;
+  margin: 1.94vw 0 0 1.66vw;
 }
 
 .Home_sidebar_dashboard_overview_group {
-  background-image: linear-gradient(135deg, rgba(254, 190, 94, 1) 0, rgba(254, 125, 27, 1) 100%);
+  /*background-image: linear-gradient(135deg, rgba(254, 190, 94, 1) 0, rgba(254, 125, 27, 1) 100%);*/
   border-radius: 18px;
   width: 7.78vw;
   height: 2.5vw;
@@ -60,6 +60,22 @@
   margin: 0.55vw 0 0 1.94vw;
 }
 
+.Home_sidebar_dashboard_overview_group.active,
+.Home_sidebar_dashboard_control_group.active {
+  background-image: linear-gradient(135deg, rgba(254, 190, 94, 1) 0, rgba(254, 125, 27, 1) 100%);
+  border-radius: 18px;
+}
+
+.Home_sidebar_dashboard_overview_group:hover,
+.Home_sidebar_dashboard_control_group:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.Home_sidebar_dashboard_overview_group.active .Home_sidebar_dashboard_overview_text,
+.Home_sidebar_dashboard_control_group.active .Home_sidebar_dashboard_control_text {
+  color: rgba(255, 255, 255, 1);
+}
 /*@media (max-width: 720px) {*/
 /*  .Home_sidebar_dashboard {*/
 /*    border-radius: 11px;*/

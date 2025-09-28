@@ -4,6 +4,7 @@ import Modal from '../Modal';
 import LightControl from './LightControl';
 import { useLanguage } from '../../i18n/LanguageContext';
 import {renderIcon} from "../../common/SvgIndex";
+import defautImg from './blackBack.png';
 
 function FloorPlan({ lights }) {
   const { t } = useLanguage();
@@ -56,7 +57,8 @@ function FloorPlan({ lights }) {
   return (
     <div className="floor-plan">
       <img 
-        src={lights.background}
+        // src={lights.background}
+        src={defautImg}
         alt={t('lightOverview.floorPlan.roomLayout')}
         className="base-layer"
       />
@@ -101,7 +103,7 @@ function FloorPlan({ lights }) {
         visible={showControl}
         onClose={() => setShowControl(false)}
         title={selectedLight?.name}
-        width="350px"
+        width="40vw"
       >
         {selectedLight && (
           <LightControl 

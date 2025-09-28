@@ -1,0 +1,256 @@
+.device-3d-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 顶部切换按钮容器 */
+.mode-switch-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mode-switch {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.mode-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.mode-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mode-button.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mode-icon {
+  font-size: 16px;
+}
+
+.mode-text {
+  font-weight: 600;
+}
+
+/* 内容区域 */
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.panel-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.panel-header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* 项目网格 */
+.items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  flex: 1;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.control-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.item-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.item-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 自定义开关样式 - 符合用户偏好使用原生控件 */
+.item-controls {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.36s cubic-bezier(0.5, 1.4, 0.5, 1.6);
+  border-radius: 26px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: all 0.36s cubic-bezier(0.5, 1.4, 0.5, 1.6);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: rgba(76, 175, 80, 0.8);
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+  background-color: #4CAF50;
+}
+
+.slider:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+input:checked + .slider:hover {
+  background-color: rgba(76, 175, 80, 0.9);
+}
+
+/* 底部状态栏 */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.status-info {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.refresh-button button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.refresh-button button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.refresh-button button:active {
+  transform: translateY(0);
+}
+
+/* 响应式设计 */
+@media (min-width: 480px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .device-3d-card {
+    padding: 24px;
+  }
+  
+  .items-grid {
+    gap: 16px;
+  }
+  
+  .control-item {
+    padding: 20px;
+  }
+}

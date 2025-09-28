@@ -91,7 +91,7 @@ function LightStatusSidebarCard({ allLights = [] }) {
             <img
                 className="home-light-icon"
                 referrerPolicy="no-referrer"
-                src="https://lanhu-oss-2537-2.lanhuapp.com/FigmaDDSSlicePNG29f392c85d12da001aadf0b3cc75a3fd.png"
+                src={imageAssets.common.xiaLa}
             />
           </div>
           <div className="home-light-stats-section flex-row">
@@ -104,8 +104,6 @@ function LightStatusSidebarCard({ allLights = [] }) {
             <Icon
                 className="home-light-control-icon on-icon"
                 icon="light_mdi:lightbulb-group-on"
-                width={48}
-                height={48}
                 color={allLightsOff
                     ? (theme === 'dark' ? '#666666' : '#CCCCCC')
                     : (theme === 'dark' ? 'var(--color-text-primary)' : '#FFB74D')
@@ -114,21 +112,15 @@ function LightStatusSidebarCard({ allLights = [] }) {
             <Icon
                 className="home-light-control-icon off-icon"
                 icon="light_mdi:lightbulb-group-off"
-                width={48}
-                height={48}
                 color={allLightsOn
                     ? (theme === 'dark' ? '#666666' : '#CCCCCC')
                     : (theme === 'dark' ? 'var(--color-text-primary)' : '#FFB74D')
                 }
             />
-
           </div>
         </div>
-
       </>
-
-  )
-      ;
+  );
 }
 
 export default LightStatusSidebarCard;
