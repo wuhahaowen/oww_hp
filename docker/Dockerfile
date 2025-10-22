@@ -1,6 +1,8 @@
 FROM ghcr.io/hassio-addons/base:17.1.0
 
-# 安装依赖
+# 使用国内镜像源安装依赖
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 RUN apk add --no-cache nginx gettext curl jq unzip tzdata python3 py3-pip rsync vim supervisor 
 
 # 安装go2rtc 判断系统架构
@@ -30,7 +32,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
 
     
 # 安装 Python 依赖
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
+    pip install --no-cache-dir --upgrade pip && \
+    pip install \
     fastapi \
     uvicorn \
     requests \
@@ -80,4 +84,4 @@ COPY docker/config/supervisord.conf /etc/supervisord.conf
 EXPOSE 5123 5124
 
 # 使用启动脚本
-ENTRYPOINT ["/docker-entrypoint.sh"] 
+ENTRYPOINT ["/docker-entrypoint.sh"]

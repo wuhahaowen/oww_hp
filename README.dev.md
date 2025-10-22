@@ -62,6 +62,38 @@ npm start
 - 日志文件
 - 上传文件
 
+## 网络问题解决方案
+
+如果遇到网络问题导致无法拉取 Docker 镜像，请尝试以下解决方案：
+
+### 1. 配置 Docker Desktop 镜像加速
+
+在 Docker Desktop 中配置镜像加速器：
+1. 打开 Docker Desktop 设置
+2. 选择 "Docker Engine" 选项卡
+3. 在配置文件中添加以下内容：
+```json
+{
+  "registry-mirrors": [
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://hub-mirror.c.163.com"
+  ]
+}
+```
+4. 点击 "Apply & Restart" 重启 Docker
+
+### 2. 使用国内网络环境
+
+如果在企业或学校网络环境下，可能需要配置代理或使用家庭网络。
+
+### 3. 手动拉取基础镜像
+
+可以尝试手动拉取所需的镜像：
+```bash
+docker pull python:3.9-slim
+docker pull node:18
+```
+
 ## 常见问题
 
 ### 1. 端口冲突
