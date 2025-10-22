@@ -29,6 +29,38 @@ cd hass-panel
 docker-compose -f docker-compose.dev.yml up --build
 ```
 
+#构架本地
+docker run -d -p 5123:5123 -p 5124:5124 \
+-v D:/hebing/hass-panel/data/hass-panel-dev:/config/hass-panel \
+-v D:/hebing/hass-panel/backend:/backend \
+-v D:/hebing/hass-panel/frontend/build:/app \
+-e NODE_ENV=development \
+-e DEBUG=1 \
+--restart unless-stopped \
+--name hass-panel-dev \
+ghcr.io/mrtian2016/hass-panel:latest
+
+
+方案二：创建一个专门用于前端开发的容器
+我们可以创建一个新的Docker容器，专门用于前端开发，与后端容器分离：
+docker run -it --rm -p 3000:3000 -v D:/hebing/hass-panel/frontend:/app -w /app node:18 bash
+然后在容器中运行：
+npm install
+npm start
+
+我们可以修改运行容器的命令，添加前端源代码的挂载，并在容器中运行前端开发服务器：
+docker run -d -p 5123:5123 -p 5124:5124 -p 3000:3000 \
+-v D:/hebing/hass-panel/data/hass-panel-dev:/config/hass-panel \
+-v D:/hebing/hass-panel/backend:/backend \
+-v D:/hebing/hass-panel/frontend:/frontend \
+--name hass-panel-dev \
+ghcr.io/mrtian2016/hass-panel:latest
+然后进入容器并启动前端开发服务器：
+docker exec -it hass-panel-dev bash
+cd /frontend
+npm install
+npm start
+
 
 # 使用清理后的环境重新构建
 docker-compose -f docker-compose.dev.yml down

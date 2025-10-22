@@ -1,4 +1,7 @@
-FROM node:18 AS frontend-builder
+FROM registry.cn-hangzhou.aliyuncs.com/nodejs/node:18-slim AS frontend-builder
+
+# 使用国内镜像源
+RUN npm config set registry https://registry.npmmirror.com
 
 # =================构建前端代码===================
 # 创建工作目录
@@ -8,7 +11,7 @@ WORKDIR /app
 COPY frontend/package*.json ./
 
 # 安装前端依赖
-RUN npm ci --registry https://registry.npmmirror.com
+RUN npm ci
 
 # 复制前端源代码
 COPY frontend/ .
@@ -40,7 +43,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
-FROM python:3.9-slim
+FROM registry.cn-hangzhou.aliyuncs.com/python/python:3.9-slim
 
 # 使用中科大镜像源
 RUN echo "deb http://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free" > /etc/apt/sources.list
