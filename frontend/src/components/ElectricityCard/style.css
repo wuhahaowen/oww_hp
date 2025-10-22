@@ -59,15 +59,11 @@
   text-align: center;
   border-radius: var(--border-radius-small);
   padding: var(--spacing-md) 0;
-  background: var(--color-card-bg-transparent-lanhu);
+  background: var(--color-card-bg-transparent);
   border: 1px solid var(--color-card-bg-transparent);
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
-}
-
-.electricity-info-item:active{
-  background: var(--color-background-lanhu);
 }
 
 .info-label {

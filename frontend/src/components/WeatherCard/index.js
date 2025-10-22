@@ -12,10 +12,9 @@ import {
   mdiWeatherWindy,
   mdiMapMarker,
 } from '@mdi/js';
-import { Icon as Icon2 } from '@iconify/react';
 import { useTheme } from '../../theme/ThemeContext';
 import BaseCard from '../BaseCard';
-import {renderIcon} from "../../common/SvgIndex";
+
 import { useWeather } from '@hakit/core';
 import { notification } from 'antd';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -133,17 +132,17 @@ function WeatherCard({config}) {
 
   const getWeatherIcon = (condition) => {
     const iconMap = {
-      'clear-night': renderIcon('weather','mdiWeatherNight'),
-      'sunny': renderIcon('weather','mdiWeatherSunny'),
-      'fog': renderIcon('weather','mdiWeatherFog'),
-      'cloudy': renderIcon('weather','mdiWeatherCloudy'),
-      'partlycloudy': renderIcon('weather','mdiWeatherPartlyCloudy'),
-      'rainy': renderIcon('weather','mdiWeatherRainy'),
-      'snowy': renderIcon('weather','mdiWeatherSnowy'),
-      'lightning': renderIcon('weather','mdiWeatherLightning'),
-      'windy': renderIcon('weather','mdiWeatherWindy'),
+      'clear-night': mdiWeatherNight,
+      'sunny': mdiWeatherSunny,
+      'fog': mdiWeatherFog,
+      'cloudy': mdiWeatherCloudy,
+      'partlycloudy': mdiWeatherPartlyCloudy,
+      'rainy': mdiWeatherRainy,
+      'snowy': mdiWeatherSnowy,
+      'lightning': mdiWeatherLightning,
+      'windy': mdiWeatherWindy,
     };
-    return iconMap[condition] ||renderIcon('weather','mdiWeatherCloudy');
+    return iconMap[condition] || mdiWeatherCloudy;
   };
   
 
@@ -194,6 +193,7 @@ function WeatherCard({config}) {
   const forecastData = Array.isArray(weather?.forecast?.forecast) 
   ? weather.forecast.forecast.slice(0, 7) 
   : [];
+  
   const clothingAdvice = calculateClothingIndex(
     weather.attributes.temperature,
     weather.attributes.humidity || 50,
@@ -253,40 +253,24 @@ function WeatherCard({config}) {
       </div>
       <div className="forecast">
         {forecastData.map((day, index) => (
-
-            <div className="image-text_12 flex-col justify-between" key={index}>
-              <Icon2 className="label_14"   icon={getWeatherIcon(day.condition)} size={72} color={theme === 'dark' ? '#ffffff' : '#333333'} />
-              <div className="text-group_12 flex-col justify-between">
-                <span className="text_84">{day.temperature}℃</span>
-                <span className="text_85">~</span>
-                <span className="text_86">{day.templow}℃</span>
-                <div className="weather-date">{formatDate(day.datetime)}</div>
-              </div>
+          <div key={index} className="forecast-day">
+            <div className="weather-date">{formatDate(day.datetime)}</div>
+            <div className="weather-icon">
+              <Icon 
+                path={getWeatherIcon(day.condition)}
+                size={14}
+                color={theme === 'dark' ? '#ffffff' : '#333333'}
+              />
             </div>
-
-
-
-            //     <div key={index} className="forecast-day">
-      //   <div className="weather-date">{formatDate(day.datetime)}</div>
-      //   <div className="weather-icon">
-      //     <Icon2
-      //         icon={getWeatherIcon(day.condition)}
-      //         size={48}
-      //         color={theme === 'dark' ? '#ffffff' : '#333333'}
-      //     />
-      //   </div>
-      //   <div className="weather-temp">
-      //     <span className="high">{day.temperature}°</span>
-      //     <span className="low">{day.templow}°</span>
-      //   </div>
-      // </div>
-
-
-      ))}
-    </div>
-</BaseCard>
-)
-  ;
+            <div className="weather-temp">
+              <span className="high">{day.temperature}°</span>
+              <span className="low">{day.templow}°</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </BaseCard>
+  );
 }
 
 export default WeatherCard; 

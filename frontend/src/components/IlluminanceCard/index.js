@@ -4,8 +4,6 @@ import { useEntity } from '@hakit/core';
 import { useLanguage } from '../../i18n/LanguageContext';
 import BaseCard from '../BaseCard';
 import './style.css';
-import {renderIcon} from "../../common/SvgIndex";
-import { Icon } from '@iconify/react';
 
 function IlluminanceCard({ config, titleVisible }) {
   const { t } = useLanguage();
@@ -33,26 +31,14 @@ function IlluminanceCard({ config, titleVisible }) {
 
           
           return (
-              <div className="box_30 flex-row" key={sensor.entity_id}>
-                <div className="text-wrapper_14 flex-col justify-between">
-                  <span className="text_118">{sensor.name || entity.attributes?.friendly_name || sensor.entity_id}</span>
-                  <span className="text_119">{entity.state}</span>
-                </div>
-                <span className="text_120">{t('illuminance.unit')}</span>
-                <Icon  className="label_63" icon={renderIcon('sensor','illuminance-sensors')}/>
+            <div key={sensor.entity_id} className="illuminance-sensor">
+              <div className="sensor-name">{sensor.name || entity.attributes?.friendly_name || sensor.entity_id}</div>
+              <div className="sensor-value">
+                <span className="value">{entity.state}</span>
+                <span className="unit">{t('illuminance.unit')}</span>
               </div>
-
-          // <div key={sensor.entity_id} className="illuminance-sensor">
-          //   <div className="sensor-name">{sensor.name || entity.attributes?.friendly_name || sensor.entity_id}</div>
-          //   <div className="sensor-value">
-          //     <span className="value">{entity.state}</span>
-          //     <span className="unit">{t('illuminance.unit')}</span>
-          //   </div>
-          // </div>
-
-
-        )
-          ;
+            </div>
+          );
         })}
       </div>
     </BaseCard>

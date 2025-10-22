@@ -1,119 +1,66 @@
-@import "../../theme/variables.css";
 .climate-card {
   margin-bottom: var(--spacing-lg);
 }
 
 .climate-content {
   padding: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 整体内容居中对齐 */
 }
 
 .climate-status {
   margin-bottom: var(--spacing-lg);
-  width: 100%; /* 确保占满容器宽度 */
-  display: flex;
-  justify-content: center; /* 水平居中 */
 }
 
 .climate-readings {
   display: flex;
-  justify-content: center; /* 居中对齐 */
+  justify-content: space-between;
   gap: var(--spacing-lg);
-  width: 100%; /* 确保占满容器宽度 */
-  margin: 0.83vw 0 0 1.11vw;
 }
 
 .reading {
   flex: 1;
   display: flex;
-  /*height: 3.5vw; !* 图标高度: 54px / 2880px = 1.875vw *!*/
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-lg);
+  flex-direction: column;
+  gap: var(--spacing-xs);
   text-align: center;
   padding: var(--spacing-md);
-  background: var(--color-card-bg-transparent-lanhu);
+  background: var(--color-card-bg-transparent);
   border: 1px solid var(--color-border);
-  border-radius: 1.04vw;
-  margin: 0 0 0 0; /* 添加右边距: 10px / 2880px = 0.35vw */
+  border-radius: var(--border-radius-small);
 }
 
 .reading-label {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* 左对齐 */
+  justify-content: center;
   gap: var(--spacing-xs);
   color: var(--color-text-secondary);
-  font-size: 33px; /* 设置为33px */
-  font-weight: bold; /* 加粗 */
-}
-
-.reading-label .iconify {
-  width: 2.5vw; /* 图标宽度: 54px / 2880px = 1.875vw */
-  height: 2.5vw; /* 图标高度: 54px / 2880px = 1.875vw */
-  margin-right: 0.35vw; /* 添加右边距: 10px / 2880px = 0.35vw */
+  font-size: 0.9em;
 }
 
 .reading-value {
   display: flex;
-  flex-direction: column; /* 改为垂直布局 */
-  align-items: flex-start; /* 左对齐 */
-  justify-content: center; /* 垂直居中 */
-  gap: 15px;
-  flex-wrap: nowrap;
-}
-
-.reading-value > span {
-  color: rgba(255, 255, 255, 0.70); /* 设置字体颜色 */
-  font-size: 1.0vw; /* 还原原有字体大小 */
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
 }
 
 .reading-value .value {
-  font-size: 33px; /* 设置为33px */
-  font-weight: bold; /* 加粗 */
+  font-size: 1.6em;
+  font-weight: 500;
   color: var(--color-text-primary);
-  white-space: nowrap;
 }
 
 .reading-value .unit {
-  font-size: 33px; /* 设置为33px */
-  font-weight: bold; /* 加粗 */
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-}
-
-/* 添加reading-value-unit样式，确保值和单位在同一行显示并加粗 */
-.reading-value-unit {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  white-space: nowrap;
-}
-
-.reading-value-unit .value {
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--color-text-primary);
-}
-
-.reading-value-unit .unit {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 0.9em;
   color: var(--color-text-secondary);
 }
 
 .climate-circle {
-  width: 55%;
+  width: 85%;
   aspect-ratio: 1 / 1;
-  /*margin: var(--spacing-xl) auto;*/
+  margin: var(--spacing-xl) auto;
   border-radius: 50%;
-  /* background: var(--color-card-bg-transparent-lanhu); */
-  background: transparent 0%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5); /* 添加一层5px宽的描边 */
+  border: 2px solid var(--color-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,45 +69,11 @@
   padding-bottom: 0;
 }
 
-/* 确保按钮在圆圈内居中 */
-.temp-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /* 添加过渡效果使按钮变化更平滑 */
-  transition: all 0.2s ease;
-  /* 确保按钮点击时不会移动 */
-  transform-style: preserve-3d;
-  will-change: transform;
-  background: var(--color-card-bg-transparent-lanhu);
-  color: var(--color-text-primary);
-  justify-content: center;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  border-radius: 1.04vw;
-  height: 15%;
-  width: 15%;
-  /*height: 2.34vw;*/
-  /*width: 2.34vw;*/
-}
-
-
-/* 左侧按钮 */
-.temp-button:first-child {
-  left: 10%;
-}
-
-/* 右侧按钮 */
-.temp-button:last-child {
-  right: 10%;
-}
-
 .target-temp {
   display: flex;
   align-items: baseline;
-  justify-content: center; /* 水平居中 */
   gap: 4px;
+  margin-left: 12px;
   margin-bottom: var(--spacing-xl);
   opacity: 1;
   transition: opacity 0.3s;
@@ -172,29 +85,16 @@
 }
 
 .temp-value {
-  /*width: 5.98vw;*/
-  height: 4.17vw;
-  font-size: 2.77vw;/* 设置为67px */
+  font-size: 4em;
   font-weight: 500;
   color: var(--color-text-primary);
-  line-height: 4.17vw;
-  /*margin-left: 1.95vw;*/
-  text-align: center;
-  white-space: nowrap;
+  line-height: 1;
 }
 
 .temp-unit {
-  width: 1.88vw;
-  height: 2.5vw;
-  overflow-wrap: break-word;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1.66vw;
-  font-family: MiSans-Demibold;
-  font-weight: normal;
-  text-align: left;
-  white-space: nowrap;
-  line-height: 2.5vw;
-  margin: 1.25vw 0 0 0.2vw;
+  font-size: 1.4em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5em;
 }
 
 .temp-controls {
@@ -204,13 +104,24 @@
   bottom: var(--spacing-xl);
 }
 
-
+.temp-button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-card-bg-transparent);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 0;
+}
 
 .temp-button svg {
-  width: 2.24vw;
-  height: 2.24vw;
-  /* 确保SVG图标不会影响按钮布局 */
-  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
 }
 
 .temp-button:disabled {
@@ -219,45 +130,15 @@
 }
 
 .temp-button:not(:disabled):hover {
-  background: var(--color-background-lanhu);
+  background: var(--color-primary);
   color: white;
-}
-
-/* 添加按钮按下状态样式，确保按钮按下时不会移动 */
-.temp-button:active:not(:disabled) {
-  transform: translateY(-50%);
-  background: var(--color-background-lanhu);
-  color: white;
-}
-
-/* 修改所有按钮的点击效果，防止点击时移动 */
-.climate-card button {
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  touch-action: manipulation;
-}
-
-.mode-button:active,
-.function-button:active,
-.temp-button:active,
-.power-button:active {
-  transform: none;
-}
-
-/* 特别确保temp-button在点击时不会移动 */
-.temp-button:active {
-  transform: translateY(-50%) !important;
-  background: var(--color-background-lanhu) !important;
-  color: white !important;
 }
 
 .climate-controls {
   display: flex;
-  justify-content: center; /* 水平居中 */
+  justify-content: space-between;
   gap: var(--spacing-md);
-  margin-top: 20px; /* 设置上间距为20px */
-  margin-bottom: 20px; /* 设置下间距为20px */
-  width: 100%; /* 确保占满容器宽度 */
+  margin-top: var(--spacing-xl);
 }
 
 .mode-button {
@@ -268,20 +149,11 @@
   gap: var(--spacing-xs);
   padding: var(--spacing-md);
   border: 1px solid var(--color-border);
-  border-radius: 1.04vw;
-  background: var(--color-card-bg-transparent-lanhu);
+  border-radius: var(--border-radius-small);
+  background: var(--color-card-bg-transparent);
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 0.7vw; /* 减小字体大小 */
-}
-
-.mode-button svg {
-  width: 2.23vw !important;;
-  height: 2.23vw !important;;
-  /*width: 54px !important;*/
-  /*height: 54px !important;*/
-  flex-shrink: 0;
 }
 
 .mode-button:disabled {
@@ -291,7 +163,7 @@
 
 .mode-button:not(:disabled):hover,
 .mode-button.active {
-  background: var(--color-background-lanhu);
+  background: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
 }
@@ -311,19 +183,28 @@
   }
 
   .temp-value {
-    font-size: 1.146vw; /* 33px / 2880px = 1.146vw */
+    font-size: 3.2em;
   }
 
   .temp-unit {
-    font-size: 1.146vw; /* 33px / 2880px = 1.146vw */
+    font-size: 1.2em;
   }
 
+  .temp-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .temp-button svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.mode-button span {
-  margin: 0; /* 防止浏览器默认样式导致的间距不一致 */
-  text-align: center;
-  font-size:0.97vw;
+.mode-value {
+  font-size: 0.8em;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
 }
 
 .fan-mode-popup {
@@ -372,13 +253,13 @@
   padding: 8px;
   cursor: pointer;
   color: var(--color-text-primary);
-  border-radius: 1.04vw;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  width: 60px; /* 将宽度调整为60px */
-  height: 60px; /* 将高度调整为60px */
+  width: 36px;
+  height: 36px;
 }
 
 .power-button:hover {
@@ -418,10 +299,9 @@
 
 .climate-functions {
   display: flex;
-  justify-content: center; /* 水平居中 */
+  justify-content: space-between;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-lg);
-  width: 100%; /* 确保占满容器宽度 */
 }
 
 .function-button {
@@ -432,36 +312,36 @@
   gap: 4px;
   padding: var(--spacing-sm);
   border: 1px solid var(--color-border);
-  border-radius: 1.04vw;
-  background: var(--color-card-bg-transparent-lanhu);
+  border-radius: var(--border-radius-small);
+  background: var(--color-background);
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 17px; /* 设置字体大小为17px */
+  font-size: 0.8em;
   position: relative;
   overflow: hidden;
 }
 
 .function-button.active {
-  background: var(--color-background-lanhu);
+  background: var(--color-background);
   border-color: var(--color-primary);
   color: var(--color-primary);
   font-weight: 500;
 }
 
 .function-button.active::after {
-  /*content: '';*/
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 3px;
-  background: var(--color-background-lanhu);
+  background: var(--color-primary);
   border-radius: 1.5px;
 }
 
 .function-button:not(:disabled):hover {
-  background: var(--color-background-lanhu);
+  background: var(--color-background);
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
@@ -474,11 +354,8 @@
 }
 
 .function-button svg {
-  width: 1.67vw !important;
-  height: 1.67vw !important;
-  margin: 0.83vw 0 0 0.83vw;
-  /*width: 40px !important; !* 调整为40px *!*/
-  /*height: 40px !important; !* 调整为40px *!*/
+  width: 18px;
+  height: 18px;
   transition: all 0.3s;
 }
 
@@ -493,13 +370,13 @@
   
   .function-button {
     padding: 6px;
-    font-size: 17px; /* 设置字体大小为17px */
+    font-size: 0.75em;
     min-width: auto;
   }
   
   .function-button svg {
-    width: 40px !important; /* 调整为40px */
-    height: 40px !important; /* 调整为40px */
+    width: 16px;
+    height: 16px;
   }
   
   .function-button.active::after {
@@ -517,10 +394,7 @@
 .temp-button:active,
 .power-button:active {
   transform: none;  /* 移除点击时的变形效果 */
-  background: var(--color-background-lanhu);
 }
-
-
 
 /* 修改function-button的点击效果 */
 .function-button {
@@ -530,7 +404,7 @@
 }
 
 .function-button:active {
-  background: var(--color-background-lanhu);  /* 强制保持背景色不变 */
+  background: var(--color-background) !important;  /* 强制保持背景色不变 */
 }
 
 /* 修改mode-button的点击效果 */
@@ -541,20 +415,19 @@
 }
 
 .mode-button:active {
-  background: var(--color-card-bg-transparent-lanhu) !important;
-}
-.mode-button:hover{
-  background: var(--color-background-lanhu) !important;
+  background: var(--color-card-bg) !important;
 }
 
 /* 修改temp-button的点击效果 */
-/*.temp-button {*/
-/*  !* 保持现有样式 *!*/
-/*  -webkit-tap-highlight-color: transparent;*/
-/*  user-select: none;*/
-/*}*/
+.temp-button {
+  /* 保持现有样式 */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
 
-
+.temp-button:active {
+  background: var(--color-background) !important;
+}
 
 /* 修改power-button的点击效果 */
 .power-button {

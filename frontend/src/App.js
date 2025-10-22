@@ -23,8 +23,7 @@ function MainContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
- // const isDesktop = useMediaQuery({ minWidth: 768 });
-  const isDesktop = useMediaQuery({ minWidth: 720 });
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const checkAuth = useCallback(async () => {
     if (!localStorage.getItem('hass_panel_token')) {

@@ -265,69 +265,38 @@ function SensorCard({ config }) {
 
   // 获取传感器图标
   const getSensorIcon = (sensor) => {
-    return sensor.entity?.icon || 'sensor_mdi:help-circle-outline';
+    return sensor.entity?.attributes?.icon || 'mdi:help-circle-outline';
   };
 
   return (
-      <BaseCard
-          title={config.title || t('cardTitles.sensor')}
-          icon={mdiThermometer}
-          titleVisible={titleVisible}
-      >
-        <div className="sensor-grid">
-          {sensorEntities.flatMap(group =>
-              Object.entries(group.sensors).map(([type, sensor]) => (
-
-
-                  // <div key={`${group.id}-${type}`} className="sensor-tile">
-                  //   <div className="sensor-tile-header">
-                  //     <span className="sensor-name">{sensor.name}</span>
-                  //     <Icon
-                  //         icon={getSensorIcon(sensor)}
-                  //         className="sensor-icon"
-                  //     />
-                  //   </div>
-                  //   <div className="sensor-card-sensor-value">
-                  //     {getSensorValue(sensor)}
-                  //   </div>
-                  //   <div className="sensor-chart-placeholder">
-                  //     <SensorChart entity_id={sensor.entity_id} color={sensor.color}
-                  //                  unit={sensor.entity.attributes?.unit_of_measurement}/>
-                  //   </div>
-                  // </div>
-
-
-                  // <div key={`${group.id}-${type}`} className="section_12 flex-row">
-                  //   <div className="text-group_21 flex-col justify-between">
-                  //     <span className="sensor-name">{sensor.name}</span>
-                  //   </div>
-                  //   <div className="sensor-card-sensor-value">
-                  //     {getSensorValue(sensor)}
-                  //   </div>
-                  //   <div className="sensor-chart-placeholder">
-                  //     <SensorChart entity_id={sensor.entity_id} color={sensor.color}
-                  //                  unit={sensor.entity.attributes?.unit_of_measurement}/>
-                  //   </div>
-                  // </div>
-
-            <div className="section_12 flex-row" key={`${group.id}-${type}`}>
-                  <div className="text-group_21 flex-col justify-between">
-                  <span className="text_133">{sensor.name}</span>
-                  </div>
-                   <SensorChart entity_id={sensor.entity_id} color={sensor.color}
-                                  unit={sensor.entity.attributes?.unit_of_measurement}/>
-                  <Icon icon={getSensorIcon(sensor)} className="label_68"  />
-
+    <BaseCard
+      title={config.title || t('cardTitles.sensor')}
+      icon={mdiThermometer}
+      titleVisible={titleVisible}
+    >
+      <div className="sensor-grid">
+        {sensorEntities.flatMap(group => 
+          Object.entries(group.sensors).map(([type, sensor]) => (
+            <div key={`${group.id}-${type}`} className="sensor-tile">
+              <div className="sensor-tile-header">
+                <span className="sensor-name">{sensor.name}</span>
+                <Icon 
+                  icon={getSensorIcon(sensor)} 
+                  className="sensor-icon" 
+                />
+              </div>
+              <div className="sensor-card-sensor-value">
+                {getSensorValue(sensor)}
+              </div>
+              <div className="sensor-chart-placeholder">
+                <SensorChart entity_id={sensor.entity_id} color={sensor.color} unit={sensor.entity.attributes?.unit_of_measurement} />
+              </div>
             </div>
-
-
-  )
-)
-)}
-</div>
-</BaseCard>
-)
-  ;
+          ))
+        )}
+      </div>
+    </BaseCard>
+  );
 }
 
 export default SensorCard; 

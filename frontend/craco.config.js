@@ -6,28 +6,20 @@ module.exports = {
           module: /node_modules\/@antv/,
         },
       ],
-
+      
     },
   },
   devServer: {
     proxy: {
       '/go2rtc/api/onvif': {
-        target: 'http://localhost:5123',
-       // target: 'http://localhost:5128',
-       // target: 'http://1.116.114.238:5128',
-        changeOrigin: true,
-        pathRewrite : { '^/go2rtc': '' } // 移除代理路径前缀
+        target: 'http://10.0.0.89:5123',
+        changeOrigin: true
       },
       '/api': {
-        target: 'http://localhost:5124',
-        // target: 'http://1.116.114.238:5129',
+        target: 'http://10.0.0.89:5124',
         changeOrigin: true
       },
-      '/config/hass-panel/upload': {
-        target: 'http://localhost:80',
-        changeOrigin: true
-      }
     }
     // ...
   }
-};
+}; 

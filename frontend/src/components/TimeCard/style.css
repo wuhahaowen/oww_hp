@@ -8,7 +8,7 @@
 }
 
 .time {
-  font-size: 30rem !important;
+  font-size: 42rem !important;
   font-weight: bold;
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-sm);

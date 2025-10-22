@@ -3,8 +3,6 @@ import { Icon } from '@iconify/react';
 import Modal from '../Modal';
 import LightControl from './LightControl';
 import { useLanguage } from '../../i18n/LanguageContext';
-import {renderIcon} from "../../common/SvgIndex";
-import defautImg from './blackBack.png';
 
 function FloorPlan({ lights }) {
   const { t } = useLanguage();
@@ -46,19 +44,10 @@ function FloorPlan({ lights }) {
     }
   };
 
-  const replaceIcon = (light) =>{
-    if (!light.entity || !light.icon) {
-      return 'light_mdi:track-light';
-    }
-    return  renderIcon('light',light.icon);
-
-  }
-
   return (
     <div className="floor-plan">
       <img 
-        // src={lights.background}
-        src={defautImg}
+        src={lights.background}
         alt={t('lightOverview.floorPlan.roomLayout')}
         className="base-layer"
       />
@@ -90,7 +79,7 @@ function FloorPlan({ lights }) {
               title={light.name}
             >
               <Icon 
-                icon={replaceIcon(light)}
+                icon={light.icon || 'mdi:ceiling-light'}
                 width={"24rem"}
                 className="light-icon"
               />
@@ -103,7 +92,7 @@ function FloorPlan({ lights }) {
         visible={showControl}
         onClose={() => setShowControl(false)}
         title={selectedLight?.name}
-        width="40vw"
+        width="350px"
       >
         {selectedLight && (
           <LightControl 

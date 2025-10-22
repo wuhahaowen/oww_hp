@@ -35,11 +35,12 @@ import {
   mdiFormatQuoteClose,
   // mdiWashingMachine,
   mdiHelpCircle,
+  mdiViewDashboard,
 } from '@mdi/js';
 import AddCardModal from '../../components/AddCardModal';
 import EditCardModal from '../../components/EditCardModal';
 // import Modal from '../../components/Modal';
-import { message, Button, Space, Dropdown, Switch, Spin, Popconfirm } from 'antd';
+import { message, Button, Space, Dropdown, Switch, Spin, Popconfirm, Select } from 'antd';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { configApi } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
@@ -47,15 +48,23 @@ import GlobalConfig from '../../components/GlobalConfig';
 import './style.css';
 import VersionListModal from '../../components/VersionList';
 import BottomInfo from '../../components/BottomInfo';
+import GroupManager from '../../components/GroupManager';
 
 // 添加默认图标常量
 const DEFAULT_CARD_ICON = mdiHelpCircle;
 
-const getCardTypes = (t) => ({
+const getCardTypes = (t, groups = []) => ({
   TimeCard: {
     name: t('cards.time'),
     icon: mdiClockOutline,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -81,6 +90,13 @@ const getCardTypes = (t) => ({
     icon: mdiWeatherPartlyCloudy,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -100,6 +116,13 @@ const getCardTypes = (t) => ({
     icon: mdiLightbulbGroup,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -117,6 +140,13 @@ const getCardTypes = (t) => ({
     name: t('cards.sensor'),
     icon: mdiThermometer,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -136,6 +166,13 @@ const getCardTypes = (t) => ({
     icon: mdiPlayCircle,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -153,6 +190,13 @@ const getCardTypes = (t) => ({
     name: t('cards.maxPlayer'),
     icon: mdiPlayCircle,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -173,6 +217,13 @@ const getCardTypes = (t) => ({
     icon: mdiRouterNetwork,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -191,6 +242,13 @@ const getCardTypes = (t) => ({
     icon: mdiServerNetwork,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -205,9 +263,17 @@ const getCardTypes = (t) => ({
     ]
   },
   PVECard: {
+    
     name: t('cards.pve'),
     icon: mdiServer,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -227,6 +293,13 @@ const getCardTypes = (t) => ({
     icon: mdiServer,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -244,6 +317,13 @@ const getCardTypes = (t) => ({
     name: t('cards.camera'),
     icon: mdiCctv,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -263,6 +343,13 @@ const getCardTypes = (t) => ({
     icon: mdiCurtains,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -280,6 +367,13 @@ const getCardTypes = (t) => ({
     name: t('cards.electricity'),
     icon: mdiLightningBolt,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -299,6 +393,13 @@ const getCardTypes = (t) => ({
     icon: mdiScriptText,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -316,6 +417,13 @@ const getCardTypes = (t) => ({
     name: t('cards.water'),
     icon: mdiWaterPump,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -335,6 +443,13 @@ const getCardTypes = (t) => ({
     icon: mdiWhiteBalanceSunny,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -352,6 +467,13 @@ const getCardTypes = (t) => ({
     name: t('cards.climate'),
     icon: mdiSnowflake,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -395,6 +517,13 @@ const getCardTypes = (t) => ({
     icon: mdiMotionSensor,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -418,6 +547,13 @@ const getCardTypes = (t) => ({
     name: t('cards.lightOverview'),
     icon: mdiHomeFloorG,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -444,6 +580,13 @@ const getCardTypes = (t) => ({
     icon: mdiPowerSocket,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -462,6 +605,13 @@ const getCardTypes = (t) => ({
     icon: mdiThermometer,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -479,6 +629,13 @@ const getCardTypes = (t) => ({
     name: t('cards.family'),
     icon: mdiAccountGroup,
     fields: [
+      {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
       {
         key: 'title',
         label: t('fields.title'),
@@ -516,6 +673,13 @@ const getCardTypes = (t) => ({
     icon: mdiFormatQuoteClose,
     fields: [
       {
+        key: 'group',
+        label: t('groups.selectGroup'),
+        type: 'group-select',
+        groups: groups,
+        default: 'default'
+      },
+      {
         key: 'title',
         label: t('fields.title'),
         type: 'text',
@@ -528,38 +692,9 @@ const getCardTypes = (t) => ({
         default: []
       }
     ]
-  },
-  TimeWeatherCard: {
-    name: t('cards.timeWeather'),
-    icon: mdiClockOutline,
-    fields: [
-      {
-        key: 'title',
-        label: t('fields.title'),
-        type: 'text',
-        default: t('cardTitles.timeWeather')
-      },
-      {
-        key: 'config',
-        label: t('timeWeather.title'),
-        type: 'time-weather-config',
-        default: {
-          timeFormat: 'HH:mm',
-          dateFormat: 'YYYY-MM-DD ddd',
-          showLunar: false,
-          weather_entity_id: '',
-          weatherIconSize: 1.2,
-          showHumidity: true,
-          showCondition: true,
-          showAdditionalInfo: false,
-          showFeelsLike: true,
-          showWind: true,
-          layout: 'vertical'
-        }
-      }
-    ]
   }
 });
+
 
 function ConfigPage({ sidebarVisible, setSidebarVisible }) {
   const fileInputRef = useRef(null);
@@ -579,6 +714,9 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showGlobalConfig, setShowGlobalConfig] = useState(false);
   const [globalConfig, setGlobalConfig] = useState(null);
+  const [showGroupManager, setShowGroupManager] = useState(false);
+  const [groups, setGroups] = useState([]);
+  const [filterGroup, setFilterGroup] = useState('all'); // 添加分组筛选状态
 
   // 修改加载配置数据的 useEffect
   useEffect(() => {
@@ -591,9 +729,15 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
           setCards(config.cards.map(card => ({
             ...card,
             visible: card.visible !== false,
-            titleVisible: card.titleVisible !== false
+            titleVisible: card.titleVisible !== false,
+            group: card.group || 'default'
           })));
           setGlobalConfig(config.globalConfig);
+
+          // 加载分组配置
+          if (config.globalConfig && config.globalConfig.groups) {
+            setGroups(config.globalConfig.groups);
+          }
         }
       } catch (error) {
         console.error('加载配置失败:', error);
@@ -611,9 +755,12 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
   const handleSave = async () => {
     try {
       message.loading(t('config.saving'));
-      // 只保存卡片配置到后端，不再同时保存布局
+      // 保存卡片配置和分组配置到后端
       await configApi.saveConfig({
-        globalConfig,
+        globalConfig: {
+          ...globalConfig,
+          groups: groups
+        },
         cards,
         // 不再包含布局信息
       });
@@ -763,11 +910,12 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
       type,
       config: {},
       visible: true,
-      titleVisible: true
+      titleVisible: true,
+      group: 'default'
     };
 
     // 添加默认配置
-    const cardType = getCardTypes(t)[type];
+    const cardType = getCardTypes(t, groups)[type];
     if (cardType && cardType.fields) {
       cardType.fields.forEach(field => {
         if (field.default !== undefined) {
@@ -841,6 +989,27 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
     setHasUnsavedChanges(true);
   };
 
+  // 处理卡片分组切换
+  const handleGroupChange = (cardId, newGroupId) => {
+    setCards(prevCards => {
+      const newCards = prevCards.map(card => {
+        if (card.id === cardId) {
+          return {
+            ...card,
+            group: newGroupId,
+            config: {
+              ...card.config,
+              group: newGroupId
+            }
+          };
+        }
+        return card;
+      });
+      setHasUnsavedChanges(true);
+      return newCards;
+    });
+  };
+
   // const handleConfigChange = (cardId, key, value) => {
   //   setCards(cards.map(card => {
   //     if (card.id === cardId) {
@@ -855,6 +1024,12 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
   //   }));
   //   setHasUnsavedChanges(true);
   // };
+
+  // 保存分组配置
+  const handleSaveGroups = (newGroups) => {
+    setGroups(newGroups);
+    setHasUnsavedChanges(true);
+  };
 
   // 修改版本列表相关函数
   const handleVersionList = async () => {
@@ -899,6 +1074,7 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
     }
   ];
 
+ 
   return (
     <div className={`config-page ${!sidebarVisible ? 'sidebar-hidden' : ''}`}>
       <div className="config-container">
@@ -919,6 +1095,14 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
               icon={<Icon path={mdiCog} size={12} />}
             >
               {t('config.globalConfig')}
+            </Button>
+
+            <Button
+              className="group-manager-button"
+              onClick={() => setShowGroupManager(true)}
+              icon={<Icon path={mdiViewDashboard} size={12} />}
+            >
+              {t('groups.manage')}
             </Button>
             
             <input
@@ -945,59 +1129,110 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
           </Space>
         </div>
 
+        {/* 添加分组筛选器 */}
+        <div className="group-filter-container">
+          <span className="filter-label">{t('groups.selectGroup')}:</span>
+          <Select
+            value={filterGroup}
+            onChange={setFilterGroup}
+            style={{ width: 180 }}
+            options={[
+              { value: 'all', label: t('groups.all') || '全部' },
+              { value: 'default', label: t('groups.default') },
+              ...groups.map(g => ({ value: g.id, label: g.name }))
+            ]}
+          />
+          {filterGroup !== 'all' && (
+            <Button
+              type="text"
+              size="small"
+              onClick={() => setFilterGroup('all')}
+              style={{ marginLeft: 8 }}
+            >
+              {t('config.clearFilter') || '清除筛选'}
+            </Button>
+          )}
+        </div>
+
         <div className="config-list">
-          {cards.map(card => (
-            <div key={card.id} className="config-card">
-              <div className="card-header">
-                <div className="card-icon">
-                  <Icon path={getCardTypes(t)[card.type]?.icon || DEFAULT_CARD_ICON} size={14} />
+          {cards
+            .filter(card => {
+              // 根据筛选条件过滤卡片
+              if (filterGroup === 'all') return true;
+              const cardGroup = card.config.group || card.group || 'default';
+              return cardGroup === filterGroup;
+            })
+            .map(card => {
+            // 准备分组选项
+            const groupOptions = [
+              { value: 'default', label: t('groups.default') },
+              ...groups.map(g => ({ value: g.id, label: g.name }))
+            ];
+
+            return (
+              <div key={card.id} className="config-card">
+                <div className="card-header">
+                  <div className="card-icon">
+                    <Icon path={getCardTypes(t, groups)[card.type]?.icon || DEFAULT_CARD_ICON} size={14} />
+                  </div>
+                  <h3 className="card-title">{card.config.title}</h3>
                 </div>
-                <h3 className="card-title">{card.config.title}</h3>
-              </div>
-              <div className="card-switches">
-                <div className="switch-item">
-                  <span>{t('config.showTitle')}</span>
-                  <Switch
-                    size="small"
-                    checked={card.titleVisible}
-                    onChange={() => handleTitleVisibilityChange(card.id)}
-                  />
+                <div className="card-switches">
+                  <div className="switch-item">
+                    <span>{t('groups.selectGroup')}</span>
+                    <Select
+                      size="small"
+                      value={card.config.group || 'default'}
+                      onChange={(value) => handleGroupChange(card.id, value)}
+                      options={groupOptions}
+                      style={{ width: 120 }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  </div>
+                  <div className="switch-item">
+                    <span>{t('config.showTitle')}</span>
+                    <Switch
+                      size="small"
+                      checked={card.titleVisible}
+                      onChange={() => handleTitleVisibilityChange(card.id)}
+                    />
+                  </div>
+                  <div className="switch-item">
+                    <span>{t('config.showCard')}</span>
+                    <Switch
+                      size="small"
+                      checked={card.visible}
+                      onChange={() => handleVisibilityChange(card.id)}
+                    />
+                  </div>
                 </div>
-                <div className="switch-item">
-                  <span>{t('config.showCard')}</span>
-                  <Switch
-                    size="small"
-                    checked={card.visible}
-                    onChange={() => handleVisibilityChange(card.id)}
-                  />
-                </div>
-              </div>
-              <div className="card-actions">
-                <Button
-                  size="small"
-                  icon={<Icon path={mdiPencil} size={12} />}
-                  onClick={() => handleEditCard(card)}
-                >
-                  {t('config.edit')}
-                </Button>
-                <Popconfirm
-                  title={t('config.deleteConfirm')}
-                  okText={t('config.confirm')}
-                  cancelText={t('config.cancel')}
-                  onConfirm={() => handleDeleteCard(card.id)}
-                >
+                <div className="card-actions">
                   <Button
                     size="small"
-                    type="text"
-                    danger
-                    icon={<Icon path={mdiDelete} size={12} />}
+                    icon={<Icon path={mdiPencil} size={12} />}
+                    onClick={() => handleEditCard(card)}
                   >
-                    {t('config.delete')}
+                    {t('config.edit')}
                   </Button>
-                </Popconfirm>
+                  <Popconfirm
+                    title={t('config.deleteConfirm')}
+                    okText={t('config.confirm')}
+                    cancelText={t('config.cancel')}
+                    onConfirm={() => handleDeleteCard(card.id)}
+                  >
+                    <Button
+                      size="small"
+                      type="text"
+                      danger
+                      icon={<Icon path={mdiDelete} size={12} />}
+                    >
+                      {t('config.delete')}
+                    </Button>
+                  </Popconfirm>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       {!isMobile && <BottomInfo />}
@@ -1007,7 +1242,7 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
         <AddCardModal
           onClose={() => setShowAddModal(false)}
           onSelect={handleAddCard}
-          cardTypes={getCardTypes(t)}
+          cardTypes={getCardTypes(t, groups)}
         />
       )}
 
@@ -1019,7 +1254,7 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
           setShowPreview(false);
         }}
         card={editingCard}
-        cardTypes={getCardTypes(t)}
+        cardTypes={getCardTypes(t, groups)}
         onSave={handleSaveEdit}
         showPreview={showPreview}
         setShowPreview={setShowPreview}
@@ -1066,6 +1301,14 @@ function ConfigPage({ sidebarVisible, setSidebarVisible }) {
           />
         </>
       )}
+
+      {/* 分组管理弹窗 */}
+      <GroupManager
+        visible={showGroupManager}
+        onCancel={() => setShowGroupManager(false)}
+        groups={groups}
+        onSave={handleSaveGroups}
+      />
     </div>
   );
 }

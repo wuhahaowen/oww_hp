@@ -132,15 +132,15 @@ function Login() {
   return (
     <div className={`login-container ${theme}`}>
       <div className="login-box">
-        {/*<div className="login-header">*/}
-        {/*  <Icon*/}
-        {/*    path={mdiHomeAutomation}*/}
-        {/*    size={28}*/}
-        {/*    className="login-logo"*/}
-        {/*    color="var(--color-primary)"*/}
-        {/*  />*/}
-        {/*  <h2>{t('title')}</h2>*/}
-        {/*</div>*/}
+        <div className="login-header">
+          <Icon
+            path={mdiHomeAutomation}
+            size={28}
+            className="login-logo"
+            color="var(--color-primary)"
+          />
+          <h2>{t('title')}</h2>
+        </div>
         <Form
           name="login"
           form={form}
@@ -177,78 +177,78 @@ function Login() {
           </Form.Item>
         </Form>
 
-        {/*<div className="login-footer">*/}
-        {/*  <div className="theme-menu-container">*/}
-        {/*    <button*/}
-        {/*      className="icon-button"*/}
-        {/*      onClick={() => setThemeMenuVisible(!themeMenuVisible)}*/}
-        {/*      title={t('theme.' + theme)}*/}
-        {/*    >*/}
-        {/*      <Icon*/}
-        {/*        path={getThemeIcon()}*/}
-        {/*        size={14}*/}
-        {/*        color="var(--color-text-primary)"*/}
-        {/*      />*/}
-        {/*    </button>*/}
+        <div className="login-footer">
+          <div className="theme-menu-container">
+            <button
+              className="icon-button"
+              onClick={() => setThemeMenuVisible(!themeMenuVisible)}
+              title={t('theme.' + theme)}
+            >
+              <Icon
+                path={getThemeIcon()}
+                size={14}
+                color="var(--color-text-primary)"
+              />
+            </button>
 
-        {/*    {themeMenuVisible && (*/}
-        {/*      <div className="theme-menu">*/}
-        {/*        <button*/}
-        {/*          className={`theme-option ${theme === 'light' ? 'active' : ''}`}*/}
-        {/*          onClick={() => {*/}
-        {/*            setSpecificTheme('light');*/}
-        {/*            setThemeMenuVisible(false);*/}
-        {/*          }}*/}
-        {/*        >*/}
-        {/*          <Icon path={mdiWhiteBalanceSunny} size={12} />*/}
-        {/*          <span>{t('theme.light')}</span>*/}
-        {/*        </button>*/}
-        {/*        <button*/}
-        {/*          className={`theme-option ${theme === 'dark' ? 'active' : ''}`}*/}
-        {/*          onClick={() => {*/}
-        {/*            setSpecificTheme('dark');*/}
-        {/*            setThemeMenuVisible(false);*/}
-        {/*          }}*/}
-        {/*        >*/}
-        {/*          <Icon path={mdiWeatherNight} size={12} />*/}
-        {/*          <span>{t('theme.dark')}</span>*/}
-        {/*        </button>*/}
-        {/*        <button*/}
-        {/*          className={`theme-option ${theme === 'system' ? 'active' : ''}`}*/}
-        {/*          onClick={() => {*/}
-        {/*            setSpecificTheme('system');*/}
-        {/*            setThemeMenuVisible(false);*/}
-        {/*          }}*/}
-        {/*        >*/}
-        {/*          <Icon path={mdiMonitor} size={12} />*/}
-        {/*          <span>{t('theme.system')}</span>*/}
-        {/*        </button>*/}
-        {/*      </div>*/}
-        {/*    )}*/}
-        {/*  </div>*/}
-        {/*  <button*/}
-        {/*    className="icon-button"*/}
-        {/*    onClick={toggleLanguage}*/}
-        {/*    title={t('language.toggle')}*/}
-        {/*  >*/}
-        {/*    <Icon*/}
-        {/*      path={mdiGoogleTranslate}*/}
-        {/*      size={14}*/}
-        {/*      color="var(--color-text-primary)"*/}
-        {/*    />*/}
-        {/*  </button>*/}
-        {/*  <button*/}
-        {/*    className="icon-button"*/}
-        {/*    onClick={() => window.open('https://github.com/mrtian2016/hass-panel', '_blank')}*/}
-        {/*    title="GitHub"*/}
-        {/*  >*/}
-        {/*    <Icon*/}
-        {/*      path={mdiGithub}*/}
-        {/*      size={14}*/}
-        {/*      color="var(--color-text-primary)"*/}
-        {/*    />*/}
-        {/*  </button>*/}
-        {/*</div>*/}
+            {themeMenuVisible && (
+              <div className="theme-menu">
+                <button
+                  className={`theme-option ${theme === 'light' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSpecificTheme('light');
+                    setThemeMenuVisible(false);
+                  }}
+                >
+                  <Icon path={mdiWhiteBalanceSunny} size={12} />
+                  <span>{t('theme.light')}</span>
+                </button>
+                <button
+                  className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSpecificTheme('dark');
+                    setThemeMenuVisible(false);
+                  }}
+                >
+                  <Icon path={mdiWeatherNight} size={12} />
+                  <span>{t('theme.dark')}</span>
+                </button>
+                <button
+                  className={`theme-option ${theme === 'system' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSpecificTheme('system');
+                    setThemeMenuVisible(false);
+                  }}
+                >
+                  <Icon path={mdiMonitor} size={12} />
+                  <span>{t('theme.system')}</span>
+                </button>
+              </div>
+            )}
+          </div>
+          <button
+            className="icon-button"
+            onClick={toggleLanguage}
+            title={t('language.toggle')}
+          >
+            <Icon
+              path={mdiGoogleTranslate}
+              size={14}
+              color="var(--color-text-primary)"
+            />
+          </button>
+          <button
+            className="icon-button"
+            onClick={() => window.open('https://github.com/mrtian2016/hass-panel', '_blank')}
+            title="GitHub"
+          >
+            <Icon
+              path={mdiGithub}
+              size={14}
+              color="var(--color-text-primary)"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

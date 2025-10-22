@@ -20,6 +20,7 @@
   border-color: var(--color-primary);
 }
 
+
 .entity-list {
   display: flex;
   flex-direction: column;
@@ -35,6 +36,10 @@
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-small);
 }
+
+
+
+
 
 /* 灯光配置样式 */
 .lights-config {
@@ -83,6 +88,8 @@
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-small);
 }
+
+
 
 /* 媒体播放器配置样式 */
 .media-players-config {
@@ -292,6 +299,8 @@
     padding: 12px;
   }
 
+
+
   /* 房间灯光概览配置样式优化 */
   .light-overview-config {
     padding: 12px;
@@ -345,6 +354,8 @@
   text-overflow: ellipsis;
   min-width: 0;
 }
+
+
 
 /* 净水器配置样式 */
 .waterpuri-config {
@@ -500,6 +511,9 @@
   width: 100%;
 }
 
+
+
+
 /* Universal Entities Config */
 .universal-entities-config {
   display: flex;
@@ -537,6 +551,8 @@
   border-radius: var(--border-radius-small);
   border: 1px solid var(--color-border);
 }
+
+
 
 /* 响应式布局 */
 @media (max-width: 768px) {
@@ -710,3 +726,4 @@
     padding: 12px;
   }
 }
+

@@ -40,7 +40,7 @@ function DailyQuoteCard({ config }) {
                         setQuote(manualQuote);
                     } else {
                         setQuote({
-                            content: '请在配置中设置引言内容hhh',
+                            content: '请在配置中设置引言内容',
                             author: ''
                         });
                     }

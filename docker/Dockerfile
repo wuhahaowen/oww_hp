@@ -1,6 +1,5 @@
 FROM ghcr.io/hassio-addons/base:17.1.0
-# 添加构建参数支持本地开发
-ARG BUILD_LOCAL=false
+
 # 安装依赖
 RUN apk add --no-cache nginx gettext curl jq unzip tzdata python3 py3-pip rsync vim supervisor 
 
@@ -31,7 +30,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
 
     
 # 安装 Python 依赖
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple \
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
     fastapi \
     uvicorn \
     requests \
@@ -61,18 +60,12 @@ WORKDIR /app
 
 # 复制前端文件
 COPY frontend/build /app
-# 修改为从本地复制前端构建文件
-#COPY ../frontend/build /app
-# 条件性复制代码
-#COPY ${BUILD_LOCAL:+../}frontend/build /app
 
 WORKDIR /backend
 
 # 复制后端文件
 COPY backend /backend
-# 修改为从本地复制后端代码
-#COPY ../backend /backend
-#COPY ${BUILD_LOCAL:+../}backend /backend
+
 # 设置默认环境变量
 ENV IS_ADDON=false
 

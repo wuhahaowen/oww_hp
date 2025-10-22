@@ -3,9 +3,7 @@
 /* 基础卡片样式 */
 .base-card {
   width: 100%;
-  /*background:  rgba(73, 73, 74, 1) !important;*/
-  backdrop-filter: blur(12px) ;
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--color-card-bg);
   border-radius: var(--border-radius-medium);
   margin-top: var(--spacing-lg);
   box-shadow: 0 2px 8px var(--color-shadow);
@@ -55,7 +53,7 @@
   justify-content: flex-end;
   padding: var(--spacing-sm);
   flex-wrap: wrap;
-  /*margin-right: 20px;*/
+  margin-right: 20px;
 }
 
 /* 统一按钮样式 */
@@ -214,6 +212,7 @@
   min-height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
+  overflow-y: scroll;
   height: 100vh;
   
   scrollbar-width: none;
@@ -231,7 +230,7 @@
   transition: all 200ms ease;
   transition-property: left, top;
   display: flex !important;
-  padding: 12px;
+  padding: 8px;
   box-sizing: border-box;
 }
 
@@ -245,8 +244,7 @@
   overflow: visible;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  /*background: rgba(255, 255, 255, 0.6);*/
-  background: rgba(73,73,74,1);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
@@ -271,8 +269,7 @@
 }
 
 [data-theme='dark'] .react-grid-item > div {
-  /*background: rgba(20, 20, 20, 0.6);*/
-  background: rgba(73, 73, 74, 1);
+  background: rgba(20, 20, 20, 0.6);
   border: 1px solid rgba(100, 100, 100, 0.18);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
@@ -349,6 +346,7 @@
 
 @media (min-width: 768px) {
   .page-container {
+  
     margin-left: 0;
   }
   
@@ -464,7 +462,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
 }
 
 .base-card > div:not(.card-header) {
@@ -711,6 +708,9 @@ div {
   border-radius: 6px;
 }
 
+.card-visibility-item:hover {
+  background: var(--color-hover);
+}
 
 .card-visibility-item .checkbox-icon {
   color: var(--color-primary);
@@ -963,6 +963,10 @@ div {
   margin-bottom: 0;
 }
 
+.theme-option:hover {
+  background-color: var(--color-background-hover);
+  transform: translateX(2px);
+}
 
 .theme-option.active {
   background-color: var(--color-primary-light);
@@ -970,6 +974,9 @@ div {
   font-weight: 500;
 }
 
+[data-theme='dark'] .theme-option.active {
+  background-color: rgba(var(--color-primary-rgb), 0.2);
+}
 
 .theme-option svg {
   flex-shrink: 0;
@@ -995,222 +1002,4 @@ div {
   .content {
     width: 100%;
   }
-}
-
-/* 整体布局：左侧栏 + 右侧主区 - 使用 house-overview 布局 */
-.app-layout {
-  display: flex;
-  gap: 24px;
-  padding: 29px 24px 24px;
-  height: 100vh;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* 左侧栏 - 使用 house-overview 样式 */
-.sidebar {
-  width: 280px;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  flex-shrink: 0;
-  position: sticky;
-  top: 29px;
-  align-self: flex-start;
-  max-height: calc(100vh - 58px);
-  overflow-y: auto;
-}
-
-.sidebar .logo img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 30px;
-}
-
-.sidebar .menu button {
-  background: none;
-  border: none;
-  margin: 12px 0;
-  cursor: pointer;
-}
-
-.sidebar .menu button img {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.2s;
-}
-
-.sidebar .menu button:hover img {
-  transform: scale(1.1);
-}
-
-
-/* 主内容区 */
-.main-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /*height: 100vh;*/
-  overflow: hidden;
-}
-
-
-
-/* 内容区 */
-.content {
-  flex: 1;
-  overflow: auto;
-  padding-right: 10px;
-  height: calc(100vh - 100px);
-}
-
-#height {
-  width: 100%;
-}
-
-
-.form-item {
-  display: flex;
-  align-items: center; /* 垂直居中 */
-  gap: 5%; /* 下拉框和文字间距 */
-}
-
-/* select 样式 */
-.form-item select {
-  background-color: rgba(255, 255, 255, 0.21); /* 黑色背景 */
-  color: #fff; /* 白色字体 */
-  font-size: 28px; /* 字体改大 */
-  line-height: 1.2;
-  border: 1px solid #fff; /* 可选边框 */
-  border-radius: 4px;
-  padding: 6px 12px;
-  appearance: none; /* 去掉默认下拉箭头 */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  border: none;
-}
-
-/* IE 下去掉默认箭头 */
-.form-item select::-ms-expand {
-  display: none;
-}
-
-.card {
-  width: 100%;
-}
-
-.logo {
-  height: 10px;
-}
-
-/*.bottom-buttons {*/
-/*  height: 70px;*/
-/*  width: 365px;*/
-/*  position: fixed !important;*/
-/*  bottom: 140px !important;*/
-/*  left: 20px;*/
-/*  display: flex;*/
-/*  gap: 12px;*/
-/*  border-radius: 16px;*/
-/*  margin-left: 15px;*/
-/*  background-color: rgba(255, 255, 255, 0.21) !important;*/
-/*}*/
-/*!*.bottom-buttons {*!*/
-/*!*  width: 380px;*!*/
-/*!*  display: flex;*!*/
-/*!*  gap: 12px;*!*/
-/*!*  border-radius: 16px;*!*/
-/*!*  margin-top: 20px;   !* 跟上面 div 留点间距 *!*!*/
-/*!*  border-radius: 16px;     !* 四个角圆角 *!*!*/
-/*!*}*!*/
-
-/*.glass-btn {*/
-/*  background: rgba(255, 255, 255, 0.15);*/
-/*  backdrop-filter: blur(12px);*/
-/*  -webkit-backdrop-filter: blur(12px);*/
-/*  border: 1px solid rgba(255, 255, 255, 0.2);*/
-/*  border-radius: 12px;*/
-/*  padding: 10px 20px;*/
-/*  font-size: 15px;*/
-/*  color: #fff;*/
-/*  cursor: pointer;*/
-/*  transition: all 0.3s;*/
-/*}*/
-
-/*.glass-btn:hover {*/
-/*  background: rgba(255, 255, 255, 0.25);*/
-/*  transform: translateY(-2px);*/
-/*  box-shadow: 0 4px 12px rgba(0,0,0,0.2);*/
-/*}*/
-
-.bottom-buttons {
-  display: flex;
-  gap: 12px;
-  border-radius: 16px;
-  margin-top: 20px;  /* 和窗帘卡片留点间距 */
-  height: 90px;
-}
-
-/*.glass-btn {*/
-/*  margin-top: 20px;*/
-/*  width: 50%;*/
-/*  height: 90px;*/
-/*  background: rgba(255, 255, 255, 0.15);*/
-/*  backdrop-filter: blur(12px);*/
-/*  -webkit-backdrop-filter: blur(12px);*/
-/*  border: 1px solid rgba(255, 255, 255, 0.2);*/
-/*  border-radius: 12px;*/
-/*  padding: 10px 20px;*/
-/*  font-size: 15px;*/
-/*  color: #fff;*/
-/*  cursor: pointer;*/
-/*  transition: all 0.3s;*/
-/*}*/
-
-/*.glass-btn:hover {*/
-/*  !*background: rgba(255, 255, 255, 0.25);*!*/
-/*  background: var(--color-primary);*/
-/*  transform: translateY(-2px);*/
-/*  box-shadow: 0 4px 12px rgba(0,0,0,0.2);*/
-/*}*/
-
-
-.glass-btn {
-  margin-top: 20px;
-  width: 50%;
-  height: 90px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 12px;
-  padding: 10px 20px;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-weight: 500;
-}
-
-.glass-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* 点击选中的效果 */
-.glass-btn.active {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  font-weight: 600;
 }

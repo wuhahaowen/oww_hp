@@ -133,6 +133,28 @@ export const zh = {
       reinitialize: '重新初始化',
       reinitializeSuccess: '重新初始化成功',
       reinitializeFailed: '重新初始化失败',
+      clearFilter: '清除筛选',
+    },
+
+    // 分组相关
+    groups: {
+      manage: '管理分组',
+      add: '添加分组',
+      edit: '编辑分组',
+      delete: '删除分组',
+      deleteConfirm: '确认删除此分组?',
+      deleteSuccess: '分组删除成功',
+      deleteFailed: '分组删除失败',
+      all: '全部',
+      default: '默认分组',
+      name: '分组名称',
+      namePlaceholder: '请输入分组名称',
+      nameRequired: '分组名称不能为空',
+      selectGroup: '选择分组',
+      saveSuccess: '分组保存成功',
+      saveFailed: '分组保存失败',
+      moveToDefault: '卡片将移至默认分组',
+      order: '排序',
     },
     
     // 卡片类型
@@ -167,7 +189,6 @@ export const zh = {
       pve: 'PVE监控',
       quotes: '每日一言',
       washingMachine: '洗衣机',
-      timeWeather: '时间天气',
     },
 
     // 卡片操作
@@ -214,7 +235,6 @@ export const zh = {
       dailyquote: '每日一言',
       washingMachine: '洗衣机',
       washingmachine: '洗衣机',
-      timeWeather: '时间天气',
     },
 
     // 配置字段
@@ -251,40 +271,6 @@ export const zh = {
       serverConfig: '服务器配置',
       quotesConfig: '每日一言配置',
       washingMachineConfig: '洗衣机配置',
-    },
-
-    // 时间天气配置
-    timeWeather: {
-      title: '时间天气配置',
-      time: {
-        title: '时间设置',
-        format: '时间格式',
-        formatPlaceholder: '选择时间格式',
-        dateFormat: '日期格式',
-        dateFormatPlaceholder: '选择日期格式',
-        showLunar: '显示农历',
-      },
-      weather: {
-        title: '天气设置',
-        entity: '天气实体',
-        iconSize: '天气图标大小',
-        showHumidity: '显示湿度',
-        showCondition: '显示天气状态',
-        showAdditionalInfo: '显示额外信息',
-        showFeelsLike: '显示体感温度',
-        showWind: '显示风速信息',
-        feelsLike: '体感',
-        wind: {
-          speed: '风速',
-        }
-      },
-      layout: {
-        title: '布局设置',
-        style: '布局样式',
-        vertical: '垂直布局',
-        horizontal: '水平布局',
-        compact: '紧凑布局',
-      }
     },
 
     version: {

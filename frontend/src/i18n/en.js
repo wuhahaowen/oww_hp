@@ -132,6 +132,28 @@ export const en = {
         reinitialize: 'Reinitialize',
         reinitializeSuccess: 'Reinitialized successfully',
         reinitializeFailed: 'Reinitialize failed',
+        clearFilter: 'Clear Filter',
+    },
+
+    // Groups
+    groups: {
+        manage: 'Manage Groups',
+        add: 'Add Group',
+        edit: 'Edit Group',
+        delete: 'Delete Group',
+        deleteConfirm: 'Confirm delete this group?',
+        deleteSuccess: 'Group deleted successfully',
+        deleteFailed: 'Failed to delete group',
+        all: 'All',
+        default: 'Default Group',
+        name: 'Group Name',
+        namePlaceholder: 'Enter group name',
+        nameRequired: 'Group name is required',
+        selectGroup: 'Select Group',
+        saveSuccess: 'Group saved successfully',
+        saveFailed: 'Failed to save group',
+        moveToDefault: 'Cards will move to default group',
+        order: 'Order',
     },
 
     // Card Types
@@ -158,7 +180,6 @@ export const en = {
         universal: 'Universal Card',
         quotes: 'Daily Quote',
         washingMachine: 'Washing Machine',
-        timeWeather: 'Time & Weather',
     },
 
     // Card Actions
@@ -203,7 +224,6 @@ export const en = {
         dailyquote: 'Daily Quote',
         washingMachine: 'Washing Machine',
         washingmachine: 'Washing Machine',
-        timeWeather: 'Time & Weather',
     },
 
     // Configuration Fields
@@ -238,40 +258,6 @@ export const en = {
         serverName: 'Server Name',
         quotesConfig: 'Quotes Configuration',
         washingMachineConfig: 'Washing Machine Configuration',
-    },
-
-    // Time Weather Configuration
-    timeWeather: {
-        title: 'Time Weather Configuration',
-        time: {
-            title: 'Time Settings',
-            format: 'Time Format',
-            formatPlaceholder: 'Select time format',
-            dateFormat: 'Date Format',
-            dateFormatPlaceholder: 'Select date format',
-            showLunar: 'Show Lunar Calendar',
-        },
-        weather: {
-            title: 'Weather Settings',
-            entity: 'Weather Entity',
-            iconSize: 'Weather Icon Size',
-            showHumidity: 'Show Humidity',
-            showCondition: 'Show Weather Condition',
-            showAdditionalInfo: 'Show Additional Info',
-            showFeelsLike: 'Show Feels Like Temperature',
-            showWind: 'Show Wind Information',
-            feelsLike: 'Feels Like',
-            wind: {
-                speed: 'Wind Speed',
-            }
-        },
-        layout: {
-            title: 'Layout Settings',
-            style: 'Layout Style',
-            vertical: 'Vertical Layout',
-            horizontal: 'Horizontal Layout',
-            compact: 'Compact Layout',
-        }
     },
 
     // WebDAV Related

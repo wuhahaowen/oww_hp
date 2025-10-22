@@ -17,7 +17,7 @@ English | [简体中文](README.md)
 
 ## Discussion Group
 
-<img src="https://i.imgur.com/Dcq1f2e.jpeg" width="300" alt="Discussion Group" />
+<img src="https://i.imgur.com/RrXJvKP.jpeg" width="300" alt="Discussion Group" />
 
 ## Key Features
 
@@ -161,19 +161,7 @@ For detailed changelog, please check [Releases](https://github.com/mrtian2016/ha
 
 Pull Requests and Issues are welcome!
 
-## License
 
-This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). This means:
-
-- You can freely use, modify, and distribute this software
-- If you modify and distribute this software, you must:
-  - Make your modified source code available to all users
-  - License your modifications under AGPL-3.0
-  - State your changes
-- Any network use (like web applications) counts as distribution
-- All derivative works must also be licensed under AGPL-3.0
-
-For more details, see the [full license text](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
 ## Sponsorship
 

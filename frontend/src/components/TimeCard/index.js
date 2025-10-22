@@ -30,9 +30,11 @@ function TimeCard({config}) {
     return () => clearInterval(timer);
   }, [t]); // 添加 t 到依赖数组
 
+
+
   return (
     <BaseCard
-      title={'中建希好斯' || t('cardTitles.time')}
+      title={title || t('cardTitles.time')}
       titleVisible={titleVisible}
       icon={mdiClockOutline}
     >
@@ -46,9 +48,9 @@ function TimeCard({config}) {
             {weekday}
           </span>
         </div>
-        {/*<div className="lunar-date">*/}
-        {/*  {lunarDate}*/}
-        {/*</div>*/}
+        <div className="lunar-date">
+          {lunarDate}
+        </div>
       </div>
     </BaseCard>
   );
