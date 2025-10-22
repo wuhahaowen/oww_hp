@@ -1,0 +1,149 @@
+FROM node:18 AS frontend-builder
+# =================设置镜像源===================
+# 使用中科大镜像源
+RUN echo "deb http://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free" > /etc/apt/sources.list
+RUN echo "deb-src http://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free" >> /etc/apt/sources.list
+RUN echo "deb http://mirrors.ustc.edu.cn/debian-security bullseye-security main contrib non-free" >> /etc/apt/sources.list
+RUN echo "deb-src http://mirrors.ustc.edu.cn/debian-security bullseye-security main contrib non-free" >> /etc/apt/sources.list
+
+# 测试网络连接
+RUN curl -v http://mirrors.ustc.edu.cn/debian/
+
+# 配置 pip 使用国内镜像源
+#RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 配置 pip 使用阿里云镜像源
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+
+
+# 安装依赖
+RUN apt-get update && apt-get install -y yarn nginx gettext curl jq unzip tzdata python3 py3-pip rsync vim supervisor
+#RUN apt-get update && apt-get install -y  yarn   nginx  gettext  jq  unzip  curl   tzdata supervisor  && rm -rf /var/lib/apt/lists/*
+
+# =================判断系统架构===================
+# 安装go2rtc 判断系统架构
+#COPY docker/software/go2rtc_* /tmp/
+
+COPY docker/software/go2rtc_linux_aarch64 /tmp/go2rtc_linux_aarch64
+COPY docker/software/go2rtc_linux_armv6l /tmp/go2rtc_linux_armv6l
+COPY docker/software/go2rtc_linux_armv7l /tmp/go2rtc_linux_armv7l
+COPY docker/software/go2rtc_linux_x86_64 /tmp/go2rtc_linux_x86_64
+
+RUN case "$(uname -m)" in \
+        x86_64) \
+            cp /tmp/go2rtc_linux_x86_64 /usr/local/bin/go2rtc ;; \
+        aarch64) \
+            cp /tmp/go2rtc_linux_aarch64 /usr/local/bin/go2rtc ;; \
+        armv7l) \
+            cp /tmp/go2rtc_linux_armv7l /usr/local/bin/go2rtc ;; \
+        armv6l) \
+            cp /tmp/go2rtc_linux_armv6l /usr/local/bin/go2rtc ;; \
+        *) \
+            echo "Unsupported architecture: $(uname -m)" && exit 1 ;; \
+    esac && \
+    chmod +x /usr/local/bin/go2rtc && \
+    rm -f /tmp/go2rtc_*
+
+# =================设置时区===================
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone
+
+# ===================python主镜像==============================
+
+FROM python:3.9-slim
+
+
+# 安装 Python 依赖
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install \
+    fastapi \
+    uvicorn[standard] \
+    requests \
+    loguru \
+    toml \
+    omegaconf \
+    aiohttp \
+    python-multipart \
+    pyyaml \
+    sqlalchemy \
+    pyjwt \
+    passlib[bcrypt] \
+    apscheduler \
+    onvif-zeep
+
+# ===================打包源文件==============================
+# 创建必要的目录
+RUN mkdir -p /config/hass-panel   # 为SQLite数据库创建目录
+RUN mkdir -p /config/hass-panel/logs/supervisord
+RUN mkdir -p /config/hass-panel/logs/backend
+RUN mkdir -p /config/hass-panel/logs/nginx
+RUN mkdir -p /config/hass-panel/upload
+
+
+
+# 复制go2rtc配置文件
+COPY docker/config/go2rtc.yaml /etc/go2rtc.yaml
+
+# 复制配置文件
+COPY docker/config/nginx.conf /etc/nginx/http.d/default
+
+# =============构建前端=======================
+
+#FROM node:18 AS frontend-builder
+# 构建前端
+# 创建工作目录
+WORKDIR /app
+
+# 复制前端依赖文件
+COPY frontend/package*.json ./
+
+# 先安装 yarn
+#RUN npm install -g yarn
+
+# 安装前端依赖
+#RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get update &&  apt-get install -y nodejs
+
+
+# 安装前端依赖
+RUN npm ci --registry https://registry.npmmirror.com
+#RUN yarn install
+# 复制前端源代码
+COPY frontend/ .
+
+# 构建前端
+RUN npm run build
+
+
+# ===========复制前端打包文件==============
+#COPY frontend/build /app
+COPY --from=frontend-builder /app/build /app
+
+# ===========复制后端打包文件==============
+# 创建工作目录
+WORKDIR /backend
+
+# 复制后端文件
+COPY backend /backend
+
+
+# 设置默认环境变量
+ENV IS_ADDON=false
+ENV PYTHONPATH=/backend
+
+# 复制并设置启动脚本
+COPY docker/scripts/entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+COPY docker/config/supervisord.conf /etc/supervisord.conf
+
+# 复制supervisor配置文件
+ENV PYTHONPATH=/backend
+
+# 暴露端口
+EXPOSE 5123 5124
+
+# 启动命令
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

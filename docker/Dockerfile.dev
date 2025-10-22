@@ -1,5 +1,21 @@
 FROM node:18 AS frontend-builder
 
+# =================构建前端代码===================
+# 创建工作目录
+WORKDIR /app
+
+# 复制前端依赖文件
+COPY frontend/package*.json ./
+
+# 安装前端依赖
+RUN npm ci --registry https://registry.npmmirror.com
+
+# 复制前端源代码
+COPY frontend/ .
+
+# 构建前端
+RUN npm run build
+
 # =================先现在文件和按照依赖===================
 
 # 安装go2rtc 判断系统架构
@@ -77,23 +93,15 @@ COPY docker/config/go2rtc.yaml /etc/go2rtc.yaml
 # 复制配置文件
 COPY docker/config/nginx.conf /etc/nginx/http.d/default
 
-# 创建工作目录
+# 设置工作目录
 WORKDIR /app
 
-# 复制前端依赖文件
-COPY frontend/package*.json ./
+# 从前端构建阶段复制构建好的文件
+COPY --from=frontend-builder /app/build /app
 
-# 安装前端依赖
-RUN npm ci --registry https://registry.npmmirror.com
 
-# 复制前端源代码
-COPY frontend/ .
-
-# 构建前端
-RUN npm run build
-
-# ===========复制前端打包文件==============
-COPY frontend/build /app
+# 复制前端文件
+#COPY frontend/build /app
 
 # ===========复制后端打包文件==============
 # 创建工作目录

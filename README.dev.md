@@ -29,6 +29,14 @@ cd hass-panel
 docker-compose -f docker-compose.dev.yml up --build
 ```
 
+
+# 使用清理后的环境重新构建
+docker-compose -f docker-compose.dev.yml down
+docker system prune -a
+docker-compose -f docker-compose.dev.yml up --build
+
+
+
 这将启动以下服务：
 - 前端服务 (nginx): http://localhost:5123
 - 后端服务 (FastAPI): http://localhost:5124
