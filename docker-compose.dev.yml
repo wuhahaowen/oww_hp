@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  hass-panel:
+    image: ghcr.io/mrtian2016/hass-panel:latest
+    network_mode: host
+    volumes:
+      - ./data/hass-panel/:/config/hass-panel
+    restart: unless-stopped 
