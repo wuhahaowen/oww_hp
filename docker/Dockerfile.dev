@@ -1,7 +1,22 @@
-FROM registry.cn-hangzhou.aliyuncs.com/nodejs/node:18-slim AS frontend-builder
+FROM node:18 AS frontend-builder
 
 # 使用国内镜像源
 RUN npm config set registry https://registry.npmmirror.com
+
+# 安装依赖
+RUN apt-get update && apt-get install -y \
+    nginx \
+    gettext \
+    curl \
+    jq \
+    unzip \
+    tzdata \
+    python3 \
+    py3-pip \
+    rsync \
+    vim \
+    supervisor \
+    && rm -rf /var/lib/apt/lists/*
 
 # =================构建前端代码===================
 # 创建工作目录
@@ -43,21 +58,13 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
-FROM registry.cn-hangzhou.aliyuncs.com/python/python:3.9-slim
+FROM python:3.9-slim
 
 # 使用中科大镜像源
 RUN echo "deb http://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free" > /etc/apt/sources.list
 RUN echo "deb-src http://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free" >> /etc/apt/sources.list
 RUN echo "deb http://mirrors.ustc.edu.cn/debian-security bullseye-security main contrib non-free" >> /etc/apt/sources.list
 RUN echo "deb-src http://mirrors.ustc.edu.cn/debian-security bullseye-security main contrib non-free" >> /etc/apt/sources.list
-
-# 安装依赖
-RUN apt-get update && apt-get install -y \
-    nginx \
-    curl \
-    tzdata \
-    supervisor \
-    && rm -rf /var/lib/apt/lists/*
 
 # 测试网络连接
 RUN curl -v http://mirrors.ustc.edu.cn/debian/

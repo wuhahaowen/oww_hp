@@ -1,9 +1,7 @@
 FROM ghcr.io/hassio-addons/base:17.1.0
 
-# 使用国内镜像源安装依赖
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-
-RUN apk add --no-cache nginx gettext curl jq unzip tzdata python3 py3-pip rsync vim supervisor 
+# 安装依赖
+RUN apk add --no-cache nginx gettext curl jq unzip tzdata python3 py3-pip rsync vim supervisor
 
 # 安装go2rtc 判断系统架构
 COPY docker/software/go2rtc_* /tmp/
@@ -30,11 +28,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
 
-    
+#RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 # 安装 Python 依赖
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
-    pip install --no-cache-dir --upgrade pip && \
-    pip install \
+RUN pip install -i  https://mirrors.aliyun.com/pypi/simple/ \
     fastapi \
     uvicorn \
     requests \
